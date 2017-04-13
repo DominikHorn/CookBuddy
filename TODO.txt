@@ -1,0 +1,2 @@
+# This is a todo list of every task that is unfinished for the next release.
+* Replace splash screen with something we hold the copyright to.
