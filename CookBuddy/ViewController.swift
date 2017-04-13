@@ -43,6 +43,11 @@ class ViewController: UIViewController {
         // Fetch initial dish
         self.fetchNextDish(sender: nil)
     }
+
+    // Hides Status bar in this view controller
+//    override var prefersStatusBarHidden: Bool {
+//        return true
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

@@ -28,12 +28,26 @@ class Database {
     func getDishes() throws -> [Dish] {
         var dishes = [Dish]()
         
+        // Fetch dishes from sqlite
         try dbQueue?.inDatabase { db in
             let rows = try Row.fetchCursor(db, "SELECT * FROM dishes")
             while let row = try rows.next() {
+                // Fetch dish id
                 let id: Int = row.value(named: "dishid")
+
+                // Fetch name of dish
                 let name: String = row.value(named: "name")
-                let description: String = row.value(named: "description")
+
+                // Fetch and craft description (description text + ingredients list)
+                var description: String = row.value(named: "description") + "\n\nEnthält folgende Zutaten:"
+                let ingredients = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = \(id) and c.ingid = i.ingid")
+                var counter = 0
+                while let ingredient = try ingredients.next() {
+                    counter += 1
+                    description += "\n\(counter). " + ingredient.value(named: "name")
+                }
+
+                // Fetch image name
                 let imageName: String = row.value(named: "imagefile")
                 dishes.append(Dish(id: id, name: name, description: description, imageName: imageName))
             }
