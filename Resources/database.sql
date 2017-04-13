@@ -8,6 +8,7 @@ DROP TABLE IF EXISTS Dishes;
 CREATE TABLE Dishes
   (DishID       INTEGER PRIMARY KEY AUTOINCREMENT,
    Name         VARCHAR(100) NOT NULL,
+   ImageFile    VARCHAR(30),
    Description  VARCHAR(1000));
 CREATE TABLE Persons
   (PersID       INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -33,23 +34,23 @@ CREATE TABLE LastEaten
    EatenDate    DATE NOT NULL,
    PRIMARY KEY (PersID, DishID));
 
-INSERT INTO Dishes(Name, Description)
+INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES
-  ('Tomate Mozarella',    'Italienisches Gericht'),
-  ('Salat mit Hünchen',   'Huhn mit diesem eklig gesunden, grünen zeug.'),
-  ('Schnitzel mit Reis',  '3 mal darfst du raten'),
-  ('Brotzeit',            'Aufschnitt mit Brot, wahlweise Fingerfood und etwas Gemüse'),
-  ('Lachsfilet',          'Blub blub blub'),
-  ('Gemüsekacka',         'Bäh bäh. Gemüseexplosion. Nur gesunde Menschen essen sowas.'),
-  ('Pfannenkuchen',       'Kuchen aus der Pfanne'),
-  ('Pizza',               'Pizza > jedes andere Gericht'),
-  ('Asiatisch',           'Wenn man sein Ohr ganz dicht ans Essen hält, hört man noch den Hund bellen'),
-  ('Bolognese',           'Nudeln mit Hackfleisch-Tomatensauce'),
-  ('Nudeln Arrabiata',    'Nudeln mit scharfer Tomatensauce'),
-  ('Sahnehünchen',        'Huhn mit Sahnesoße'),
-  ('Döner',               'Fussion alles göttlichen in delikatem Brot, serviert zum hier Essen oder Mitnehmen'),
-  ('Grillen',             'Wehe da kommt Gemüse auf den Grill!'),
-  ('Salat mit Steak',     'Überaschung! Da ist genau das drinnen was drauf steht.');
+  ('Tomate Mozarella',    'tomatemozzarella', 'Italienisches Gericht'),
+  ('Salat mit Hünchen',   'huhnsalat',        'Huhn mit diesem eklig gesunden, grünen zeug.'),
+  ('Schnitzel mit Reis',  'reisschnitzel',    '3 mal darfst du raten'),
+  ('Brotzeit',            'brotzeit',         'Aufschnitt mit Brot, wahlweise Fingerfood und etwas Gemüse'),
+  ('Lachsfilet',          'lachsfilet',       'Blub blub blub'),
+  ('Gemüsekacka',         'gemuesekack',      'Bäh bäh. Gemüseexplosion. Nur gesunde Menschen essen sowas.'),
+  ('Pfannenkuchen',       'pfannkuchen',      'Kuchen aus der Pfanne'),
+  ('Pizza',               'pizza',            'Pizza > jedes andere Gericht'),
+  ('Asiatisch',           'asiatisch',        'Wenn man sein Ohr ganz dicht ans Essen hält, hört man noch den Hund bellen'),
+  ('Bolognese',           'bolognese',        'Nudeln mit Hackfleisch-Tomatensauce'),
+  ('Nudeln Arrabiata',    'arrabiata',        'Nudeln mit scharfer Tomatensauce'),
+  ('Sahnehünchen',        'sahnehuhn',        'Huhn mit Sahnesoße'),
+  ('Döner',               'doener',           'Fussion alles göttlichen in delikatem Brot, serviert zum hier Essen oder Mitnehmen'),
+  ('Grillen',             'grillen',          'Wehe da kommt Gemüse auf den Grill!'),
+  ('Salat mit Steak',     'salatsteak',       'Überaschung! Da ist genau das drinnen was drauf steht.');
 
 INSERT INTO Persons(Name)
 VALUES
