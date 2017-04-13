@@ -6,7 +6,7 @@
 //  Copyright © 2017 Dominik Horn. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import GRDB
 
 class Database {
@@ -33,7 +33,9 @@ class Database {
             while let row = try rows.next() {
                 let id: Int = row.value(named: "dishid")
                 let name: String = row.value(named: "name")
-                dishes.append(Dish(id: id, name: name))
+                let description: String = row.value(named: "description")
+                let imageName: String = row.value(named: "imagefile")
+                dishes.append(Dish(id: id, name: name, description: description, imageName: imageName))
             }
         }
         
@@ -44,12 +46,14 @@ class Database {
     class Dish {
         let id: Int
         let name: String
-        let description: String
+        let description: String?
+        let image: UIImage?
         
-        init(id: Int, name: String, description: String? = nil) {
+        init(id: Int, name: String, description: String? = nil, imageName: String? = nil) {
             self.id = id
             self.name = name
-            self.description = description != nil ? description! : "No description provided"
+            self.description = description
+            self.image = UIImage(contentsOfFile: Bundle.main.path(forResource: imageName, ofType: "jpg", inDirectory: "DishImages")!)
         }
     }
 }

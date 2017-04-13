@@ -11,10 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var dishTitel: UILabel?
     @IBOutlet weak var dishDescription: UITextView?
+    @IBOutlet weak var dishImage: UIImageView?
     
     lazy var databaseConnection: Database = Database()
     
-    @IBAction func fetchNextDish(sender: UIButton) {
+    @IBAction func fetchNextDish(sender: UIButton?) {
         // Generate a new dish
         do {
             // obtain dishes
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
             // update ui
             self.dishTitel?.text = dish.name
             self.dishDescription?.text = dish.description
+            self.dishImage?.image = dish.image
         } catch {
             // Display an alert that something went wrong...
             let alert = UIAlertController(title: "Datenbank isch putt!", message: "Yoyoyo desch ned gut... Frag mal deinen Sohn was des soll.", preferredStyle: UIAlertControllerStyle.alert)
@@ -38,8 +40,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        dishTitel?.text = "Generisches Gericht 😋"
-        dishDescription?.text = "Dieses Gericht ist lecker! 😉\nZutatenliste:"
+        // Fetch initial dish
+        self.fetchNextDish(sender: nil)
     }
     
     override func didReceiveMemoryWarning() {

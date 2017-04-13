@@ -10,6 +10,7 @@
 		70F06699FD29F7DF31E626D2 /* Pods_CookBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */; };
 		B445DBF81E9FB0D000F5550D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B445DBF71E9FB0D000F5550D /* Database.swift */; };
 		B445DBFE1E9FB1FC00F5550D /* cookbuddy_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */; };
+		B445DC011E9FC14D00F5550D /* DishImages in Resources */ = {isa = PBXBuildFile; fileRef = B445DC001E9FC14D00F5550D /* DishImages */; };
 		B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31791E9D34400060471E /* AppDelegate.swift */; };
 		B4CA317C1E9D34400060471E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* ViewController.swift */; };
 		B4CA317F1E9D34400060471E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA317D1E9D34400060471E /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		B445DBF71E9FB0D000F5550D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cookbuddy_test.sqlite; sourceTree = "<group>"; };
 		B445DBFD1E9FB1FC00F5550D /* database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.sql; sourceTree = "<group>"; };
+		B445DC001E9FC14D00F5550D /* DishImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DishImages; sourceTree = "<group>"; };
 		B4CA31761E9D34400060471E /* CookBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31791E9D34400060471E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4CA317B1E9D34400060471E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 		B445DBFB1E9FB1FC00F5550D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B445DC001E9FC14D00F5550D /* DishImages */,
 				B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */,
 				B445DBFD1E9FB1FC00F5550D /* database.sql */,
 			);
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B445DBFE1E9FB1FC00F5550D /* cookbuddy_test.sqlite in Resources */,
+				B445DC011E9FC14D00F5550D /* DishImages in Resources */,
 				B4CA31841E9D34400060471E /* LaunchScreen.storyboard in Resources */,
 				B4CA31811E9D34400060471E /* Assets.xcassets in Resources */,
 				B4CA317F1E9D34400060471E /* Main.storyboard in Resources */,
