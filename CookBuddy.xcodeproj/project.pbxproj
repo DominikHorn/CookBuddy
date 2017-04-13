@@ -591,6 +591,7 @@
 				B4CA31A01E9D34400060471E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4CA31A11E9D34400060471E /* Build configuration list for PBXNativeTarget "CookBuddyTests" */ = {
 			isa = XCConfigurationList;
@@ -599,6 +600,7 @@
 				B4CA31A31E9D34400060471E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B4CA31A41E9D34400060471E /* Build configuration list for PBXNativeTarget "CookBuddyUITests" */ = {
 			isa = XCConfigurationList;
@@ -607,6 +609,7 @@
 				B4CA31A61E9D34400060471E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
