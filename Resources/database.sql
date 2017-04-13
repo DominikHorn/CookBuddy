@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS Dishes;
 
 CREATE TABLE Dishes
   (DishID       INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(100) NOT NULL);
+   Name         VARCHAR(100) NOT NULL,
+   Description  VARCHAR(1000));
 CREATE TABLE Persons
   (PersID       INTEGER PRIMARY KEY AUTOINCREMENT,
    Name         VARCHAR(30) NOT NULL);
@@ -32,23 +33,23 @@ CREATE TABLE LastEaten
    EatenDate    DATE NOT NULL,
    PRIMARY KEY (PersID, DishID));
 
-INSERT INTO Dishes(Name)
+INSERT INTO Dishes(Name, Description)
 VALUES
-  ('Tomate Mozarella'),
-  ('Salat mit Hünchen'),
-  ('Schnitzel mit Reis'),
-  ('Brotzeit'),
-  ('Lachsfilet'),
-  ('Gemüsekacka'),
-  ('Pfannenkuchen'),
-  ('Pizza'),
-  ('Asiatisch'),
-  ('Nudeln mit Bolognese'),
-  ('Nudeln Arrabiata'),
-  ('Sahnehünchen'),
-  ('Döner'),
-  ('Grillen'),
-  ('Salat mit Steak');
+  ('Tomate Mozarella',    'Italienisches Gericht'),
+  ('Salat mit Hünchen',   'Huhn mit diesem eklig gesunden, grünen zeug.'),
+  ('Schnitzel mit Reis',  '3 mal darfst du raten'),
+  ('Brotzeit',            'Aufschnitt mit Brot, wahlweise Fingerfood und etwas Gemüse'),
+  ('Lachsfilet',          'Blub blub blub'),
+  ('Gemüsekacka',         'Bäh bäh. Gemüseexplosion. Nur gesunde Menschen essen sowas.'),
+  ('Pfannenkuchen',       'Kuchen aus der Pfanne'),
+  ('Pizza',               'Pizza > jedes andere Gericht'),
+  ('Asiatisch',           'Wenn man sein Ohr ganz dicht ans Essen hält, hört man noch den Hund bellen'),
+  ('Bolognese',           'Nudeln mit Hackfleisch-Tomatensauce'),
+  ('Nudeln Arrabiata',    'Nudeln mit scharfer Tomatensauce'),
+  ('Sahnehünchen',        'Huhn mit Sahnesoße'),
+  ('Döner',               'Fussion alles göttlichen in delikatem Brot, serviert zum hier Essen oder Mitnehmen'),
+  ('Grillen',             'Wehe da kommt Gemüse auf den Grill!'),
+  ('Salat mit Steak',     'Überaschung! Da ist genau das drinnen was drauf steht.');
 
 INSERT INTO Persons(Name)
 VALUES
