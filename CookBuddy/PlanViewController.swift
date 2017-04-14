@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PlanViewController: UIViewController {
     @IBOutlet weak var dishTitel: UILabel?
     @IBOutlet weak var dishDescription: UITextView?
     @IBOutlet weak var dishImage: UIImageView?
