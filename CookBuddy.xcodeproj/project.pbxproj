@@ -22,6 +22,7 @@
 		B4CA31841E9D34400060471E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31821E9D34400060471E /* LaunchScreen.storyboard */; };
 		B4CA318F1E9D34400060471E /* CookBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA318E1E9D34400060471E /* CookBuddyTests.swift */; };
 		B4CA319A1E9D34400060471E /* CookBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31991E9D34400060471E /* CookBuddyUITests.swift */; };
+		B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		B4CA31951E9D34400060471E /* CookBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31991E9D34400060471E /* CookBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBuddyUITests.swift; sourceTree = "<group>"; };
 		B4CA319B1E9D34400060471E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		D02BCB656C88C079596EBB3C /* Pods-CookBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		E9B93787B92560EAE94E60D1 /* Pods-CookBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 		B41236161EA12BBA003EEEB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B4DCBFEB1EA2998800BCA909 /* Views */,
 				B41236171EA12BCA003EEEB8 /* Controllers */,
 			);
 			name = View;
@@ -202,6 +205,14 @@
 				B4CA319B1E9D34400060471E /* Info.plist */,
 			);
 			path = CookBuddyUITests;
+			sourceTree = "<group>";
+		};
+		B4DCBFEB1EA2998800BCA909 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,6 +406,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */,
 				B445DBF81E9FB0D000F5550D /* Database.swift in Sources */,
 				B4CA317C1E9D34400060471E /* DishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
