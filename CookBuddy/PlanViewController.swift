@@ -92,8 +92,20 @@ extension PlanViewController: UITableViewDelegate {
 
 // MARK:-- UITableViewDataSource
 extension PlanViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell", for: indexPath) as! EventTableViewCell
+//        let fruitName = fruits[indexPath.row]
+//        cell.label?.text = fruitName
+//        cell.fruitImageView?.image = UIImage(named: fruitName)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
