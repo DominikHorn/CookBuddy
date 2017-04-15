@@ -10,11 +10,13 @@
 		70F06699FD29F7DF31E626D2 /* Pods_CookBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */; };
 		B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41236121EA12795003EEEB8 /* ShoppingViewController.swift */; };
 		B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */; };
+		B4278ABB1EA130A800945FE5 /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4278ABA1EA130A800945FE5 /* PlanViewController.swift */; };
 		B445DBF81E9FB0D000F5550D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B445DBF71E9FB0D000F5550D /* Database.swift */; };
 		B445DBFE1E9FB1FC00F5550D /* cookbuddy_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */; };
 		B445DC011E9FC14D00F5550D /* DishImages in Resources */ = {isa = PBXBuildFile; fileRef = B445DC001E9FC14D00F5550D /* DishImages */; };
+		B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45498901EA2331B00B84C50 /* StandardExtensions.swift */; };
 		B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31791E9D34400060471E /* AppDelegate.swift */; };
-		B4CA317C1E9D34400060471E /* PlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* PlanViewController.swift */; };
+		B4CA317C1E9D34400060471E /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* DishViewController.swift */; };
 		B4CA317F1E9D34400060471E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA317D1E9D34400060471E /* Main.storyboard */; };
 		B4CA31811E9D34400060471E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31801E9D34400060471E /* Assets.xcassets */; };
 		B4CA31841E9D34400060471E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31821E9D34400060471E /* LaunchScreen.storyboard */; };
@@ -43,13 +45,15 @@
 		5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41236121EA12795003EEEB8 /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B4278ABA1EA130A800945FE5 /* PlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
 		B445DBF71E9FB0D000F5550D /* Database.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = cookbuddy_test.sqlite; sourceTree = "<group>"; };
 		B445DBFD1E9FB1FC00F5550D /* database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.sql; sourceTree = "<group>"; };
 		B445DC001E9FC14D00F5550D /* DishImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DishImages; sourceTree = "<group>"; };
+		B45498901EA2331B00B84C50 /* StandardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardExtensions.swift; sourceTree = "<group>"; };
 		B4CA31761E9D34400060471E /* CookBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31791E9D34400060471E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4CA317B1E9D34400060471E /* PlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanViewController.swift; sourceTree = "<group>"; };
+		B4CA317B1E9D34400060471E /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
 		B4CA317E1E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4CA31801E9D34400060471E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CA31831E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -118,9 +122,10 @@
 		B41236171EA12BCA003EEEB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4CA317B1E9D34400060471E /* PlanViewController.swift */,
+				B4CA317B1E9D34400060471E /* DishViewController.swift */,
 				B41236121EA12795003EEEB8 /* ShoppingViewController.swift */,
 				B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */,
+				B4278ABA1EA130A800945FE5 /* PlanViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 				B4CA31801E9D34400060471E /* Assets.xcassets */,
 				B4CA31821E9D34400060471E /* LaunchScreen.storyboard */,
 				B4CA31851E9D34400060471E /* Info.plist */,
+				B45498901EA2331B00B84C50 /* StandardExtensions.swift */,
 			);
 			path = CookBuddy;
 			sourceTree = "<group>";
@@ -270,6 +276,7 @@
 					B4CA31751E9D343F0060471E = {
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = ZBWW78A72B;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					B4CA31891E9D34400060471E = {
@@ -363,7 +370,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E98A7F00526A081E94F7140F /* [CP] Embed Pods Frameworks */ = {
@@ -389,10 +396,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B445DBF81E9FB0D000F5550D /* Database.swift in Sources */,
-				B4CA317C1E9D34400060471E /* PlanViewController.swift in Sources */,
+				B4CA317C1E9D34400060471E /* DishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
+				B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */,
+				B4278ABB1EA130A800945FE5 /* PlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,11 +554,13 @@
 			baseConfigurationReference = E9B93787B92560EAE94E60D1 /* Pods-CookBuddy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZBWW78A72B;
 				INFOPLIST_FILE = CookBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dhorn.CookBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -559,6 +570,7 @@
 			baseConfigurationReference = D02BCB656C88C079596EBB3C /* Pods-CookBuddy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = ZBWW78A72B;
 				INFOPLIST_FILE = CookBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

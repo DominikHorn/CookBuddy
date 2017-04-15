@@ -11,13 +11,20 @@ import GRDB
 
 class Database {
     private let dbQueue: DatabaseQueue?
+    static let shared: Database = {
+        let instance = Database()
+        
+        // setup code if necessary at some point
+        
+        return instance
+    }()
     
     init() {
         // Database connection configuration
         var config = Configuration()
         config.readonly = true
         config.foreignKeysEnabled = true // Default is already true
-//        config.trace = { print($0) }     // Prints all SQL statements
+        //        config.trace = { print($0) }     // Prints all SQL statements
         
         // Locates database file and opens it
         let dbPath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!
@@ -34,10 +41,10 @@ class Database {
             while let row = try rows.next() {
                 // Fetch dish id
                 let id: Int = row.value(named: "dishid")
-
+                
                 // Fetch name of dish
                 let name: String = row.value(named: "name")
-
+                
                 // Fetch and craft description (description text + ingredients list)
                 var description: String = row.value(named: "description") + "\n\nEnthält folgende Zutaten:"
                 let ingredients = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = \(id) and c.ingid = i.ingid")
@@ -46,7 +53,7 @@ class Database {
                     counter += 1
                     description += "\n\(counter). " + ingredient.value(named: "name")
                 }
-
+                
                 // Fetch image name
                 let imageName: String = row.value(named: "imagefile")
                 dishes.append(Dish(id: id, name: name, description: description, imageName: imageName))
@@ -54,6 +61,25 @@ class Database {
         }
         
         return dishes
+    }
+    
+    func numberOfDishesScheduled(forDate date: Date) throws -> Int {
+        // Counter of dishes
+        var counter = 0
+        
+        // Fetch scheduled dishes from sqlite
+        try dbQueue?.inDatabase { db in
+            let rows = try Row.fetchCursor(db, "SELECT * FROM schedule")
+            while let row = try rows.next() {
+                // Fetch scheduled date
+                let fetchedDate: Date = row.value(named: "scheduledfor")
+                if date.isOnSameDayAs(date: fetchedDate) {
+                    counter += 1
+                }
+            }
+        }
+        
+        return counter
     }
     
     // Dish class encapsulates a single dish

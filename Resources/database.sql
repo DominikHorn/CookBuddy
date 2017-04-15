@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS LastEaten;
+DROP TABLE IF EXISTS Schedule;
 DROP TABLE IF EXISTS Likes;
 DROP TABLE IF EXISTS Contains;
 DROP TABLE IF EXISTS Ingredients;
@@ -28,11 +28,24 @@ CREATE TABLE Contains
    Quantity     DECIMAL(4,3) NOT NULL,
    Unit         VARCHAR(30),
    PRIMARY KEY (IngID, DishID));
-CREATE TABLE LastEaten
-  (PersID       INTEGER REFERENCES Persons,
+CREATE TABLE Schedule
+  (ScheduledFor Date NOT NULL,
+   ScheduleNumber   INTEGER NOT NULL,
    DishID       INTEGER REFERENCES Dishes,
-   EatenDate    DATE NOT NULL,
-   PRIMARY KEY (PersID, DishID));
+   PRIMARY KEY (ScheduleNumber, ScheduledFor));
+
+INSERT INTO Schedule(ScheduleNumber, ScheduledFor, DishID)
+VALUES
+  (0, date('now','start of year','+4 months','+0 days'), 1),
+  (0, date('now','start of year','+4 months','+1 days'), 2),
+  (0, date('now','start of year','+4 months','+2 days'), 3),
+  (1, date('now','start of year','+4 months','+2 days'), 11),
+  (0, date('now','start of year','+4 months','+3 days'), 4),
+  (0, date('now','start of year','+4 months','+4 days'), 5),
+  (0, date('now','start of year','+4 months','+5 days'), 6),
+  (0, date('now','start of year','+4 months','+6 days'), 7),
+  (0, date('now','start of year','+4 months','+7 days'), 8),
+  (0, date('now','start of year','+4 months','+8 days'), 9);
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES

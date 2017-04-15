@@ -25,11 +25,11 @@
                                 <rect key="frame" x="88" y="323" width="198" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einkaufen" image="ListIcon" id="J4t-Y4-X55"/>
                 </viewController>
@@ -38,9 +38,65 @@
             <point key="canvasLocation" x="974" y="38"/>
         </scene>
         <!--PlanViewController-->
+        <scene sceneID="0xh-ER-5wU">
+            <objects>
+                <viewController id="Sf1-aq-5Hi" userLabel="PlanViewController" customClass="PlanViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="EfO-ke-FhJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Uu3-s2-NQ7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zkW-xu-8zc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eIB-GF-tZa" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="20" width="375" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
+                                        <color key="value" red="1" green="0.26032320231184636" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultiplier">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sf1-aq-5Hi" id="Pgh-00-Pr1"/>
+                                    <outlet property="delegate" destination="Sf1-aq-5Hi" id="JrJ-Qd-NyL"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crg-be-sCF">
+                                <rect key="frame" x="16" y="580" width="47" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Toggle"/>
+                                <connections>
+                                    <action selector="tempButtonClickedWithButton:" destination="Sf1-aq-5Hi" eventType="touchUpInside" id="eTV-tT-kf8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Plan" image="CalendarIcon" id="Et2-mf-Fne"/>
+                    <connections>
+                        <outlet property="calendarView" destination="eIB-GF-tZa" id="o83-7N-FMV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RPm-MN-NKW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.60000000000002" y="-698.5007496251875"/>
+        </scene>
+        <!--DishViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="PlanViewController" customClass="PlanViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="DishViewController" customClass="DishViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -69,7 +125,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-1h-JWg">
-                                <rect key="frame" x="16" y="576" width="343" height="34"/>
+                                <rect key="frame" x="16" y="616" width="343" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Anderen Vorschlag generieren"/>
@@ -80,7 +136,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Plan" image="CalendarIcon" id="Uiq-kK-7Fa"/>
                     <connections>
                         <outlet property="dishDescription" destination="6K4-bE-0xt" id="2zV-6j-cH1"/>
                         <outlet property="dishImage" destination="6Zz-uO-EEc" id="sC7-Ff-bYm"/>
@@ -89,7 +144,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="-660"/>
+            <point key="canvasLocation" x="2542.5" y="-697.5"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="jnx-jw-239">
@@ -107,29 +162,31 @@
                                 <rect key="frame" x="37" y="323" width="300" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.94999999999999996" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einstellungen" image="SettingsIcon" id="h1j-ml-hgY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u0J-2E-air" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="974" y="756"/>
+            <point key="canvasLocation" x="974" y="878"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="0Qk-fO-XWH">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0Ha-Oj-YdR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="5C3-ak-57b">
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="5C3-ak-57b">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.48503811444891598" green="0.77246936541697431" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Seh-wk-jgh"/>
+                        <segue destination="Sf1-aq-5Hi" kind="relationship" relationship="viewControllers" id="Qte-Xu-bHm"/>
                         <segue destination="K2j-Bl-Nyy" kind="relationship" relationship="viewControllers" id="Yyx-JH-9hg"/>
                         <segue destination="tbO-iK-Pmp" kind="relationship" relationship="viewControllers" id="j6F-82-jua"/>
                     </connections>
