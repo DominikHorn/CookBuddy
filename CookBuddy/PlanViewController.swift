@@ -13,25 +13,21 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
             // Set monday as first weekday
-            calendarView.firstWeekday = 2
+            self.calendarView.firstWeekday = 2
             
             // Hide ugly title sides
-            calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-            
-            // Change border
-            calendarView.appearance.borderRadius = 5
+            self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
         }
     }
     
-    // Temporary for experimenting
-    @IBAction func tempButtonClicked(button: UIButton!) {
-        switch (self.calendarView.scope) {
-        case .month:
-            self.calendarView.setScope(.week, animated: true)
-        case .week:
-            self.calendarView.setScope(.month, animated: true)
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            // Set tableview default row height
+            self.tableView.rowHeight = 75.0
         }
     }
+    
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     // Collection of all alerts that could not be presented earlier
     var databaseError: (() -> Void)?
@@ -77,11 +73,16 @@ extension PlanViewController: FSCalendarDelegate {
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
         }
+        
+        // Change to week view
+        self.calendarView.setScope(.week, animated: true)
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        // Update bounds
-        self.calendarView.frame = CGRect(origin: self.calendarView.frame.origin, size: bounds.size)
+        self.calendarHeightConstraint.constant = bounds.height;
+        
+        // Layout views
+        self.view.layoutIfNeeded()
     }
 }
 
@@ -97,11 +98,12 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 75
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell", for: indexPath) as! EventTableViewCell
+        // TODO: Fill with data (ask Database)
 //        let fruitName = fruits[indexPath.row]
 //        cell.label?.text = fruitName
 //        cell.fruitImageView?.image = UIImage(named: fruitName)
