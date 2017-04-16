@@ -15,6 +15,8 @@ class GenerateDishViewController: UIViewController {
     
     // TODO: temporary
     var numberPool = [Int]()
+    
+    // necessary
     var currentSeque: UIStoryboardSegue?
     var date: Date?
     var currentDish: Dish?
@@ -66,6 +68,23 @@ class GenerateDishViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBOutlet weak var dateInputTextField: UITextField! {
+        didSet {
+            let timePicker = UIDatePicker()
+            timePicker.datePickerMode = .time
+            timePicker.date = self.date ?? Date()
+            timePicker.addTarget(self, action: #selector(selectedTimeChanged(sender:)), for: .valueChanged)
+            self.dateInputTextField.inputView = timePicker
+            self.dateInputTextField.text = "18:00"
+        }
+    }
+    func selectedTimeChanged(sender: UIDatePicker) {
+        self.date = sender.date
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: self.date!)
+        self.dateInputTextField.text = "\(components.hour!):\(components.minute!)"
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         self.currentSeque = segue
     }
@@ -73,8 +92,36 @@ class GenerateDishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Add observer for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
         // Fetch initial dish
         self.fetchNextDish(sender: nil)
+        
+        // Setup gesture recognizer for dismissing input views
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboards(recognizer:)))
+        self.view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    func dismissKeyboards(recognizer: UIGestureRecognizer) {
+        self.dateInputTextField.endEditing(true)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
