@@ -11,7 +11,16 @@ import FSCalendar
 
 class PlanViewController: UIViewController {
     // constants
-    let tableViewRowHeight: CGFloat = 150
+    var tableViewRowHeight: CGFloat {
+        let cellSize = self.tableView.frame.height / CGFloat(self.numberOfCurrentDishes() + 1)
+        if cellSize < 100 {
+            return 100
+        } else if cellSize > 200 {
+            return 200
+        } else {
+            return cellSize
+        }
+    }
     
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
@@ -27,10 +36,35 @@ class PlanViewController: UIViewController {
         didSet {
             // Set tableview default row height
             self.tableView.rowHeight = tableViewRowHeight
+            
+            // Hide empty trailing cells
+            self.tableView.tableFooterView = UIView()
         }
     }
     
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var addToScheduleButton: UIButton!
+    @IBAction func addToSchedule(sender: UIButton?) {
+        // Present slide over menu from bottom
+        let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
+            [unowned self] alertAction in
+            let genDishContr: GenerateDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "GenerateDish"))! as! GenerateDishViewController
+            genDishContr.date = self.currentDate
+            self.show(genDishContr, sender: self)
+        }
+        let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
+            alertAction in
+            print("Choose manual action")
+        }
+        let cancelDishAction = UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil)
+        controller.addAction(generateDishAction)
+        controller.addAction(chooseManualAction)
+        controller.addAction(cancelDishAction)
+        controller.preferredAction = generateDishAction
+        self.present(controller, animated: true, completion: nil)
+    }
     
     // Collection of all alerts that could not be presented earlier
     var databaseError: (() -> Void)?
@@ -43,6 +77,22 @@ class PlanViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         // Show all alerts
         self.databaseError?()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        // Set navigation bar title
+        self.navigationItem.title = "Planen"
+        
+        if Database.shared.updatesOccured {
+            // Reload data (necessary, otherwise updates are not always shown)
+            self.tableView.reloadData()
+            self.calendarView.reloadData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // revert back so that "back" button is titled normally
+        self.navigationItem.title = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -98,19 +148,20 @@ extension PlanViewController: FSCalendarDelegate {
 
 // MARK:-- UITableViewDelegate
 extension PlanViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // TODO: implement
+    }
 }
 
 // MARK:-- UITableViewDataSource
 extension PlanViewController: UITableViewDataSource {
+    // Calculates number of dishes that should currently be displayed
+    func numberOfCurrentDishes() -> Int {
+        return Database.shared.getDishesScheduled(forDate: self.currentDate)?.count ?? 0
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Count
-        if let count = Database.shared.getDishesScheduled(forDate: self.currentDate)?.count {
-            return count
-        }
-        
-        // 0 otherwise (TODO: display a message if no content is available)
-        return 0
+        return self.numberOfCurrentDishes()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

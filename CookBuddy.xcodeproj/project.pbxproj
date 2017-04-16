@@ -17,12 +17,13 @@
 		B445DC011E9FC14D00F5550D /* DishImages in Resources */ = {isa = PBXBuildFile; fileRef = B445DC001E9FC14D00F5550D /* DishImages */; };
 		B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45498901EA2331B00B84C50 /* StandardExtensions.swift */; };
 		B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31791E9D34400060471E /* AppDelegate.swift */; };
-		B4CA317C1E9D34400060471E /* DishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* DishViewController.swift */; };
+		B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */; };
 		B4CA317F1E9D34400060471E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA317D1E9D34400060471E /* Main.storyboard */; };
 		B4CA31811E9D34400060471E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31801E9D34400060471E /* Assets.xcassets */; };
 		B4CA31841E9D34400060471E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31821E9D34400060471E /* LaunchScreen.storyboard */; };
 		B4CA318F1E9D34400060471E /* CookBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA318E1E9D34400060471E /* CookBuddyTests.swift */; };
 		B4CA319A1E9D34400060471E /* CookBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31991E9D34400060471E /* CookBuddyUITests.swift */; };
+		B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DC46341EA3B0BD00339CBF /* Ingredient.swift */; };
 		B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,7 +57,7 @@
 		B45498901EA2331B00B84C50 /* StandardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardExtensions.swift; sourceTree = "<group>"; };
 		B4CA31761E9D34400060471E /* CookBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31791E9D34400060471E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4CA317B1E9D34400060471E /* DishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishViewController.swift; sourceTree = "<group>"; };
+		B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateDishViewController.swift; sourceTree = "<group>"; };
 		B4CA317E1E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4CA31801E9D34400060471E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CA31831E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		B4CA31951E9D34400060471E /* CookBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CookBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31991E9D34400060471E /* CookBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBuddyUITests.swift; sourceTree = "<group>"; };
 		B4CA319B1E9D34400060471E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B4DC46341EA3B0BD00339CBF /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		D02BCB656C88C079596EBB3C /* Pods-CookBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		E9B93787B92560EAE94E60D1 /* Pods-CookBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -127,7 +129,7 @@
 		B41236171EA12BCA003EEEB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4CA317B1E9D34400060471E /* DishViewController.swift */,
+				B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */,
 				B41236121EA12795003EEEB8 /* ShoppingViewController.swift */,
 				B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */,
 				B4278ABA1EA130A800945FE5 /* PlanViewController.swift */,
@@ -140,6 +142,7 @@
 			children = (
 				B445DBF71E9FB0D000F5550D /* Database.swift */,
 				B4118D551EA38F1100B590D1 /* Dish.swift */,
+				B4DC46341EA3B0BD00339CBF /* Ingredient.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -411,7 +414,8 @@
 			files = (
 				B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */,
 				B445DBF81E9FB0D000F5550D /* Database.swift in Sources */,
-				B4CA317C1E9D34400060471E /* DishViewController.swift in Sources */,
+				B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */,
+				B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,

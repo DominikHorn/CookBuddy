@@ -12,12 +12,12 @@ import UIKit
 struct Dish {
     let id: Int
     let name: String
-    let ingredients: [String]?
+    let ingredients: [Ingredient]?
     let description: String?
     let shortDescription: String?
     let image: UIImage?
     
-    init(id: Int, name: String, ingredients: [String]? = nil, description: String? = nil, imageName: String? = nil) {
+    init(id: Int, name: String, ingredients: [Ingredient]? = nil, description: String? = nil, imageName: String? = nil) {
         self.id = id
         self.name = name
         self.ingredients = ingredients

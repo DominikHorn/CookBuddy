@@ -128,6 +128,12 @@
                                     <outlet property="delegate" destination="Sf1-aq-5Hi" id="JLb-EM-6zA"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HN-jV-LXC">
+                                <rect key="frame" x="343" y="586" width="22" height="22"/>
+                                <connections>
+                                    <action selector="addToScheduleWithSender:" destination="Sf1-aq-5Hi" eventType="touchUpInside" id="5jW-Gg-heJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -135,6 +141,8 @@
                             <constraint firstItem="02x-bw-FKP" firstAttribute="top" secondItem="eIB-GF-tZa" secondAttribute="bottom" constant="1" id="B4T-b4-MH8"/>
                             <constraint firstItem="Uu3-s2-NQ7" firstAttribute="top" secondItem="02x-bw-FKP" secondAttribute="bottom" id="Fu1-wr-s9E"/>
                             <constraint firstItem="eIB-GF-tZa" firstAttribute="top" secondItem="EfO-ke-FhJ" secondAttribute="bottom" id="RrO-8t-epY"/>
+                            <constraint firstAttribute="trailing" secondItem="3HN-jV-LXC" secondAttribute="trailing" constant="10" id="eRE-Uf-6Kd"/>
+                            <constraint firstAttribute="bottom" secondItem="3HN-jV-LXC" secondAttribute="bottom" constant="59" id="fNU-Bi-zER"/>
                             <constraint firstItem="02x-bw-FKP" firstAttribute="leading" secondItem="zkW-xu-8zc" secondAttribute="leading" id="iGW-Uy-8Za"/>
                             <constraint firstAttribute="trailing" secondItem="02x-bw-FKP" secondAttribute="trailing" id="k1v-zb-zEX"/>
                             <constraint firstAttribute="trailing" secondItem="eIB-GF-tZa" secondAttribute="trailing" id="oi7-sU-hKO"/>
@@ -142,6 +150,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="CN9-7D-PV3"/>
                     <connections>
+                        <outlet property="addToScheduleButton" destination="3HN-jV-LXC" id="cNI-x1-aW1"/>
                         <outlet property="calendarHeightConstraint" destination="aBn-Vs-2yj" id="zZ4-Rj-Nqg"/>
                         <outlet property="calendarView" destination="eIB-GF-tZa" id="o83-7N-FMV"/>
                         <outlet property="tableView" destination="02x-bw-FKP" id="WRm-Am-2xB"/>
@@ -151,10 +160,10 @@
             </objects>
             <point key="canvasLocation" x="1912.8" y="-698.5007496251875"/>
         </scene>
-        <!--DishViewController-->
+        <!--GenerateDishViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="DishViewController" customClass="DishViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenerateDish" title="Gericht generieren" id="BYZ-38-t0r" userLabel="GenerateDishViewController" customClass="GenerateDishViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -164,14 +173,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c7G-97-w1u">
-                                <rect key="frame" x="16" y="28" width="343" height="32"/>
+                                <rect key="frame" x="16" y="353" width="343" height="32"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6K4-bE-0xt">
-                                <rect key="frame" x="16" y="382" width="343" height="186"/>
+                                <rect key="frame" x="16" y="393" width="343" height="165.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -179,22 +188,42 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Zz-uO-EEc">
-                                <rect key="frame" x="0.0" y="74" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="271.5"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4A-1h-JWg">
-                                <rect key="frame" x="16" y="616" width="343" height="43"/>
+                                <rect key="frame" x="88" y="566" width="199" height="43"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Anderen Vorschlag generieren"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Anderer Vorschlag"/>
                                 <connections>
-                                    <action selector="fetchNextDishWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M6z-Ce-NS4"/>
+                                    <action selector="fetchNextDishWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0BB-wl-4CU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isD-Zd-IAy">
+                                <rect key="frame" x="16" y="572" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="circletick"/>
+                                <connections>
+                                    <action selector="confirmChoiceWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="E0r-vb-2s5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4S-45-ZDA">
+                                <rect key="frame" x="329" y="572" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="circlecross"/>
+                                <connections>
+                                    <action selector="abortChoiceWithSender:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yRm-Yp-0Ku"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="abortButton" destination="S4S-45-ZDA" id="YuJ-gB-cwd"/>
+                        <outlet property="confirmButton" destination="isD-Zd-IAy" id="tFc-0P-2cB"/>
                         <outlet property="dishDescription" destination="6K4-bE-0xt" id="2zV-6j-cH1"/>
                         <outlet property="dishImage" destination="6Zz-uO-EEc" id="sC7-Ff-bYm"/>
                         <outlet property="dishTitel" destination="c7G-97-w1u" id="9KE-OK-7c9"/>
@@ -202,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3480.8000000000002" y="-697.60119940029995"/>
+            <point key="canvasLocation" x="2552.8000000000002" y="-698.5007496251875"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="jnx-jw-239">
@@ -277,5 +306,7 @@
         <image name="CalendarIcon" width="30" height="30"/>
         <image name="ListIcon" width="30" height="30"/>
         <image name="SettingsIcon" width="30" height="30"/>
+        <image name="circlecross" width="30" height="30"/>
+        <image name="circletick" width="30" height="30"/>
     </resources>
 </document>

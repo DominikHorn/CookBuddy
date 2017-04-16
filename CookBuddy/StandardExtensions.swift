@@ -10,7 +10,7 @@ import UIKit
 
 // MARK:-- UIImage
 extension UIImage {
-    // Initializer for creating emoji image from character
+    // Initializer for creating emoji image from character TODO: convert to failable initializer
     convenience init(emoji: Character, width: Int = 64, height: Int = 64, fontSize: CGFloat = 60) {
         let size = CGSize(width: width, height: height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0);
