@@ -95,21 +95,4 @@ class Database {
         
         return dish
     }
-    
-    // Dish class encapsulates a single dish
-    class Dish {
-        let id: Int
-        let name: String
-        let ingredients: [String]?
-        let description: String?
-        let image: UIImage?
-        
-        init(id: Int, name: String, ingredients: [String]? = nil, description: String? = nil, imageName: String? = nil) {
-            self.id = id
-            self.name = name
-            self.ingredients = ingredients
-            self.description = description
-            self.image = UIImage(contentsOfFile: Bundle.main.path(forResource: imageName, ofType: "jpg", inDirectory: "DishImages")!)
-        }
-    }
 }
