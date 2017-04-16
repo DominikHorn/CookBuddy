@@ -10,6 +10,9 @@ import UIKit
 import FSCalendar
 
 class PlanViewController: UIViewController {
+    // constants
+    let tableViewRowHeight: CGFloat = 150
+    
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
             // Set monday as first weekday
@@ -23,7 +26,7 @@ class PlanViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             // Set tableview default row height
-            self.tableView.rowHeight = 75.0
+            self.tableView.rowHeight = tableViewRowHeight
         }
     }
     
@@ -31,6 +34,7 @@ class PlanViewController: UIViewController {
     
     // Collection of all alerts that could not be presented earlier
     var databaseError: (() -> Void)?
+    var currentDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,9 +55,9 @@ class PlanViewController: UIViewController {
 extension PlanViewController: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         // Query events
-        do {
-            return try Database.shared.numberOfDishesScheduled(forDate: date)
-        } catch {
+        if let count = Database.shared.getDishesScheduled(forDate: date)?.count {
+            return count
+        } else {
             self.databaseError = {
                 [unowned self] in
                 let alert = UIAlertController(title: "Datenbank ist kaputt 😬", message: "Frage eine qualifizierte Fachkraft (deinen Sohn) was das soll: \(#function)", preferredStyle: .alert)
@@ -69,6 +73,9 @@ extension PlanViewController: FSCalendarDataSource {
 // MARK:-- FSCalendarDelegate
 extension PlanViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        // Update current date
+        self.currentDate = date
+        
         // Make sure correct month is scrolled into view for date
         if monthPosition == .next || monthPosition == .previous {
             calendar.setCurrentPage(date, animated: true)
@@ -76,6 +83,9 @@ extension PlanViewController: FSCalendarDelegate {
         
         // Change to week view
         self.calendarView.setScope(.week, animated: true)
+        
+        // Tell tableview to update
+        self.tableView.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -94,19 +104,31 @@ extension PlanViewController: UITableViewDelegate {
 // MARK:-- UITableViewDataSource
 extension PlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        // Count
+        if let count = Database.shared.getDishesScheduled(forDate: self.currentDate)?.count {
+            return count
+        }
+        
+        // 0 otherwise (TODO: display a message if no content is available)
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return tableViewRowHeight
+    }
+    
+    // Implement this for more performance
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableViewRowHeight
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell", for: indexPath) as! EventTableViewCell
-        // TODO: Fill with data (ask Database)
-//        let fruitName = fruits[indexPath.row]
-//        cell.label?.text = fruitName
-//        cell.fruitImageView?.image = UIImage(named: fruitName)
+        let dish = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
+        
+        cell.dishTitelLabel.text = dish?.name
+        cell.dishImageView.image = dish?.image
+        cell.scheduleTimeLabel.text = "18:00" // TODO
         return cell
     }
     

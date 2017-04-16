@@ -17,22 +17,22 @@ class DishViewController: UIViewController {
     var numberPool = [Int]()
     
     @IBAction func fetchNextDish(sender: UIButton?) {
-        // obtain dishes
-        let dishes = try! Database.shared.getDishes() // TODO
-        
-        // choose next dish TODO: temporary
-        if numberPool.isEmpty {
-            for i in 0..<dishes.count {
-                numberPool.append(i)
-            }
-        }
-        let nextNumberIndex = Int(arc4random_uniform(UInt32(numberPool.count)))
-        let dish = dishes[numberPool.remove(at: nextNumberIndex)]
-        
-        // Update UI
-        self.dishTitel?.text = dish.name
-        self.dishDescription?.text = dish.description
-        self.dishImage?.image = dish.image
+//        // obtain dishes
+//        let dishes = try! Database.shared.getDishes() // TODO
+//        
+//        // choose next dish TODO: temporary
+//        if numberPool.isEmpty {
+//            for i in 0..<dishes.count {
+//                numberPool.append(i)
+//            }
+//        }
+//        let nextNumberIndex = Int(arc4random_uniform(UInt32(numberPool.count)))
+//        let dish = dishes[numberPool.remove(at: nextNumberIndex)]
+//        
+//        // Update UI
+//        self.dishTitel?.text = dish.name
+//        self.dishDescription?.text = dish.description
+//        self.dishImage?.image = dish.image
     }
     
     override func viewDidLoad() {
