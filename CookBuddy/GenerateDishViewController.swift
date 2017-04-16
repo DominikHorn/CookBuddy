@@ -75,14 +75,14 @@ class GenerateDishViewController: UIViewController {
             timePicker.date = self.date ?? Date()
             timePicker.addTarget(self, action: #selector(selectedTimeChanged(sender:)), for: .valueChanged)
             self.dateInputTextField.inputView = timePicker
-            self.dateInputTextField.text = "18:00"
+            let components = Calendar.current.dateComponents([.hour, .minute], from: self.date!)
+            self.dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
         }
     }
     func selectedTimeChanged(sender: UIDatePicker) {
         self.date = sender.date
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour, .minute], from: self.date!)
-        self.dateInputTextField.text = "\(components.hour!):\(components.minute!)"
+        let components = Calendar.current.dateComponents([.hour, .minute], from: self.date!)
+        self.dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

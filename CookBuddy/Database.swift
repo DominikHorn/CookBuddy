@@ -81,31 +81,25 @@ class Database {
         return nil
     }
     
-    func getDishesScheduled(forDate date: Date) -> [Dish]? {
-        var ids = [Int]()
+    func getDishesScheduled(forDate date: Date) -> [ScheduleEntry]? {
+        var scheduledEntries = [ScheduleEntry]()
         
+        // TODO: Unify in one sql statement
         do {
             // Fetch scheduled dishes (by id) from sqlite
             try dbQueue?.inDatabase { db in
                 let rows = try Row.fetchCursor(db, "SELECT * FROM schedule")
                 while let row = try rows.next() {
                     // Fetch scheduled date
-                    let fetchedDate: Date = row.value(named: "scheduledfor")
+                    let scheduledFor: Date = row.value(named: "scheduledfor")
+                    let scheduleNumber: Int = row.value(named: "schedulenumber")
                     let dishId: Int = row.value(named: "dishid")
-                    if date.isOnSameDayAs(date: fetchedDate) {
-                        ids.append(dishId)
+                    if date.isOnSameDayAs(date: scheduledFor) {
+                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, scheduleNumber: scheduleNumber, dishId: dishId))
                     }
                 }
             }
-            // Walk database again, this time extracting actual dishes. TODO: rework into one sqlite queue. For this, look up date comparison in sql
-            // This code will eventually be replaced with a cloud kit model, meaning it will be thrown out anyways
-            var dishes = [Dish]()
-            for dishid in ids {
-                if let dish = getDish(forId: dishid) {
-                    dishes.append(dish)
-                }
-            }
-            return dishes
+            return scheduledEntries
         } catch {
             // Just print out that an error occured..
             print("ERROR: Database broken in \(#function)")

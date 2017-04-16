@@ -24,6 +24,7 @@
 		B4CA318F1E9D34400060471E /* CookBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA318E1E9D34400060471E /* CookBuddyTests.swift */; };
 		B4CA319A1E9D34400060471E /* CookBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31991E9D34400060471E /* CookBuddyUITests.swift */; };
 		B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DC46341EA3B0BD00339CBF /* Ingredient.swift */; };
+		B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */; };
 		B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		B4CA31991E9D34400060471E /* CookBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookBuddyUITests.swift; sourceTree = "<group>"; };
 		B4CA319B1E9D34400060471E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4DC46341EA3B0BD00339CBF /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleEntry.swift; sourceTree = "<group>"; };
 		B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		D02BCB656C88C079596EBB3C /* Pods-CookBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		E9B93787B92560EAE94E60D1 /* Pods-CookBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				B445DBF71E9FB0D000F5550D /* Database.swift */,
 				B4118D551EA38F1100B590D1 /* Dish.swift */,
 				B4DC46341EA3B0BD00339CBF /* Ingredient.swift */,
+				B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
+				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
 				B4118D561EA38F1100B590D1 /* Dish.swift in Sources */,
 				B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */,

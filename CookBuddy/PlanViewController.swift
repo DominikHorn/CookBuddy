@@ -175,11 +175,17 @@ extension PlanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell", for: indexPath) as! EventTableViewCell
-        let dish = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
+        
+        // retrieve scheduled at
+        let scheduled = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
+        
+        // retrieve actual dish
+        let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)
         
         cell.dishTitelLabel.text = dish?.name
         cell.dishImageView.image = dish?.image
-        cell.scheduleTimeLabel.text = "18:00" // TODO
+        let components = Calendar.current.dateComponents([.hour, .minute], from: (scheduled?.scheduledFor)!)
+        cell.scheduleTimeLabel.text = String(format: "%02d:%02d", components.hour!, components.minute!)
         return cell
     }
     
