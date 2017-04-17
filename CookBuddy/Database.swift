@@ -11,63 +11,191 @@ import GRDB
 
 class Database {
     private let dbQueue: DatabaseQueue?
-    
-    init() {
-        // Database connection configuration
-        var config = Configuration()
-        config.readonly = true
-        config.foreignKeysEnabled = true // Default is already true
-//        config.trace = { print($0) }     // Prints all SQL statements
+    static let shared: Database = {
+        let instance = Database()
         
-        // Locates database file and opens it
-        let dbPath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!
-        self.dbQueue = try? DatabaseQueue(path: dbPath, configuration: config)
+        // setup code if necessary at some point
+        
+        return instance
+    }()
+
+    // Whether or not updates have occured on the database since last queried
+    private var _updatesOccured: Bool = false
+    var updatesOccured: Bool {
+        get {
+            if _updatesOccured {
+                _updatesOccured = false
+                return true
+            }
+            
+            return false
+        }
+        set {
+            _updatesOccured = newValue
+        }
     }
     
-    // temporary for testing
-    func getDishes() throws -> [Dish] {
-        var dishes = [Dish]()
-        
-        // Fetch dishes from sqlite
-        try dbQueue?.inDatabase { db in
-            let rows = try Row.fetchCursor(db, "SELECT * FROM dishes")
-            while let row = try rows.next() {
-                // Fetch dish id
-                let id: Int = row.value(named: "dishid")
-
-                // Fetch name of dish
-                let name: String = row.value(named: "name")
-
-                // Fetch and craft description (description text + ingredients list)
-                var description: String = row.value(named: "description") + "\n\nEnthält folgende Zutaten:"
-                let ingredients = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = \(id) and c.ingid = i.ingid")
-                var counter = 0
-                while let ingredient = try ingredients.next() {
-                    counter += 1
-                    description += "\n\(counter). " + ingredient.value(named: "name")
-                }
-
-                // Fetch image name
-                let imageName: String = row.value(named: "imagefile")
-                dishes.append(Dish(id: id, name: name, description: description, imageName: imageName))
+    init() {
+        // Copy database to documents if necessary
+        let fileManager = FileManager.default
+        let bundlePath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!
+        let fullDestPath = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!).appendingPathComponent("cookbuddy_test.sqlite").path
+        if fileManager.fileExists(atPath: fullDestPath){
+            fileManager.fileExists(atPath: bundlePath)
+        }else{
+            do{
+                try fileManager.copyItem(atPath: bundlePath, toPath: fullDestPath)
+            }catch{
+                print(error)
             }
         }
         
-        return dishes
+        // Database connection configuration
+        var config = Configuration()
+        config.readonly = false
+        config.foreignKeysEnabled = true // Default is already true
+        //config.trace = { print($0) }     // Prints all SQL statements
+        
+        // Locates database file and opens it
+        dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
     }
     
-    // Dish class encapsulates a single dish
-    class Dish {
-        let id: Int
-        let name: String
-        let description: String?
-        let image: UIImage?
-        
-        init(id: Int, name: String, description: String? = nil, imageName: String? = nil) {
-            self.id = id
-            self.name = name
-            self.description = description
-            self.image = UIImage(contentsOfFile: Bundle.main.path(forResource: imageName, ofType: "jpg", inDirectory: "DishImages")!)
+    func getAllDishes() -> [Dish]? {
+        var dishes = [Dish]()
+        do {
+            try dbQueue?.inDatabase { db in
+                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes")
+                while let row = try rows.next() {
+                    // Fetch scheduled date
+                    let dishId: Int = row.value(named: "dishid")
+                    let name: String = row.value(named: "name")
+                    let imageFileName: String = row.value(named: "imagefile")
+                    let description: String = row.value(named: "description")
+                    
+                    // Query for ingredients
+                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM dishes d, contains c, ingredients i WHERE i.ingid =c.ingid and d.dishid = c.dishid and d.dishid = \(dishId)")
+                    var ingredients = [Ingredient]()
+                    while let ingredient = try ingredientsRaw.next() {
+                        let ingid: Int = ingredient.value(named: "ingid")
+                        let ingName: String = ingredient.value(named: "name")
+                        ingredients.append(Ingredient(id: ingid, name: ingName))
+                    }
+                    
+                    dishes.append(Dish(id: dishId, name: name, ingredients: ingredients, description: description, imageName: imageFileName))
+                }
+            }
+            
+            return dishes
+        } catch {
+            // Just print out that an error occured..
+            print("ERROR: Database broken in \(#function)")
         }
+        
+        return nil
+    }
+    
+    func getDishesScheduled(forDate date: Date) -> [ScheduleEntry]? {
+        var scheduledEntries = [ScheduleEntry]()
+        
+        // TODO: Unify in one sql statement
+        do {
+            // Fetch scheduled dishes (by id) from sqlite
+            try dbQueue?.inDatabase { db in
+                let rows = try Row.fetchCursor(db, "SELECT * FROM schedule")
+                while let row = try rows.next() {
+                    // Fetch scheduled date
+                    let scheduledFor: Date = row.value(named: "scheduledfor")
+                    let scheduleNumber: Int = row.value(named: "schedulenumber")
+                    let dishId: Int = row.value(named: "dishid")
+                    if date.isOnSameDayAs(date: scheduledFor) {
+                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, scheduleNumber: scheduleNumber))
+                    }
+                }
+            }
+            
+            // Sort scheduled entries based on timestamp
+            scheduledEntries = scheduledEntries.sorted {
+                first, second in
+                return first.scheduledFor < second.scheduledFor
+            }
+            
+            return scheduledEntries
+        } catch {
+            // Just print out that an error occured..
+            print("ERROR: Database broken in \(#function)")
+        }
+
+        return nil
+    }
+    
+    func deleteSchedule(entry: ScheduleEntry) {
+        // updates have occured
+        updatesOccured = true
+        
+        do {
+            try dbQueue?.inDatabase { db in
+                try db.execute("DELETE FROM schedule " +
+                               "WHERE scheduledfor = ? and schedulenumber = ? and dishid = ?",
+                               arguments: [entry.scheduledFor, entry.scheduleNumber, entry.dishId])
+            }
+        } catch {
+            // Ignore apart from printing error
+            print(error)
+        }
+    }
+    
+    // Schedules a dish for a certain date
+    func schedule(entry: ScheduleEntry) {
+        // Updates have occured
+        updatesOccured = true
+        
+        // Fetch number of dishes for date
+        let count = (getDishesScheduled(forDate: entry.scheduledFor)?.count)!
+        
+        // Insert into schedule
+        do {
+            try dbQueue?.inDatabase { db in
+                try db.execute(
+                    "INSERT INTO schedule (scheduledfor, schedulenumber, dishid) " +
+                    "VALUES (?, ?, ?)",
+                    arguments: [entry.scheduledFor, count, entry.dishId])
+            }
+        } catch {
+            // Ignore
+        }
+    }
+    
+    // Retrieve dish for id
+    func getDish(forId id: Int) -> Dish? {
+        var dish: Dish?
+        do {
+            try dbQueue?.inDatabase {
+                db in
+                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes WHERE dishid = '\(id)';")
+                while let row = try rows.next() {
+                    // Fetch name of dish
+                    let name: String = row.value(named: "name")
+                    
+                    // Fetch and craft description (description text + ingredients list)
+                    let description: String = row.value(named: "description")
+                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = \(id) and c.ingid = i.ingid;")
+                    var ingredients = [Ingredient]()
+                    while let ingredient = try ingredientsRaw.next() {
+                        let ingid: Int = ingredient.value(named: "ingid")
+                        let ingName: String = ingredient.value(named: "name")
+                        ingredients.append(Ingredient(id: ingid, name: ingName))
+                    }
+                    
+                    // Fetch image name
+                    let imageName: String = row.value(named: "imagefile")
+                    dish = Dish(id: id, name: name, ingredients: ingredients, description: description, imageName: imageName)
+                }
+            }
+        } catch {
+            // Just print out that an error occured..
+            print("ERROR: Database broken in \(#function)")
+        }
+        
+        return dish
     }
 }

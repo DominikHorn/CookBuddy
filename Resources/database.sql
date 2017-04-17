@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS LastEaten;
+DROP TABLE IF EXISTS Schedule;
 DROP TABLE IF EXISTS Likes;
 DROP TABLE IF EXISTS Contains;
 DROP TABLE IF EXISTS Ingredients;
@@ -28,11 +28,24 @@ CREATE TABLE Contains
    Quantity     DECIMAL(4,3) NOT NULL,
    Unit         VARCHAR(30),
    PRIMARY KEY (IngID, DishID));
-CREATE TABLE LastEaten
-  (PersID       INTEGER REFERENCES Persons,
-   DishID       INTEGER REFERENCES Dishes,
-   EatenDate    DATE NOT NULL,
-   PRIMARY KEY (PersID, DishID));
+CREATE TABLE Schedule
+  (ScheduledFor    DATETIME NOT NULL,
+   ScheduleNumber  INTEGER NOT NULL,
+   DishID          INTEGER REFERENCES Dishes,
+   PRIMARY KEY (ScheduleNumber, ScheduledFor));
+
+INSERT INTO Schedule(ScheduleNumber, ScheduledFor, DishID)
+VALUES
+  (0, '2017-05-01 18:00:00.000', 1),
+  (0, '2017-05-02 18:00:00.000', 2),
+  (0, '2017-05-03 18:00:00.000', 3),
+  (1, '2017-05-03 12:00:00.000', 11),
+  (0, '2017-05-04 18:00:00.000', 4),
+  (0, '2017-05-05 18:00:00.000', 5),
+  (0, '2017-05-06 18:00:00.000', 6),
+  (0, '2017-05-07 18:00:00.000', 7),
+  (0, '2017-05-08 18:00:00.000', 8),
+  (0, '2017-05-09 18:00:00.000', 9);
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES
