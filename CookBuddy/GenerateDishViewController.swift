@@ -72,10 +72,24 @@ class GenerateDishViewController: UIViewController {
         didSet {
             let timePicker = UIDatePicker()
             timePicker.datePickerMode = .time
-            timePicker.date = self.date ?? Date()
+            
+            // Set date's default time to 18:00 o'clock if self.date exists
+            if let datetmp = self.date {
+                print("Setting to 18:00")
+                var calendar = Calendar.current
+                //calendar.locale = Locale(identifier: "de")
+                var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
+                components.hour = 18
+                components.minute = 00
+                timePicker.date = Calendar.current.date(from: components)!
+            } else {
+                print("Setting to new date")
+                timePicker.date = Date()
+            }
+            
             timePicker.addTarget(self, action: #selector(selectedTimeChanged(sender:)), for: .valueChanged)
             self.dateInputTextField.inputView = timePicker
-            let components = Calendar.current.dateComponents([.hour, .minute], from: self.date!)
+            let components = Calendar.current.dateComponents([.hour, .minute], from: timePicker.date)
             self.dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
         }
     }

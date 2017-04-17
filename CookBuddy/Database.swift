@@ -36,6 +36,21 @@ class Database {
     }
     
     init() {
+        // Copy database to documents if necessary
+        let fileManager = FileManager.default
+        let bundlePath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!
+        let fullDestPath = URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!).appendingPathComponent("cookbuddy_test.sqlite").path
+        if fileManager.fileExists(atPath: fullDestPath){
+            fileManager.fileExists(atPath: bundlePath)
+        }else{
+            do{
+                try fileManager.copyItem(atPath: bundlePath, toPath: fullDestPath)
+            }catch{
+                print("\n")
+                print(error)
+            }
+        }
+        
         // Database connection configuration
         var config = Configuration()
         config.readonly = false
@@ -43,8 +58,7 @@ class Database {
         //config.trace = { print($0) }     // Prints all SQL statements
         
         // Locates database file and opens it
-        let dbPath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!
-        self.dbQueue = try? DatabaseQueue(path: dbPath, configuration: config)
+        self.dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
     }
     
     func getAllDishes() -> [Dish]? {
