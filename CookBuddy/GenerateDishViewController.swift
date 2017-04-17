@@ -61,7 +61,8 @@ class GenerateDishViewController: UIViewController {
                 var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
                 components.hour = 18
                 components.minute = 00
-                timePicker.date = Calendar.current.date(from: components)!
+                self.date = Calendar.current.date(from: components)!
+                timePicker.date = self.date!
             } else {
                 timePicker.date = Date()
             }
