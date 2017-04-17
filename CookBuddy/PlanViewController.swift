@@ -10,7 +10,7 @@ import UIKit
 import FSCalendar
 
 class PlanViewController: UIViewController {
-    // constants
+    // Table view helper variables
     var tableViewRowHeight: CGFloat {
         if numberOfCurrentDishes() > 0 {
             let cellSize = tableView.frame.height / CGFloat(numberOfCurrentDishes() + 1)
@@ -25,7 +25,21 @@ class PlanViewController: UIViewController {
             return tableView.frame.height
         }
     }
+    var lastContentOffset: CGFloat = 0.0
     
+    // Global gesture recognizers
+    lazy var swipeDownRecognizer: UISwipeGestureRecognizer = {
+        let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappenedOnCalendar(gestureRecog:)))
+        swipeDownRecognizer.direction = .down
+        return swipeDownRecognizer
+    }()
+    lazy var swipeUpRecognizer: UISwipeGestureRecognizer = {
+        let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpHappenedOnCalendar(gestureRecog:)))
+        swipeUpRecognizer.direction = .up
+        return swipeUpRecognizer
+    }()
+    
+    // Calendar view helper
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
             // Set monday as first weekday
@@ -35,15 +49,11 @@ class PlanViewController: UIViewController {
             calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
             
             // Swipe down gesture enlarges calendar view
-            let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappenedOnCalendar(gestureRecog:)))
-            swipeDownRecognizer.direction = .down
-            let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpHappenedOnCalendar(gestureRecog:)))
-            swipeUpRecognizer.direction = .up
-            calendarView.addGestureRecognizer(swipeDownRecognizer)
-            calendarView.addGestureRecognizer(swipeUpRecognizer)
+//            calendarView.addGestureRecognizer(swipeDownRecognizer)
+//            calendarView.addGestureRecognizer(swipeUpRecognizer)
         }
     }
-    func swipeUpHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
+    func swipeUpHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer?) {
         if calendarView.scope == .month {
             // Set scope to week
             calendarView.setScope(.week, animated: true)
@@ -53,7 +63,7 @@ class PlanViewController: UIViewController {
             tableView.endUpdates()
         }
     }
-    func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
+    func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer?) {
         if calendarView.scope == .week {
             // Set scope to month
             calendarView.setScope(.month, animated: true)
@@ -110,6 +120,8 @@ class PlanViewController: UIViewController {
         leftRecognizer.direction = .left
         view.addGestureRecognizer(rightRecognizer)
         view.addGestureRecognizer(leftRecognizer)
+        view.addGestureRecognizer(swipeUpRecognizer)
+        view.addGestureRecognizer(swipeDownRecognizer)
     }
     func swipeRightGesture(gestureRecog: UISwipeGestureRecognizer) {
         // Select new date
@@ -269,11 +281,11 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return numberOfCurrentDishes() > 0
     }
     
     func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return numberOfCurrentDishes() > 0
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
