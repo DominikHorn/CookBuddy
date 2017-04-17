@@ -287,8 +287,10 @@ extension PlanViewController: UITableViewDelegate {
             // Add to selection list
             editSelection.append(indexPath)
         } else {
-            // TODO: implement (show dish preview/allow editing of dish)
-            print("Did select row at \(indexPath)")
+            tableView.deselectRow(at: indexPath, animated: true)
+            let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail"))! as! DishDetailViewController
+            dishDetailView.dish = Database.shared.getDish(forId: (Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row].dishId)!)
+            self.show(dishDetailView, sender: self)
         }
     }
     
@@ -343,11 +345,11 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return numberOfCurrentDishes() > 0
     }
     
     func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
-        return false
+        return numberOfCurrentDishes() > 0
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
