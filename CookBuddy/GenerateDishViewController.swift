@@ -49,7 +49,7 @@ class GenerateDishViewController: UIViewController {
     }
     @IBAction func confirmChoice(sender: UIButton!) {
         // Schedule dish with database
-        Database.shared.schedule(dish: self.currentDish!, forDate: self.date!)
+        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: self.date!, dishId: self.currentDish!.id))
         
         // Pop back to pervious view
         self.navigationController?.popViewController(animated: true)
@@ -75,15 +75,11 @@ class GenerateDishViewController: UIViewController {
             
             // Set date's default time to 18:00 o'clock if self.date exists
             if let datetmp = self.date {
-                print("Setting to 18:00")
-                var calendar = Calendar.current
-                //calendar.locale = Locale(identifier: "de")
-                var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
+                var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
                 components.hour = 18
                 components.minute = 00
                 timePicker.date = Calendar.current.date(from: components)!
             } else {
-                print("Setting to new date")
                 timePicker.date = Date()
             }
             

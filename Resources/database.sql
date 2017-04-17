@@ -29,23 +29,23 @@ CREATE TABLE Contains
    Unit         VARCHAR(30),
    PRIMARY KEY (IngID, DishID));
 CREATE TABLE Schedule
-  (ScheduledFor Date NOT NULL,
-   ScheduleNumber   INTEGER NOT NULL,
-   DishID       INTEGER REFERENCES Dishes,
+  (ScheduledFor    DATETIME NOT NULL,
+   ScheduleNumber  INTEGER NOT NULL,
+   DishID          INTEGER REFERENCES Dishes,
    PRIMARY KEY (ScheduleNumber, ScheduledFor));
 
 INSERT INTO Schedule(ScheduleNumber, ScheduledFor, DishID)
 VALUES
-  (0, date('now','start of year','+4 months','+0 days'), 1),
-  (0, date('now','start of year','+4 months','+1 days'), 2),
-  (0, date('now','start of year','+4 months','+2 days'), 3),
-  (1, date('now','start of year','+4 months','+2 days'), 11),
-  (0, date('now','start of year','+4 months','+3 days'), 4),
-  (0, date('now','start of year','+4 months','+4 days'), 5),
-  (0, date('now','start of year','+4 months','+5 days'), 6),
-  (0, date('now','start of year','+4 months','+6 days'), 7),
-  (0, date('now','start of year','+4 months','+7 days'), 8),
-  (0, date('now','start of year','+4 months','+8 days'), 9);
+  (0, '2017-05-01 18:00:00.000', 1),
+  (0, '2017-05-02 18:00:00.000', 2),
+  (0, '2017-05-03 18:00:00.000', 3),
+  (1, '2017-05-03 12:00:00.000', 11),
+  (0, '2017-05-04 18:00:00.000', 4),
+  (0, '2017-05-05 18:00:00.000', 5),
+  (0, '2017-05-06 18:00:00.000', 6),
+  (0, '2017-05-07 18:00:00.000', 7),
+  (0, '2017-05-08 18:00:00.000', 8),
+  (0, '2017-05-09 18:00:00.000', 9);
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES

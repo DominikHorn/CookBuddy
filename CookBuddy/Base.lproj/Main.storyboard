@@ -194,7 +194,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isD-Zd-IAy">
-                                <rect key="frame" x="16" y="580" width="22" height="22"/>
+                                <rect key="frame" x="16" y="580" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="circletick"/>
                                 <connections>
@@ -202,7 +202,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S4S-45-ZDA">
-                                <rect key="frame" x="337" y="580" width="22" height="22"/>
+                                <rect key="frame" x="337" y="580" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <state key="normal" image="circlecross"/>
                                 <connections>
@@ -240,7 +240,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2631.1999999999998" y="-698.5007496251875"/>
+            <point key="canvasLocation" x="2634" y="-699"/>
         </scene>
         <!--SettingsViewController-->
         <scene sceneID="jnx-jw-239">

@@ -149,7 +149,7 @@ extension PlanViewController: FSCalendarDelegate {
 // MARK:-- UITableViewDelegate
 extension PlanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: implement
+        // TODO: implement (show dish preview/allow editing of dish)
     }
 }
 
@@ -166,6 +166,47 @@ extension PlanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableViewRowHeight
+    }
+    
+    // EDITING
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // EDITING
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == UITableViewCellEditingStyle.delete) {
+            // Get scheduled
+            let scheduled = (Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row])!
+            
+            // Delete from database
+            Database.shared.deleteSchedule(entry: scheduled)
+            
+            // Query database again
+            print((Database.shared.getDishesScheduled(forDate: self.currentDate)?.count)!)
+            
+            // Delete from tableview
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+            // Upate calendar view
+            self.calendarView.reloadData()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, canFocusRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
     }
     
     // Implement this for more performance
@@ -188,10 +229,4 @@ extension PlanViewController: UITableViewDataSource {
         cell.scheduleTimeLabel.text = String(format: "%02d:%02d", components.hour!, components.minute!)
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        // Implement
-    }
-    
-    
 }

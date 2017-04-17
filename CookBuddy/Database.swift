@@ -46,7 +46,6 @@ class Database {
             do{
                 try fileManager.copyItem(atPath: bundlePath, toPath: fullDestPath)
             }catch{
-                print("\n")
                 print(error)
             }
         }
@@ -109,7 +108,7 @@ class Database {
                     let scheduleNumber: Int = row.value(named: "schedulenumber")
                     let dishId: Int = row.value(named: "dishid")
                     if date.isOnSameDayAs(date: scheduledFor) {
-                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, scheduleNumber: scheduleNumber, dishId: dishId))
+                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, scheduleNumber: scheduleNumber))
                     }
                 }
             }
@@ -122,13 +121,30 @@ class Database {
         return nil
     }
     
+    func deleteSchedule(entry: ScheduleEntry) {
+        // updates have occured
+        self.updatesOccured = true
+        
+        do {
+            try dbQueue?.inDatabase { db in
+                try db.execute("DELETE FROM schedule " +
+                               "WHERE scheduledfor = ? and schedulenumber = ? and dishid = ?",
+                               arguments: [entry.scheduledFor, entry.scheduleNumber, entry.dishId])
+                print("Entry deleted from database!")
+            }
+        } catch {
+            // Ignore apart from printing error
+            print(error)
+        }
+    }
+    
     // Schedules a dish for a certain date
-    func schedule(dish: Dish, forDate date: Date) {
+    func schedule(entry: ScheduleEntry) {
         // Updates have occured
         self.updatesOccured = true
         
         // Fetch number of dishes for date
-        let count = (self.getDishesScheduled(forDate: date)?.count)!
+        let count = (self.getDishesScheduled(forDate: entry.scheduledFor)?.count)!
         
         // Insert into schedule
         do {
@@ -136,7 +152,7 @@ class Database {
                 try db.execute(
                     "INSERT INTO schedule (scheduledfor, schedulenumber, dishid) " +
                     "VALUES (?, ?, ?)",
-                    arguments: [date, count, dish.id])
+                    arguments: [entry.scheduledFor, count, entry.dishId])
             }
         } catch {
             // Ignore
