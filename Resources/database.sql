@@ -34,36 +34,41 @@ CREATE TABLE Schedule
    DishID          INTEGER REFERENCES Dishes,
    PRIMARY KEY (ScheduleNumber, ScheduledFor));
 
-INSERT INTO Schedule(ScheduleNumber, ScheduledFor, DishID)
-VALUES
-  (0, '2017-05-01 18:00:00.000', 1),
-  (0, '2017-05-02 18:00:00.000', 2),
-  (0, '2017-05-03 18:00:00.000', 3),
-  (1, '2017-05-03 12:00:00.000', 11),
-  (0, '2017-05-04 18:00:00.000', 4),
-  (0, '2017-05-05 18:00:00.000', 5),
-  (0, '2017-05-06 18:00:00.000', 6),
-  (0, '2017-05-07 18:00:00.000', 7),
-  (0, '2017-05-08 18:00:00.000', 8),
-  (0, '2017-05-09 18:00:00.000', 9);
+--INSERT INTO Schedule(ScheduleNumber, ScheduledFor, DishID)
+--VALUES
+--  (0, '2017-05-01 18:00:00.000', 1),
+--  (0, '2017-05-02 18:00:00.000', 2),
+--  (0, '2017-05-03 18:00:00.000', 3),
+--  (1, '2017-05-03 12:00:00.000', 11),
+--  (0, '2017-05-04 18:00:00.000', 4),
+--  (0, '2017-05-05 18:00:00.000', 5),
+--  (0, '2017-05-06 18:00:00.000', 6),
+--  (0, '2017-05-07 18:00:00.000', 7),
+--  (0, '2017-05-08 18:00:00.000', 8),
+--  (0, '2017-05-09 18:00:00.000', 9);
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES
-  ('Tomate Mozarella',    'tomatemozzarella', 'Italienisches Gericht mit Tomaten, Mozzarella und Basilikum.'),
-  ('Salat mit Hünchen',   'huhnsalat',        'Huhn mit diesem eklig gesunden, grünen zeug.'),
-  ('Schnitzel mit Reis',  'reisschnitzel',    '3 mal darfst du raten was da jetzt drin ist...'),
-  ('Brotzeit',            'brotzeit',         'Aufschnitt mit Brot, wahlweise Fingerfood und etwas Gemüse'),
-  ('Lachsfilet',          'lachsfilet',       'Blub blub blub.'),
-  ('Gemüsekacka',         'gemuesekack',      'Bäh bäh. Gemüseexplosion. Nur gesunde Menschen essen sowas.'),
-  ('Pfannenkuchen',       'pfannkuchen',      'Kuchen aus der Pfanne.'),
-  ('Pizza',               'pizza',            'Pizza ist wesentlich besser als jedes andere Gericht.'),
-  ('Asiatisch',           'asiatisch',        'Wenn man sein Ohr ganz dicht ans Essen hält, hört man noch den Hund bellen.'),
-  ('Bolognese',           'bolognese',        'Nudeln mit Hackfleisch-Tomatensauce.'),
-  ('Nudeln Arrabiata',    'arrabiata',        'Nudeln mit scharfer Tomatensauce.'),
-  ('Sahnehünchen',        'sahnehuhn',        'Huhn mit Sahnesoße.'),
-  ('Döner',               'doener',           'Fussion alles göttlichen in delikatem Brot, serviert zum hier Essen oder Mitnehmen.'),
-  ('Grillen',             'grillen',          'Wehe da kommt Gemüse auf den Grill!'),
-  ('Salat mit Steak',     'salatsteak',       'Überaschung! Da ist genau das drinnen was drauf steht.');
+  ('Tomate Mozarella',    'tomatemozzarella', 'Caprese (Italienisch für zu Capri gehörend) ist ein italienischer Vorspeisensalat aus Tomaten, Mozzarella, Basilikum und Olivenöl. Wegen seiner Farben Rot, Weiß und Grün, die der Flagge Italiens entsprechen, gilt er als Nationalgericht.
+
+Zur Herstellung werden rohe Tomatenscheiben mit Mozzarellascheiben und jeweils einem Basilikumblatt belegt, gesalzen und mit Olivenöl beträufelt. Für eine traditionelle Insalata Caprese werden bevorzugt besonders aromatische Tomatensorten wie San Marzano oder Cuore di bue und Büffelmozzarella oder auch Kuhmilch-Mozzarella verwendet, das Olivenöl sollte kaltgepresst sein.[1] Die außerhalb Italiens häufige Verwendung von Aceto balsamico (Balsamessig) ist nicht authentisch und dient im Regelfall dazu, den ersatzweise verwendeten Mozzarella aus Kuhmilch sowie weniger aromatische Tomatensorten geschmacklich zu unterstützen.'),
+
+  ('Salat mit Hünchen',   'huhnsalat',        'Huhn mit diesem eklig gesunden, grünen zeug.
+  Dieses Gericht eignet sich hervorragend, um übriggebliebene Geflügelreste, wie Huhn, zu verwerten.'),
+
+  ('Schnitzel mit Reis',  'reisschnitzel',    'Schnitzel + Reis. Bayrisch + Asiatisch. Wie man es auch dreht und wendet Es ist lecker.'),
+  ('Brotzeit',            'brotzeit',         'Der Klassiker unter den Abendessen. Hat man mal keine Zeit oder keine Lust gescheid zu kochen, ist dieses Gericht die perfekte Abhilfe. Man nehme einen Leib Brot und etwas aufschnitt, drüber, fertig.'),
+  ('Lachsfilet',          'lachsfilet',       'Filetiertes Meeresgetier zusammen mit Reis und Gemüse ergänzt sich zu einer gesunden Mahlzeit für die ganze Familie.'),
+  ('Salat mit Fetakäse',  'gemuesekack',      'Bäh bäh. Gemüseexplosion. Nur gesunde Menschen essen sowas. Nachteile: Gesund, erwachsen und langweilig. Vorteile: Keine.'),
+  ('Pfannenkuchen',       'pfannkuchen',      'Schmeckt süß und geht vergleichsweise schnell. Dazu gehört dann noch Marmelade, Nutella, Honig oder wonach es einem Gelüstet.'),
+  ('Pizza',               'pizza',            'Bringe das feeling Italiano auf deinen Teller mit der vollen Dröhnung allem Guten jenseits des Jupiter.'),
+  ('Bolognese',           'bolognese',        'Studentenessen. Mutti kanns gut vorbereiten, armer Student gut essen. Win - Win Situation'),
+  ('Nudeln Arrabiata',    'arrabiata',        'Siehe Bolognese. Nur, dass das hier scharf ist. Sehr scharf.'),
+  ('Sahnehünchen',        'sahnehuhn',        'Huhn ist eine universelle Zutat und verleiht mit diesem Gericht sogar der abgeranzten Sahne aus dem Kühlschrank einen neuen Sinn. Beim nächsten mal solltest du dennoch weniger einkaufen ...'),
+  ('Döner',               'doener',           'Wundervoll gegrilltest Hühnchenfleisch geparrt mit knackigem Salat und Joghurtdressing kulminiert zu einem Erguss alles Göttlichen bei der oralen Einführung.'),
+  ('Grillen',             'grillen',          'Wenn Frau mal nicht kochen will kann sie Mann einfach beauftragen zu Grillen. Kein Aufwand für sie und er kann endlich mal den Kasten Bier leeren. Ein reiner Win - Win.
+    Obacht allerdings bei den Zutaten! Gemüse hat mit auf dem Grill nichts verloren und jeder Versuch dieses darauf zu drapieren wird rigoros abgestraft mit Gestöhne und Gemeckere von Ihm'),
+  ('Salat mit Steak',     'salatsteak',       'So jetzt machen wir mal alle die Augen zu und denken ganz scharf darüber nach, was in diesem Gericht an Zutaten Vorkommen könnten.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -93,7 +98,6 @@ VALUES
   ('Rumsteak'),
   ('Lachs'),
   ('Nudeln'),
-  ('Hund'),
   ('Hackfleisch'),
   ('Chilli'),
   ('Sahne'),
@@ -126,27 +130,24 @@ VALUES
   (8, 1, 50),
   (8, 2, 50),
   (8, 3, 100),
-  (9, 1, 70),
-  (9, 2, 80),
-  (9, 3, 100),
+  (9, 1, 50),
+  (9, 2, 50),
+  (9, 3, 50),
   (10, 1, 50),
   (10, 2, 50),
-  (10, 3, 50),
+  (10, 3, 60),
   (11, 1, 50),
   (11, 2, 50),
   (11, 3, 60),
   (12, 1, 50),
   (12, 2, 50),
-  (12, 3, 60),
-  (13, 1, 50),
-  (13, 2, 50),
-  (13, 3, 100),
-  (14, 1, 80),
-  (14, 2, 90),
-  (14, 3, 50),
-  (15, 1, 60),
-  (15, 2, 100),
-  (15, 3, 50);
+  (12, 3, 100),
+  (13, 1, 80),
+  (13, 2, 90),
+  (13, 3, 50),
+  (14, 1, 60),
+  (14, 2, 100),
+  (14, 3, 50);
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -182,29 +183,28 @@ VALUES
   (8, 3, 1, NULL),
   (8, 15, 1, NULL),
   (8, 16, 1, NULL),
-  (9, 21, 1, NULL),
   (10, 1, 1, NULL),
   (10, 3, 1, NULL),
   (10, 8, 1, NULL),
   (10, 20, 1, NULL),
-  (10, 22, 1, NULL),
+  (10, 21, 1, NULL),
   (11, 1, 1, NULL),
   (11, 3, 1, NULL),
   (11, 8, 1, NULL),
   (11, 20, 1, NULL),
-  (11, 23, 1, NULL),
+  (11, 22, 1, NULL),
   (12, 9, 1, NULL),
   (12, 10, 1, NULL),
-  (12, 24, 1, NULL),
+  (12, 23, 1, NULL),
   (13, 1, 1, NULL),
   (13, 5, 1, NULL),
   (13, 8, 1, NULL),
   (13, 9, 1, NULL),
   (13, 11, 1, NULL),
   (13, 13, 1, NULL),
-  (13, 23, 1, NULL),
+  (13, 22, 1, NULL),
+  (13, 24, 1, NULL),
   (13, 25, 1, NULL),
-  (13, 26, 1, NULL),
   (14, 9, 1, NULL),
   (14, 13, 1, NULL),
   (14, 18, 1, NULL),
