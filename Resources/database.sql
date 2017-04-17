@@ -54,7 +54,7 @@ VALUES
 Zur Herstellung werden rohe Tomatenscheiben mit Mozzarellascheiben und jeweils einem Basilikumblatt belegt, gesalzen und mit Olivenöl beträufelt. Für eine traditionelle Insalata Caprese werden bevorzugt besonders aromatische Tomatensorten wie San Marzano oder Cuore di bue und Büffelmozzarella oder auch Kuhmilch-Mozzarella verwendet, das Olivenöl sollte kaltgepresst sein.[1] Die außerhalb Italiens häufige Verwendung von Aceto balsamico (Balsamessig) ist nicht authentisch und dient im Regelfall dazu, den ersatzweise verwendeten Mozzarella aus Kuhmilch sowie weniger aromatische Tomatensorten geschmacklich zu unterstützen.'),
 
   ('Salat mit Hünchen',   'huhnsalat',        'Huhn mit diesem eklig gesunden, grünen zeug.
-  Dieses Gericht eignet sich hervorragend, um übriggebliebene Geflügelreste, wie Huhn, zu verwerten.'),
+Dieses Gericht eignet sich hervorragend, um übriggebliebene Geflügelreste, wie Huhn, zu verwerten.'),
 
   ('Schnitzel mit Reis',  'reisschnitzel',    'Schnitzel + Reis. Bayrisch + Asiatisch. Wie man es auch dreht und wendet Es ist lecker.'),
   ('Brotzeit',            'brotzeit',         'Der Klassiker unter den Abendessen. Hat man mal keine Zeit oder keine Lust gescheid zu kochen, ist dieses Gericht die perfekte Abhilfe. Man nehme einen Leib Brot und etwas aufschnitt, drüber, fertig.'),
@@ -67,7 +67,8 @@ Zur Herstellung werden rohe Tomatenscheiben mit Mozzarellascheiben und jeweils e
   ('Sahnehünchen',        'sahnehuhn',        'Huhn ist eine universelle Zutat und verleiht mit diesem Gericht sogar der abgeranzten Sahne aus dem Kühlschrank einen neuen Sinn. Beim nächsten mal solltest du dennoch weniger einkaufen ...'),
   ('Döner',               'doener',           'Wundervoll gegrilltest Hühnchenfleisch geparrt mit knackigem Salat und Joghurtdressing kulminiert zu einem Erguss alles Göttlichen bei der oralen Einführung.'),
   ('Grillen',             'grillen',          'Wenn Frau mal nicht kochen will kann sie Mann einfach beauftragen zu Grillen. Kein Aufwand für sie und er kann endlich mal den Kasten Bier leeren. Ein reiner Win - Win.
-    Obacht allerdings bei den Zutaten! Gemüse hat mit auf dem Grill nichts verloren und jeder Versuch dieses darauf zu drapieren wird rigoros abgestraft mit Gestöhne und Gemeckere von Ihm'),
+
+Obacht allerdings bei den Zutaten! Gemüse hat mit auf dem Grill nichts verloren und jeder Versuch dieses darauf zu drapieren wird rigoros abgestraft mit Gestöhne und Gemeckere von Ihm'),
   ('Salat mit Steak',     'salatsteak',       'So jetzt machen wir mal alle die Augen zu und denken ganz scharf darüber nach, was in diesem Gericht an Zutaten Vorkommen könnten.');
 
 INSERT INTO Persons(Name)
