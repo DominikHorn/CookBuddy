@@ -137,7 +137,6 @@ class Database {
                 try db.execute("DELETE FROM schedule " +
                                "WHERE scheduledfor = ? and schedulenumber = ? and dishid = ?",
                                arguments: [entry.scheduledFor, entry.scheduleNumber, entry.dishId])
-                print("Entry deleted from database!")
             }
         } catch {
             // Ignore apart from printing error

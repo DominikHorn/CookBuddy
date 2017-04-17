@@ -251,12 +251,14 @@ extension PlanViewController: UITableViewDataSource {
             // Delete from database
             Database.shared.deleteSchedule(entry: scheduled)
             
-            // Query database again
-            print((Database.shared.getDishesScheduled(forDate: self.currentDate)?.count)!)
-            
-            // Delete from tableview
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
-            
+            // Query database again (We have to do this. Otherwise we get an NSInternalInconsistencyError)
+            if self.numberOfCurrentDishes() > 1 {
+                // Delete from tableview
+                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            } else {
+                // Simply reload data
+                self.tableView.reloadData()
+            }
             // Upate calendar view
             self.calendarView.reloadData()
         }
