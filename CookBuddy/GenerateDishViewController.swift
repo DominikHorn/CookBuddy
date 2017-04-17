@@ -39,31 +39,14 @@ class GenerateDishViewController: UIViewController {
         self.dishImage?.image = self.currentDish?.image
     }
     
-    @IBOutlet weak var confirmButton: UIButton! {
-        didSet {
-            let image = UIImage(named: "circletick")?.withRenderingMode(.alwaysTemplate)
-            self.confirmButton.setImage(image, for: .normal)
-            // self.confirmButton.tintColor = UIColor.blue
-            // self.confirmButton.setImage(UIImage(emoji: "✔︎\u{20DD}").withRenderingMode(.alwaysTemplate), for: .normal)
-        }
-    }
-    @IBAction func confirmChoice(sender: UIButton!) {
+    @IBAction func confirmChoice(sender: UIBarButtonItem!) {
         // Schedule dish with database
         Database.shared.schedule(entry: ScheduleEntry(scheduledFor: self.date!, dishId: self.currentDish!.id))
         
         // Pop back to pervious view
         self.navigationController?.popViewController(animated: true)
     }
-    
-    @IBOutlet weak var abortButton: UIButton! {
-        didSet {
-            let image = UIImage(named: "circlecross")?.withRenderingMode(.alwaysTemplate)
-            self.abortButton.setImage(image, for: .normal)
-            // self.abortButton.tintColor = UIColor.blue
-            // self.abortButton.setImage(UIImage(emoji: "✘\u{20DD}"), for: .normal)
-        }
-    }
-    @IBAction func abortChoice(sender: UIButton!) {
+    @IBAction func abortChoice(sender: UIBarButtonItem!) {
         // Simply pop back
         self.navigationController?.popViewController(animated: true)
     }
