@@ -141,7 +141,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="CN9-7D-PV3">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Wuh-DV-QNV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Wuh-DV-QNV">
                             <connections>
                                 <action selector="addToScheduleWithSender:" destination="Sf1-aq-5Hi" id="8pT-tB-O6H"/>
                             </connections>

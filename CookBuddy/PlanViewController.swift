@@ -29,6 +29,16 @@ class PlanViewController: UIViewController {
             
             // Hide ugly title sides
             self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
+            
+            // Swipe down gesture enlarges calendar view
+            let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappenedOnCalendar(gestureRecog:)))
+            swipeDownRecognizer.direction = .down
+            self.calendarView.addGestureRecognizer(swipeDownRecognizer)
+        }
+    }
+    func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
+        if self.calendarView.scope == .week {
+            self.calendarView.setScope(.month, animated: true)
         }
     }
     
@@ -43,8 +53,6 @@ class PlanViewController: UIViewController {
     }
     
     @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    
-    @IBOutlet weak var addToScheduleButton: UIButton!
     @IBAction func addToSchedule(sender: UIButton?) {
         // Present slide over menu from bottom
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
