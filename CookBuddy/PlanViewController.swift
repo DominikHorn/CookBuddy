@@ -39,6 +39,9 @@ class PlanViewController: UIViewController {
         return swipeUpRecognizer
     }()
     
+    // Edit button (done this way because it may disappear
+    lazy var editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(startTableViewEdit(sender:)))
+    
     // Calendar view helper
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
@@ -81,6 +84,19 @@ class PlanViewController: UIViewController {
             
             // Hide empty trailing cells
             tableView.tableFooterView = UIView()
+        }
+    }
+    func startTableViewEdit(sender: UIBarButtonItem?) {
+        tableView.setEditing(true, animated: true)
+        
+        // TODO: Add Done button
+    }
+    
+    func verifyEditButton() {
+        if numberOfCurrentDishes() > 0 {
+            navigationItem.setLeftBarButton(editButton, animated: true)
+        } else {
+            navigationItem.setLeftBarButton(nil, animated: true)
         }
     }
     
@@ -132,6 +148,9 @@ class PlanViewController: UIViewController {
         
         // Reload tableview
         tableView.reloadSections(IndexSet(integer: 0), with: .right)
+    
+        // Make sure edit button is correctly displayed conditionally
+        verifyEditButton()
     }
     
     func swipeLeftGesture(gestureRecog: UISwipeGestureRecognizer) {
@@ -143,6 +162,9 @@ class PlanViewController: UIViewController {
         
         // Reload tableview
         tableView.reloadSections(IndexSet(integer: 0), with: .left)
+        
+        // Make sure edit button is correctly displayed conditionally
+        verifyEditButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,6 +180,7 @@ class PlanViewController: UIViewController {
             // Reload data (necessary, otherwise updates are not always shown)
             tableView.reloadData()
             calendarView.reloadData()
+            verifyEditButton()
         }
     }
     
@@ -206,7 +229,11 @@ extension PlanViewController: FSCalendarDelegate {
         calendarView.setScope(.week, animated: true)
         
         // Tell tableview to update
+        tableView.setEditing(false, animated: false)
         tableView.reloadData()
+        
+        // Conditionally add or remove the edit button
+        verifyEditButton()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
