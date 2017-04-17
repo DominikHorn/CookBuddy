@@ -112,6 +112,13 @@ class Database {
                     }
                 }
             }
+            
+            // Sort scheduled entries based on timestamp
+            scheduledEntries = scheduledEntries.sorted {
+                first, second in
+                return first.scheduledFor < second.scheduledFor
+            }
+            
             return scheduledEntries
         } catch {
             // Just print out that an error occured..
