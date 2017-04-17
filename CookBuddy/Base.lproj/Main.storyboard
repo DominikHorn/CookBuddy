@@ -128,12 +128,6 @@
                                     <outlet property="delegate" destination="Sf1-aq-5Hi" id="JLb-EM-6zA"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3HN-jV-LXC">
-                                <rect key="frame" x="343" y="586" width="22" height="22"/>
-                                <connections>
-                                    <action selector="addToScheduleWithSender:" destination="Sf1-aq-5Hi" eventType="touchUpInside" id="5jW-Gg-heJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -141,16 +135,19 @@
                             <constraint firstItem="02x-bw-FKP" firstAttribute="top" secondItem="eIB-GF-tZa" secondAttribute="bottom" constant="1" id="B4T-b4-MH8"/>
                             <constraint firstItem="Uu3-s2-NQ7" firstAttribute="top" secondItem="02x-bw-FKP" secondAttribute="bottom" id="Fu1-wr-s9E"/>
                             <constraint firstItem="eIB-GF-tZa" firstAttribute="top" secondItem="EfO-ke-FhJ" secondAttribute="bottom" id="RrO-8t-epY"/>
-                            <constraint firstAttribute="trailing" secondItem="3HN-jV-LXC" secondAttribute="trailing" constant="10" id="eRE-Uf-6Kd"/>
-                            <constraint firstAttribute="bottom" secondItem="3HN-jV-LXC" secondAttribute="bottom" constant="59" id="fNU-Bi-zER"/>
                             <constraint firstItem="02x-bw-FKP" firstAttribute="leading" secondItem="zkW-xu-8zc" secondAttribute="leading" id="iGW-Uy-8Za"/>
                             <constraint firstAttribute="trailing" secondItem="02x-bw-FKP" secondAttribute="trailing" id="k1v-zb-zEX"/>
                             <constraint firstAttribute="trailing" secondItem="eIB-GF-tZa" secondAttribute="trailing" id="oi7-sU-hKO"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="CN9-7D-PV3"/>
+                    <navigationItem key="navigationItem" id="CN9-7D-PV3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Wuh-DV-QNV">
+                            <connections>
+                                <action selector="addToScheduleWithSender:" destination="Sf1-aq-5Hi" id="8pT-tB-O6H"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="addToScheduleButton" destination="3HN-jV-LXC" id="cNI-x1-aW1"/>
                         <outlet property="calendarHeightConstraint" destination="aBn-Vs-2yj" id="zZ4-Rj-Nqg"/>
                         <outlet property="calendarView" destination="eIB-GF-tZa" id="o83-7N-FMV"/>
                         <outlet property="tableView" destination="02x-bw-FKP" id="WRm-Am-2xB"/>
