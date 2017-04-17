@@ -14,10 +14,10 @@ class PlanViewController: UIViewController {
     var tableViewRowHeight: CGFloat {
         if numberOfCurrentDishes() > 0 {
             let cellSize = tableView.frame.height / CGFloat(numberOfCurrentDishes() + 1)
-            if cellSize < 100 {
-                return 100
-            } else if cellSize > 200 {
-                return 200
+            if cellSize < 75 {
+                return 75
+            } else if cellSize > 150 {
+                return 150
             } else {
                 return cellSize
             }
@@ -39,8 +39,11 @@ class PlanViewController: UIViewController {
         return swipeUpRecognizer
     }()
     
-    // Edit button (done this way because it may disappear
-    lazy var editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.edit, target: self, action: #selector(startTableViewEdit(sender:)))
+    // Tab bar buttons button (done this way because they are conditionally displayed)
+    lazy var addButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToSchedule(sender:)))
+    lazy var editButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(startTableViewEdit(sender:)))
+    lazy var editDoneButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(endEdit))
+    lazy var editDoneDeleteButton: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.trash, target: self, action: #selector(endTableViewEditDeleting(sender:)))
     
     // Calendar view helper
     @IBOutlet weak var calendarView: FSCalendar! {
@@ -50,10 +53,6 @@ class PlanViewController: UIViewController {
             
             // Hide ugly title sides
             calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
-            
-            // Swipe down gesture enlarges calendar view
-//            calendarView.addGestureRecognizer(swipeDownRecognizer)
-//            calendarView.addGestureRecognizer(swipeUpRecognizer)
         }
     }
     func swipeUpHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer?) {
@@ -77,6 +76,7 @@ class PlanViewController: UIViewController {
         }
     }
     
+    var editSelection = [IndexPath]()
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             // Set tableview default row height
@@ -86,22 +86,29 @@ class PlanViewController: UIViewController {
             tableView.tableFooterView = UIView()
         }
     }
-    func startTableViewEdit(sender: UIBarButtonItem?) {
-        tableView.setEditing(true, animated: true)
+    func deleteFromTableView(indexPaths iPaths: [IndexPath]) {
+        if iPaths.count == 0 { return }
         
-        // TODO: Add Done button
-    }
-    
-    func verifyEditButton() {
-        if numberOfCurrentDishes() > 0 {
-            navigationItem.setLeftBarButton(editButton, animated: true)
-        } else {
-            navigationItem.setLeftBarButton(nil, animated: true)
+        var indexPaths = iPaths
+        // Get scheduled
+        if let scheduledDishes = Database.shared.getDishesScheduled(forDate: currentDate) {
+            // Delete from database
+            indexPaths.forEach {ipath in Database.shared.deleteSchedule(entry: scheduledDishes[ipath.row]) }
+
+            if numberOfCurrentDishes() == 0 {
+                // special edge case. Since we will insert an empty cell, this has to be done to prevent an internalinconsistency error
+                indexPaths.removeLast()
+            }
+            
+            // Delete from tableview
+            tableView.deleteRows(at: indexPaths, with: .left)
         }
+        
+        // Reload both views for good measure
+        tableView.reloadData()
+        calendarView.reloadData()
     }
-    
-    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
-    @IBAction func addToSchedule(sender: UIButton?) {
+    func addToSchedule(sender: UIButton?) {
         // Present slide over menu from bottom
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
@@ -121,6 +128,36 @@ class PlanViewController: UIViewController {
         controller.preferredAction = generateDishAction
         present(controller, animated: true, completion: nil)
     }
+    func startTableViewEdit(sender: UIBarButtonItem?) {
+        tableView.setEditing(true, animated: true)
+        navigationItem.rightBarButtonItem = editDoneDeleteButton
+        navigationItem.leftBarButtonItem = editDoneButton
+    }
+    func endTableViewEditDeleting(sender: UIBarButtonItem?) {
+        // Delete all selected elements
+        deleteFromTableView(indexPaths: editSelection)
+        editSelection.removeAll()
+        
+        // End the edit
+        endEdit()
+    }
+    
+    func endEdit() {
+        // Remove edit state
+        tableView.setEditing(false, animated: false)
+        
+        // Conditionally add edit button
+        navigationItem.setRightBarButton(addButton, animated: true)
+        
+        // Conditionally display edit button
+        if numberOfCurrentDishes() > 0 {
+            navigationItem.setLeftBarButton(editButton, animated: true)
+        } else {
+            navigationItem.setLeftBarButton(nil, animated: true)
+        }
+    }
+    
+    @IBOutlet weak var calendarHeightConstraint: NSLayoutConstraint!
     
     // Collection of all alerts that could not be presented earlier
     var databaseError: (() -> Void)?
@@ -150,7 +187,7 @@ class PlanViewController: UIViewController {
         tableView.reloadSections(IndexSet(integer: 0), with: .right)
     
         // Make sure edit button is correctly displayed conditionally
-        verifyEditButton()
+        endEdit()
     }
     
     func swipeLeftGesture(gestureRecog: UISwipeGestureRecognizer) {
@@ -164,7 +201,7 @@ class PlanViewController: UIViewController {
         tableView.reloadSections(IndexSet(integer: 0), with: .left)
         
         // Make sure edit button is correctly displayed conditionally
-        verifyEditButton()
+        endEdit()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -180,7 +217,7 @@ class PlanViewController: UIViewController {
             // Reload data (necessary, otherwise updates are not always shown)
             tableView.reloadData()
             calendarView.reloadData()
-            verifyEditButton()
+            endEdit()
         }
     }
     
@@ -229,11 +266,10 @@ extension PlanViewController: FSCalendarDelegate {
         calendarView.setScope(.week, animated: true)
         
         // Tell tableview to update
-        tableView.setEditing(false, animated: false)
         tableView.reloadData()
         
         // Conditionally add or remove the edit button
-        verifyEditButton()
+        endEdit()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
@@ -247,8 +283,22 @@ extension PlanViewController: FSCalendarDelegate {
 // MARK:-- UITableViewDelegate
 extension PlanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // TODO: implement (show dish preview/allow editing of dish)
-        print("Did select row at \(indexPath)")
+        if tableView.isEditing {
+            // Add to selection list
+            editSelection.append(indexPath)
+        } else {
+            // TODO: implement (show dish preview/allow editing of dish)
+            print("Did select row at \(indexPath)")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        // Remove from selection list
+        if tableView.isEditing {
+            editSelection = editSelection.filter { element in
+                element != indexPath
+            }
+        }
     }
 }
 
@@ -284,22 +334,7 @@ extension PlanViewController: UITableViewDataSource {
     // EDITING
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
-            // Get scheduled
-            let scheduled = (Database.shared.getDishesScheduled(forDate: currentDate)?[indexPath.row])!
-            
-            // Delete from database
-            Database.shared.deleteSchedule(entry: scheduled)
-            
-            // Query database again (We have to do this. Otherwise we get an NSInternalInconsistencyError)
-            if numberOfCurrentDishes() > 1 {
-                // Delete from tableview
-                tableView.deleteRows(at: [indexPath], with: .automatic)
-            } else {
-                // Simply reload data
-                tableView.reloadData()
-            }
-            // Upate calendar view
-            calendarView.reloadData()
+            deleteFromTableView(indexPaths: [indexPath])
         }
     }
     

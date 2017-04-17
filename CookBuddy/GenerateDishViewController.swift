@@ -41,7 +41,7 @@ class GenerateDishViewController: UIViewController {
     
     @IBAction func confirmChoice(sender: UIBarButtonItem!) {
         // Schedule dish with database
-        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date!, dishId: currentDish!.id))
+        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date!, dishId: currentDish!.id, scheduleNumber: (Database.shared.getDishesScheduled(forDate: date!)?.count)!))
         
         // Pop back to pervious view
         navigationController?.popViewController(animated: true)

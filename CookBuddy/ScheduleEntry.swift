@@ -13,7 +13,7 @@ struct ScheduleEntry {
     let dishId: Int
     let scheduleNumber: Int
     
-    init(scheduledFor: Date, dishId: Int, scheduleNumber: Int = 0) {
+    init(scheduledFor: Date, dishId: Int, scheduleNumber: Int = -1) {
         self.scheduledFor = scheduledFor
         self.dishId = dishId
         self.scheduleNumber = scheduleNumber
