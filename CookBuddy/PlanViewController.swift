@@ -12,13 +12,17 @@ import FSCalendar
 class PlanViewController: UIViewController {
     // constants
     var tableViewRowHeight: CGFloat {
-        let cellSize = self.tableView.frame.height / CGFloat(self.numberOfCurrentDishes() + 1)
-        if cellSize < 100 {
-            return 100
-        } else if cellSize > 200 {
-            return 200
+        if self.numberOfCurrentDishes() > 0 {
+            let cellSize = self.tableView.frame.height / CGFloat(self.numberOfCurrentDishes() + 1)
+            if cellSize < 100 {
+                return 100
+            } else if cellSize > 200 {
+                return 200
+            } else {
+                return cellSize
+            }
         } else {
-            return cellSize
+            return self.tableView.frame.height
         }
     }
     
@@ -38,7 +42,12 @@ class PlanViewController: UIViewController {
     }
     func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
         if self.calendarView.scope == .week {
+            // Set scope to month
             self.calendarView.setScope(.month, animated: true)
+            
+            // This will reload cell heights
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
         }
     }
     
@@ -80,6 +89,35 @@ class PlanViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add swipe right and left recognizer
+        let rightRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeRightGesture(gestureRecog:)))
+        rightRecognizer.direction = .right
+        let leftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftGesture(gestureRecog:)))
+        leftRecognizer.direction = .left
+        self.view.addGestureRecognizer(rightRecognizer)
+        self.view.addGestureRecognizer(leftRecognizer)
+    }
+    func swipeRightGesture(gestureRecog: UISwipeGestureRecognizer) {
+        // Select new date
+        var components = DateComponents()
+        components.day = -1
+        self.currentDate = Calendar.current.date(byAdding: components, to: self.currentDate)!
+        self.calendarView.select(self.currentDate, scrollToDate: true)
+        
+        // Reload tableview
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .right)
+    }
+    
+    func swipeLeftGesture(gestureRecog: UISwipeGestureRecognizer) {
+        // Select new date
+        var components = DateComponents()
+        components.day = 1
+        self.currentDate = Calendar.current.date(byAdding: components, to: self.currentDate)!
+        self.calendarView.select(self.currentDate, scrollToDate: true)
+        
+        // Reload tableview
+        self.tableView.reloadSections(IndexSet(integer: 0), with: .left)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,6 +196,7 @@ extension PlanViewController: FSCalendarDelegate {
 extension PlanViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // TODO: implement (show dish preview/allow editing of dish)
+        print("Did select row at \(indexPath)")
     }
 }
 
@@ -169,7 +208,11 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.numberOfCurrentDishes()
+        var count = self.numberOfCurrentDishes()
+        if count == 0 {
+            count = 1
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -178,7 +221,7 @@ extension PlanViewController: UITableViewDataSource {
     
     // EDITING
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return self.numberOfCurrentDishes() > 0
     }
     
     // EDITING
@@ -223,18 +266,24 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell", for: indexPath) as! EventTableViewCell
-        
-        // retrieve scheduled at
-        let scheduled = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
-        
-        // retrieve actual dish
-        let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)
-        
-        cell.dishTitelLabel.text = dish?.name
-        cell.dishImageView.image = dish?.image
-        let components = Calendar.current.dateComponents([.hour, .minute], from: (scheduled?.scheduledFor)!)
-        cell.scheduleTimeLabel.text = String(format: "%02d:%02d", components.hour!, components.minute!)
-        return cell
+        if self.numberOfCurrentDishes() > 0 {
+            // Dequeue cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell") as! EventTableViewCell
+            
+            // Obtain scheduled for index path
+            let scheduled = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
+            
+            // retrieve actual dish
+            let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)
+            
+            cell.dishTitelLabel.text = dish?.name
+            cell.dishImageView.image = dish?.image
+            let components = Calendar.current.dateComponents([.hour, .minute], from: (scheduled?.scheduledFor)!)
+            cell.scheduleTimeLabel.text = String(format: "%02d:%02d", components.hour!, components.minute!)
+            return cell
+        } else {
+            // return empty cell
+            return tableView.dequeueReusableCell(withIdentifier: "EmptyMessageCell")!
+        }
     }
 }
