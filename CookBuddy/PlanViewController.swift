@@ -37,7 +37,20 @@ class PlanViewController: UIViewController {
             // Swipe down gesture enlarges calendar view
             let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappenedOnCalendar(gestureRecog:)))
             swipeDownRecognizer.direction = .down
+            let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpHappenedOnCalendar(gestureRecog:)))
+            swipeUpRecognizer.direction = .up
             self.calendarView.addGestureRecognizer(swipeDownRecognizer)
+            self.calendarView.addGestureRecognizer(swipeUpRecognizer)
+        }
+    }
+    func swipeUpHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
+        if self.calendarView.scope == .month {
+            // Set scope to week
+            self.calendarView.setScope(.week, animated: true)
+            
+            // This will reload cell heights
+            self.tableView.beginUpdates()
+            self.tableView.endUpdates()
         }
     }
     func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
@@ -209,8 +222,13 @@ extension PlanViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var count = self.numberOfCurrentDishes()
+        
+        // Switch between "No scheduled dishes" and scheduled dishes. Set interactivity accordingly
         if count == 0 {
             count = 1
+            self.tableView.isUserInteractionEnabled = false
+        } else {
+            self.tableView.isUserInteractionEnabled = true
         }
         return count
     }
