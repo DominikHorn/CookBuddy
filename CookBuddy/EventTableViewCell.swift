@@ -11,19 +11,19 @@ import UIKit
 class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var dishImageView: UIImageView! {
         didSet {
-            self.dishImageView.image = UIImage(contentsOfFile: Bundle.main.path(forResource: "doener", ofType: "jpg", inDirectory: "DishImages")!)
+            dishImageView.image = UIImage(contentsOfFile: Bundle.main.path(forResource: "doener", ofType: "jpg", inDirectory: "DishImages")!)
         }
     }
     
     @IBOutlet weak var dishTitelLabel: UILabel! {
         didSet {
-            self.dishTitelLabel.text = "Spinatklösse"
+            dishTitelLabel.text = "Spinatklösse"
         }
     }
     
     @IBOutlet weak var scheduleTimeLabel: UILabel! {
         didSet {
-            self.scheduleTimeLabel.text = "12:00"
+            scheduleTimeLabel.text = "12:00"
         }
     }
 }

@@ -12,8 +12,8 @@ import FSCalendar
 class PlanViewController: UIViewController {
     // constants
     var tableViewRowHeight: CGFloat {
-        if self.numberOfCurrentDishes() > 0 {
-            let cellSize = self.tableView.frame.height / CGFloat(self.numberOfCurrentDishes() + 1)
+        if numberOfCurrentDishes() > 0 {
+            let cellSize = tableView.frame.height / CGFloat(numberOfCurrentDishes() + 1)
             if cellSize < 100 {
                 return 100
             } else if cellSize > 200 {
@@ -22,55 +22,55 @@ class PlanViewController: UIViewController {
                 return cellSize
             }
         } else {
-            return self.tableView.frame.height
+            return tableView.frame.height
         }
     }
     
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
             // Set monday as first weekday
-            self.calendarView.firstWeekday = 2
+            calendarView.firstWeekday = 2
             
             // Hide ugly title sides
-            self.calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
+            calendarView.appearance.headerMinimumDissolvedAlpha = 0.0
             
             // Swipe down gesture enlarges calendar view
             let swipeDownRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeDownHappenedOnCalendar(gestureRecog:)))
             swipeDownRecognizer.direction = .down
             let swipeUpRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpHappenedOnCalendar(gestureRecog:)))
             swipeUpRecognizer.direction = .up
-            self.calendarView.addGestureRecognizer(swipeDownRecognizer)
-            self.calendarView.addGestureRecognizer(swipeUpRecognizer)
+            calendarView.addGestureRecognizer(swipeDownRecognizer)
+            calendarView.addGestureRecognizer(swipeUpRecognizer)
         }
     }
     func swipeUpHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
-        if self.calendarView.scope == .month {
+        if calendarView.scope == .month {
             // Set scope to week
-            self.calendarView.setScope(.week, animated: true)
+            calendarView.setScope(.week, animated: true)
             
             // This will reload cell heights
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
     }
     func swipeDownHappenedOnCalendar(gestureRecog: UISwipeGestureRecognizer) {
-        if self.calendarView.scope == .week {
+        if calendarView.scope == .week {
             // Set scope to month
-            self.calendarView.setScope(.month, animated: true)
+            calendarView.setScope(.month, animated: true)
             
             // This will reload cell heights
-            self.tableView.beginUpdates()
-            self.tableView.endUpdates()
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
     }
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             // Set tableview default row height
-            self.tableView.rowHeight = tableViewRowHeight
+            tableView.rowHeight = tableViewRowHeight
             
             // Hide empty trailing cells
-            self.tableView.tableFooterView = UIView()
+            tableView.tableFooterView = UIView()
         }
     }
     
@@ -93,7 +93,7 @@ class PlanViewController: UIViewController {
         controller.addAction(chooseManualAction)
         controller.addAction(cancelDishAction)
         controller.preferredAction = generateDishAction
-        self.present(controller, animated: true, completion: nil)
+        present(controller, animated: true, completion: nil)
     }
     
     // Collection of all alerts that could not be presented earlier
@@ -108,50 +108,50 @@ class PlanViewController: UIViewController {
         rightRecognizer.direction = .right
         let leftRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeftGesture(gestureRecog:)))
         leftRecognizer.direction = .left
-        self.view.addGestureRecognizer(rightRecognizer)
-        self.view.addGestureRecognizer(leftRecognizer)
+        view.addGestureRecognizer(rightRecognizer)
+        view.addGestureRecognizer(leftRecognizer)
     }
     func swipeRightGesture(gestureRecog: UISwipeGestureRecognizer) {
         // Select new date
         var components = DateComponents()
         components.day = -1
-        self.currentDate = Calendar.current.date(byAdding: components, to: self.currentDate)!
-        self.calendarView.select(self.currentDate, scrollToDate: true)
+        currentDate = Calendar.current.date(byAdding: components, to: currentDate)!
+        calendarView.select(currentDate, scrollToDate: true)
         
         // Reload tableview
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .right)
+        tableView.reloadSections(IndexSet(integer: 0), with: .right)
     }
     
     func swipeLeftGesture(gestureRecog: UISwipeGestureRecognizer) {
         // Select new date
         var components = DateComponents()
         components.day = 1
-        self.currentDate = Calendar.current.date(byAdding: components, to: self.currentDate)!
-        self.calendarView.select(self.currentDate, scrollToDate: true)
+        currentDate = Calendar.current.date(byAdding: components, to: currentDate)!
+        calendarView.select(currentDate, scrollToDate: true)
         
         // Reload tableview
-        self.tableView.reloadSections(IndexSet(integer: 0), with: .left)
+        tableView.reloadSections(IndexSet(integer: 0), with: .left)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // Show all alerts
-        self.databaseError?()
+        databaseError?()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         // Set navigation bar title
-        self.navigationItem.title = "Planen"
+        navigationItem.title = "Planen"
         
         if Database.shared.updatesOccured {
             // Reload data (necessary, otherwise updates are not always shown)
-            self.tableView.reloadData()
-            self.calendarView.reloadData()
+            tableView.reloadData()
+            calendarView.reloadData()
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         // revert back so that "back" button is titled normally
-        self.navigationItem.title = nil
+        navigationItem.title = nil
     }
     
     override func didReceiveMemoryWarning() {
@@ -167,7 +167,7 @@ extension PlanViewController: FSCalendarDataSource {
         if let count = Database.shared.getDishesScheduled(forDate: date)?.count {
             return count
         } else {
-            self.databaseError = {
+            databaseError = {
                 [unowned self] in
                 let alert = UIAlertController(title: "Datenbank ist kaputt 😬", message: "Frage eine qualifizierte Fachkraft (deinen Sohn) was das soll: \(#function)", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Okidoki 🙄", style: .cancel, handler: nil))
@@ -183,7 +183,7 @@ extension PlanViewController: FSCalendarDataSource {
 extension PlanViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // Update current date
-        self.currentDate = date
+        currentDate = date
         
         // Make sure correct month is scrolled into view for date
         if monthPosition == .next || monthPosition == .previous {
@@ -191,17 +191,17 @@ extension PlanViewController: FSCalendarDelegate {
         }
         
         // Change to week view
-        self.calendarView.setScope(.week, animated: true)
+        calendarView.setScope(.week, animated: true)
         
         // Tell tableview to update
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
-        self.calendarHeightConstraint.constant = bounds.height;
+        calendarHeightConstraint.constant = bounds.height;
         
         // Layout views
-        self.view.layoutIfNeeded()
+        view.layoutIfNeeded()
     }
 }
 
@@ -217,18 +217,18 @@ extension PlanViewController: UITableViewDelegate {
 extension PlanViewController: UITableViewDataSource {
     // Calculates number of dishes that should currently be displayed
     func numberOfCurrentDishes() -> Int {
-        return Database.shared.getDishesScheduled(forDate: self.currentDate)?.count ?? 0
+        return Database.shared.getDishesScheduled(forDate: currentDate)?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        var count = self.numberOfCurrentDishes()
+        var count = numberOfCurrentDishes()
         
         // Switch between "No scheduled dishes" and scheduled dishes. Set interactivity accordingly
         if count == 0 {
             count = 1
-            self.tableView.isUserInteractionEnabled = false
+            tableView.isUserInteractionEnabled = false
         } else {
-            self.tableView.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
         }
         return count
     }
@@ -239,28 +239,28 @@ extension PlanViewController: UITableViewDataSource {
     
     // EDITING
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return self.numberOfCurrentDishes() > 0
+        return numberOfCurrentDishes() > 0
     }
     
     // EDITING
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             // Get scheduled
-            let scheduled = (Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row])!
+            let scheduled = (Database.shared.getDishesScheduled(forDate: currentDate)?[indexPath.row])!
             
             // Delete from database
             Database.shared.deleteSchedule(entry: scheduled)
             
             // Query database again (We have to do this. Otherwise we get an NSInternalInconsistencyError)
-            if self.numberOfCurrentDishes() > 1 {
+            if numberOfCurrentDishes() > 1 {
                 // Delete from tableview
-                self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
             } else {
                 // Simply reload data
-                self.tableView.reloadData()
+                tableView.reloadData()
             }
             // Upate calendar view
-            self.calendarView.reloadData()
+            calendarView.reloadData()
         }
     }
     
@@ -286,12 +286,12 @@ extension PlanViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if self.numberOfCurrentDishes() > 0 {
+        if numberOfCurrentDishes() > 0 {
             // Dequeue cell
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell") as! EventTableViewCell
             
             // Obtain scheduled for index path
-            let scheduled = Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row]
+            let scheduled = Database.shared.getDishesScheduled(forDate: currentDate)?[indexPath.row]
             
             // retrieve actual dish
             let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)

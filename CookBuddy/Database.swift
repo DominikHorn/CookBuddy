@@ -23,15 +23,15 @@ class Database {
     private var _updatesOccured: Bool = false
     var updatesOccured: Bool {
         get {
-            if self._updatesOccured {
-                self._updatesOccured = false
+            if _updatesOccured {
+                _updatesOccured = false
                 return true
             }
             
             return false
         }
         set {
-            self._updatesOccured = newValue
+            _updatesOccured = newValue
         }
     }
     
@@ -57,7 +57,7 @@ class Database {
         //config.trace = { print($0) }     // Prints all SQL statements
         
         // Locates database file and opens it
-        self.dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
+        dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
     }
     
     func getAllDishes() -> [Dish]? {
@@ -130,7 +130,7 @@ class Database {
     
     func deleteSchedule(entry: ScheduleEntry) {
         // updates have occured
-        self.updatesOccured = true
+        updatesOccured = true
         
         do {
             try dbQueue?.inDatabase { db in
@@ -147,10 +147,10 @@ class Database {
     // Schedules a dish for a certain date
     func schedule(entry: ScheduleEntry) {
         // Updates have occured
-        self.updatesOccured = true
+        updatesOccured = true
         
         // Fetch number of dishes for date
-        let count = (self.getDishesScheduled(forDate: entry.scheduledFor)?.count)!
+        let count = (getDishesScheduled(forDate: entry.scheduledFor)?.count)!
         
         // Insert into schedule
         do {

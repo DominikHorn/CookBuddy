@@ -11,7 +11,7 @@ import UIKit
 class EmptyMessageTableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel! {
         didSet {
-            self.messageLabel.text = "Keine Gerichte für heute geplant"
+            messageLabel.text = "Keine Gerichte für heute geplant"
         }
     }
 }

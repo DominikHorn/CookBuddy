@@ -31,24 +31,24 @@ class GenerateDishViewController: UIViewController {
         }
         
         let nextNumberIndex = Int(arc4random_uniform(UInt32(numberPool.count)))
-        self.currentDish = dishes?[numberPool.remove(at: nextNumberIndex)]
+        currentDish = dishes?[numberPool.remove(at: nextNumberIndex)]
         
         // Update UI
-        self.dishTitel?.text = self.currentDish?.name
-        self.dishDescription?.text = self.currentDish?.description
-        self.dishImage?.image = self.currentDish?.image
+        dishTitel?.text = currentDish?.name
+        dishDescription?.text = currentDish?.description
+        dishImage?.image = currentDish?.image
     }
     
     @IBAction func confirmChoice(sender: UIBarButtonItem!) {
         // Schedule dish with database
-        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: self.date!, dishId: self.currentDish!.id))
+        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date!, dishId: currentDish!.id))
         
         // Pop back to pervious view
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func abortChoice(sender: UIBarButtonItem!) {
         // Simply pop back
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     @IBOutlet weak var dateInputTextField: UITextField! {
@@ -56,64 +56,64 @@ class GenerateDishViewController: UIViewController {
             let timePicker = UIDatePicker()
             timePicker.datePickerMode = .time
             
-            // Set date's default time to 18:00 o'clock if self.date exists
-            if let datetmp = self.date {
+            // Set date's default time to 18:00 o'clock if date exists
+            if let datetmp = date {
                 var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
                 components.hour = 18
                 components.minute = 00
-                self.date = Calendar.current.date(from: components)!
-                timePicker.date = self.date!
+                date = Calendar.current.date(from: components)!
+                timePicker.date = date!
             } else {
                 timePicker.date = Date()
             }
             
             timePicker.addTarget(self, action: #selector(selectedTimeChanged(sender:)), for: .valueChanged)
-            self.dateInputTextField.inputView = timePicker
+            dateInputTextField.inputView = timePicker
             let components = Calendar.current.dateComponents([.hour, .minute], from: timePicker.date)
-            self.dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
+            dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
         }
     }
     func selectedTimeChanged(sender: UIDatePicker) {
-        self.date = sender.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: self.date!)
-        self.dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
+        date = sender.date
+        let components = Calendar.current.dateComponents([.hour, .minute], from: date!)
+        dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        self.currentSeque = segue
+        currentSeque = segue
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Add observer for keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
         // Fetch initial dish
-        self.fetchNextDish(sender: nil)
+        fetchNextDish(sender: nil)
         
         // Setup gesture recognizer for dismissing input views
         let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboards(recognizer:)))
-        self.view.addGestureRecognizer(tapRecognizer)
+        view.addGestureRecognizer(tapRecognizer)
     }
     
     func dismissKeyboards(recognizer: UIGestureRecognizer) {
-        self.dateInputTextField.endEditing(true)
+        dateInputTextField.endEditing(true)
     }
     
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height
             }
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
+            if view.frame.origin.y != 0 {
+                view.frame.origin.y += keyboardSize.height
             }
         }
     }
