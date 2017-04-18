@@ -21,7 +21,9 @@ class ShoppingViewController: UIViewController {
 
 // MARK:- UITableViewDelegate
 extension ShoppingViewController: UITableViewDelegate {
-
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
 }
 
 // MARK:- UITableViewDataSource
