@@ -91,7 +91,7 @@ class PlanViewController: UIViewController {
         
         var indexPaths = iPaths
         // Get scheduled
-        if let scheduledDishes = Database.shared.getDishesScheduled(forDate: currentDate) {
+        if let scheduledDishes = Database.shared.getScheduled(forDate: currentDate) {
             // Delete from database
             indexPaths.forEach {ipath in Database.shared.deleteSchedule(entry: scheduledDishes[ipath.row]) }
 
@@ -236,7 +236,7 @@ class PlanViewController: UIViewController {
 extension PlanViewController: FSCalendarDataSource {
     func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
         // Query events
-        if let count = Database.shared.getDishesScheduled(forDate: date)?.count {
+        if let count = Database.shared.getScheduled(forDate: date)?.count {
             return count
         } else {
             databaseError = {
@@ -289,7 +289,7 @@ extension PlanViewController: UITableViewDelegate {
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail"))! as! DishDetailViewController
-            dishDetailView.dish = Database.shared.getDish(forId: (Database.shared.getDishesScheduled(forDate: self.currentDate)?[indexPath.row].dishId)!)
+            dishDetailView.dish = Database.shared.getDish(forId: (Database.shared.getScheduled(forDate: self.currentDate)?[indexPath.row].dishId)!)
             self.show(dishDetailView, sender: self)
         }
     }
@@ -308,7 +308,7 @@ extension PlanViewController: UITableViewDelegate {
 extension PlanViewController: UITableViewDataSource {
     // Calculates number of dishes that should currently be displayed
     func numberOfCurrentDishes() -> Int {
-        return Database.shared.getDishesScheduled(forDate: currentDate)?.count ?? 0
+        return Database.shared.getScheduled(forDate: currentDate)?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -367,7 +367,7 @@ extension PlanViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell") as! EventTableViewCell
             
             // Obtain scheduled for index path
-            let scheduled = Database.shared.getDishesScheduled(forDate: currentDate)?[indexPath.row]
+            let scheduled = Database.shared.getScheduled(forDate: currentDate)?[indexPath.row]
             
             // retrieve actual dish
             let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)

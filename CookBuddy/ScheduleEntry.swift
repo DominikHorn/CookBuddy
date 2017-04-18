@@ -21,7 +21,7 @@ struct ScheduleEntry {
         
         if scheduleNumber < 0 {
             // TODO: Find a better solution than this schedulenumber
-            self.scheduleNumber = Database.shared.getDishesScheduled(forDate: scheduledFor)?.count ?? 0
+            self.scheduleNumber = Database.shared.getScheduled(forDate: scheduledFor)?.count ?? 0
         } else {
             self.scheduleNumber = scheduleNumber
         }

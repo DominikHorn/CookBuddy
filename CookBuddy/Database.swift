@@ -94,7 +94,7 @@ class Database {
         return nil
     }
     
-    func getDishesScheduled(forDate date: Date) -> [ScheduleEntry]? {
+    func getScheduled(forDate date: Date) -> [ScheduleEntry]? {
         var scheduledEntries = [ScheduleEntry]()
         
         // TODO: Unify in one sql statement
@@ -153,7 +153,7 @@ class Database {
         updatesOccured = true
         
         // Fetch number of dishes for date
-        let count = (getDishesScheduled(forDate: entry.scheduledFor)?.count)!
+        let count = (getScheduled(forDate: entry.scheduledFor)?.count)!
         
         // Insert into schedule
         do {
