@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		70F06699FD29F7DF31E626D2 /* Pods_CookBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */; };
+		B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40106BF1EA57BA100193882 /* ShoppingListCell.swift */; };
 		B41154A11EA56C5100D21FC1 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */; };
 		B4118D561EA38F1100B590D1 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4118D551EA38F1100B590D1 /* Dish.swift */; };
 		B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41236121EA12795003EEEB8 /* ShoppingViewController.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40106BF1EA57BA100193882 /* ShoppingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
 		B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		B4118D551EA38F1100B590D1 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		B41236121EA12795003EEEB8 /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 			children = (
 				B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */,
 				B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */,
+				B40106BF1EA57BA100193882 /* ShoppingListCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
+				B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
 				B4118D561EA38F1100B590D1 /* Dish.swift in Sources */,
 				B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */,
