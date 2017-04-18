@@ -13,7 +13,7 @@ class PlanViewController: UIViewController {
     // Table view helper variables
     var tableViewRowHeight: CGFloat {
         if numberOfCurrentDishes() > 0 {
-            let cellSize = tableView.frame.height / CGFloat(numberOfCurrentDishes() + 1)
+            let cellSize = tableView.frame.height / CGFloat(numberOfCurrentDishes())
             if cellSize < 75 {
                 return 75
             } else if cellSize > 150 {
@@ -114,7 +114,7 @@ class PlanViewController: UIViewController {
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
             [unowned self] alertAction in
             let genDishContr: GenerateDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "GenerateDish"))! as! GenerateDishViewController
-            genDishContr.date = self.currentDate
+            genDishContr.currentDate = self.currentDate
             self.show(genDishContr, sender: self)
         }
         let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {

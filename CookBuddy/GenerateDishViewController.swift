@@ -18,8 +18,16 @@ class GenerateDishViewController: UIViewController {
     
     // necessary
     var currentSeque: UIStoryboardSegue?
-    var date: Date?
     var currentDish: Dish?
+    var currentDate: Date? {
+        didSet {
+            timeCell?.currentDate = currentDate
+        }
+    }
+    
+    // Keep track of the cells to be able to write back changes
+    var timeCell: TimePickerCell?
+    var numberCell: NumberPickerCell?
     
     @IBAction func fetchNextDish(sender: UIButton?) {        
         let dishes = Database.shared.getAllDishes()
@@ -41,7 +49,7 @@ class GenerateDishViewController: UIViewController {
     
     @IBAction func confirmChoice(sender: UIBarButtonItem!) {
         // Schedule dish with database
-        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date!, dishId: currentDish!.id, scheduleNumber: (Database.shared.getDishesScheduled(forDate: date!)?.count)!))
+        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: timeCell?.currentDate ?? Date(), dishId: currentDish!.id, numberOfPeople: numberCell?.number ?? 1))
         
         // Pop back to pervious view
         navigationController?.popViewController(animated: true)
@@ -49,34 +57,6 @@ class GenerateDishViewController: UIViewController {
     @IBAction func abortChoice(sender: UIBarButtonItem!) {
         // Simply pop back
         navigationController?.popViewController(animated: true)
-    }
-    
-    @IBOutlet weak var dateInputTextField: UITextField! {
-        didSet {
-            let timePicker = UIDatePicker()
-            timePicker.datePickerMode = .time
-            
-            // Set date's default time to 18:00 o'clock if date exists
-            if let datetmp = date {
-                var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: datetmp)
-                components.hour = 18
-                components.minute = 00
-                date = Calendar.current.date(from: components)!
-                timePicker.date = date!
-            } else {
-                timePicker.date = Date()
-            }
-            
-            timePicker.addTarget(self, action: #selector(selectedTimeChanged(sender:)), for: .valueChanged)
-            dateInputTextField.inputView = timePicker
-            let components = Calendar.current.dateComponents([.hour, .minute], from: timePicker.date)
-            dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
-        }
-    }
-    func selectedTimeChanged(sender: UIDatePicker) {
-        date = sender.date
-        let components = Calendar.current.dateComponents([.hour, .minute], from: date!)
-        dateInputTextField.text = String(format: "%02d:%02d", components.hour!, components.minute!)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,10 +78,10 @@ class GenerateDishViewController: UIViewController {
         view.addGestureRecognizer(tapRecognizer)
     }
     
+    // MARK:- Keyboard/Input handeling
     func dismissKeyboards(recognizer: UIGestureRecognizer) {
-        dateInputTextField.endEditing(true)
+        self.view.endEditing(true)
     }
-    
     func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y == 0 {
@@ -109,7 +89,6 @@ class GenerateDishViewController: UIViewController {
             }
         }
     }
-    
     func keyboardWillHide(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if view.frame.origin.y != 0 {
@@ -121,5 +100,78 @@ class GenerateDishViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// MARK:- UITableViewDelegate
+extension GenerateDishViewController: UITableViewDelegate {
+    
+}
+
+// MARK:- UITableViewDataSource
+extension GenerateDishViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 45
+    }
+    
+    var headerHeight: CGFloat {
+        return 1.5
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: headerHeight))
+        view.backgroundColor = UIColor.lightGray
+        return view
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        // Footer is the same as header
+        return self.tableView(tableView, viewForHeaderInSection: section)
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return headerHeight
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch(indexPath.row) {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TimePickerCell") as! TimePickerCell
+            
+            // Asign default time of 18:00
+            var components = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: currentDate!)
+            components.hour = 18
+            components.minute = 0
+            cell.currentDate = Calendar.current.date(from: components)
+            timeCell = cell
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NumberPickerCell") as! NumberPickerCell
+            cell.prefix = "Personenanzahl:"
+            cell.number = 3
+            numberCell = cell
+            return cell
+        default:
+            return UITableViewCell()
+        }
     }
 }

@@ -31,6 +31,7 @@ CREATE TABLE Contains
 CREATE TABLE Schedule
   (ScheduledFor    DATETIME NOT NULL,
    ScheduleNumber  INTEGER NOT NULL,
+   NumberOfPeople  INTEGER NOT NULL,
    DishID          INTEGER REFERENCES Dishes,
    PRIMARY KEY (ScheduleNumber, ScheduledFor));
 
