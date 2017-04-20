@@ -61,6 +61,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Einkaufen" image="ListIcon" id="J4t-Y4-X55"/>
+                    <connections>
+                        <outlet property="tableView" destination="a3L-kL-n2M" id="8iF-5q-Nd9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFx-MI-vSu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

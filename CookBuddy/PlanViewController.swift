@@ -217,8 +217,8 @@ class PlanViewController: UIViewController {
             // Reload data (necessary, otherwise updates are not always shown)
             tableView.reloadData()
             calendarView.reloadData()
-            endEdit()
         }
+        endEdit()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -337,6 +337,7 @@ extension PlanViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == UITableViewCellEditingStyle.delete) {
             deleteFromTableView(indexPaths: [indexPath])
+            endEdit()
         }
     }
     

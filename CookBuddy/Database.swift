@@ -60,7 +60,7 @@ class Database {
         dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
     }
     
-    func getAllDishes() -> [Dish]? {
+    func getAllDishes() -> [Dish]! {
         var dishes = [Dish]()
         do {
             try dbQueue?.inDatabase { db in
@@ -73,7 +73,7 @@ class Database {
                     let description: String = row.value(named: "description")
                     
                     // Query for ingredients
-                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM dishes d, contains c, ingredients i WHERE i.ingid =c.ingid and d.dishid = c.dishid and d.dishid = \(dishId)")
+                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM dishes d, contains c, ingredients i WHERE i.ingid =c.ingid and d.dishid = c.dishid and d.dishid = ?", arguments: [dishId])
                     var ingredients = [Ingredient]()
                     while let ingredient = try ingredientsRaw.next() {
                         let ingid: Int = ingredient.value(named: "ingid")
@@ -94,32 +94,68 @@ class Database {
         return nil
     }
     
-    func getScheduled(forDate date: Date) -> [ScheduleEntry]? {
-        var scheduledEntries = [ScheduleEntry]()
+    func getShoppingListItems(forDate date: Date) -> [ShoppingListItem]! {
+        // Formatter for obtaining string from date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
         
-        // TODO: Unify in one sql statement
+        // Query database
         do {
-            // Fetch scheduled dishes (by id) from sqlite
+            var tmpList = [ShoppingListItem]()
             try dbQueue?.inDatabase { db in
-                let rows = try Row.fetchCursor(db, "SELECT * FROM schedule")
+                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date('\(formatter.string(from: date))') and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name asc")
+                while let row = try rows.next() {
+                    let belongsTo: Int = row.value(named: "dishid")
+                    let ingname: String = row.value(named: "name")
+                    let ingid: Int = row.value(named: "ingid")
+                    let quantity: Float = row.value(named: "quantity")
+                    let unit: String? = row.value(named: "unit")
+                    
+                    tmpList.append(ShoppingListItem(ingredient: Ingredient(id: ingid, name: ingname), quantity: quantity, belongsTo: belongsTo, unit: unit))
+                }
+            }
+            
+            // Walk through shopping list items and compress
+            var shoppingListItems = [ShoppingListItem]()
+            for item in tmpList {
+                let existingItemIndex = shoppingListItems.index {i in i.ingredient.id == item.ingredient.id}
+                if let itemIndex = existingItemIndex {
+                    shoppingListItems[itemIndex].add(quantity: item.quantity)
+                } else {
+                    shoppingListItems.append(item)
+                }
+            }
+            
+            return shoppingListItems
+        } catch {
+            print("ERROR: Database broken in \(#function)")
+            print(error)
+        }
+        
+        return nil
+    }
+    
+    func getScheduled(forDate date: Date) -> [ScheduleEntry]! {
+        // Formatter for obtaining string from date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        var scheduledEntries = [ScheduleEntry]()
+        do {
+            // Fetch scheduled scheduleentries in ascending order for the date
+            try dbQueue?.inDatabase { db in
+                let rows = try Row.fetchCursor(db, "SELECT * FROM schedule WHERE date(scheduledfor) = date(?) ORDER BY scheduledfor ASC", arguments:[formatter.string(from: date)])
                 while let row = try rows.next() {
                     // Fetch scheduled date
                     let scheduledFor: Date = row.value(named: "scheduledfor")
                     let scheduleNumber: Int = row.value(named: "schedulenumber")
                     let numberOfPeople: Int = row.value(named: "numberofpeople")
                     let dishId: Int = row.value(named: "dishid")
-                    if date.isOnSameDayAs(date: scheduledFor) {
-                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, numberOfPeople: numberOfPeople, scheduleNumber: scheduleNumber))
-                    }
+                    scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, numberOfPeople: numberOfPeople, scheduleNumber: scheduleNumber))
                 }
             }
             
-            // Sort scheduled entries based on timestamp
-            scheduledEntries = scheduledEntries.sorted {
-                first, second in
-                return first.scheduledFor < second.scheduledFor
-            }
-            
+            // Return that array
             return scheduledEntries
         } catch {
             // Just print out that an error occured..
@@ -169,7 +205,7 @@ class Database {
     }
     
     // Retrieve dish for id
-    func getDish(forId id: Int) -> Dish? {
+    func getDish(forId id: Int) -> Dish! {
         var dish: Dish?
         do {
             try dbQueue?.inDatabase {

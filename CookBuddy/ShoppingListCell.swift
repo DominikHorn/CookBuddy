@@ -9,11 +9,9 @@
 import UIKit
 
 class ShoppingListCell: UITableViewCell {
-    private static var counter = 1
     @IBOutlet weak var ingredientTextField: UITextField! {
         didSet {
-            ingredientTextField.text = "\(ShoppingListCell.counter). Zutat"
-            ShoppingListCell.counter+=1
+            ingredientTextField.text = "Leere Zutat"
         }
     }
 }
