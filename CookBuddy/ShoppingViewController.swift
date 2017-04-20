@@ -9,13 +9,56 @@
 import UIKit
 
 class ShoppingViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// MARK:- Helper
+extension ShoppingViewController {
+    func prettify(float: Float) -> String {
+        if float == float.rounded(.toNearestOrAwayFromZero) {
+            // If number is .0, return just integer part
+            return String(format: "%d", Int(float))
+        } else {
+            // Else return pretty fraction
+            let num = Int(float)
+            let rational = rationalApproximation(of: Double(float - Float(num)))
+            
+            if num == 0 {
+                return String(format: "%d/%d", rational.num, rational.den)
+            } else {
+                return String(format: "%d %d/%d", num, rational.num, rational.den)
+            }
+        }
+    }
+    
+    typealias Rational = (num : Int, den : Int)
+    
+    func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
+        var x = x0
+        var a = x.rounded(.down)
+        var (h1, k1, h, k) = (1, 0, Int(a), 1)
+        
+        while x - a > eps * Double(k) * Double(k) {
+            x = 1.0/(x - a)
+            a = x.rounded(.down)
+            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
+        }
+        return (h, k)
     }
 }
 
@@ -29,15 +72,17 @@ extension ShoppingViewController: UITableViewDelegate {
 // MARK:- UITableViewDataSource
 extension ShoppingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        // Always two sections
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            // Get shopping list items for today
+            return Database.shared.getShoppingListItems(forDate: Date()).count // TODO: handle 0 case and display message that nothing exists for that date
         case 1:
-            return 10
+            return 0; // TODO IMPLEMENT
         default:
             return 0
         }
@@ -58,6 +103,20 @@ extension ShoppingViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingListCell") as! ShoppingListCell
+        
+        // Retrieve dish name for cell
+        switch indexPath.section {
+        case 0:
+            let item = Database.shared.getShoppingListItems(forDate: Date())[indexPath.row]
+            cell.ingredientTextField.text = String(format: "\(prettify(float: item.quantity)) " + (item.unit == nil ? "" : "\(item.unit!) ") + "\(item.ingredient.name)")
+        case 1:
+            break
+            //
+        default:
+            return cell // TODO: RETURN ERROR CELL
+        }
+        
+        
         return cell
     }
     

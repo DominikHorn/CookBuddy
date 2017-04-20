@@ -1,3 +1,5 @@
-# This is a todo list of every task that is unfinished for the next release.
+This is a todo list of every task that is unfinished for the next release.
+* Move unit to ingredients table (since units don't change based on dish but based on ingredient
+* Edit button does not disappear if last table cell is removed
 * Replace splash screen with something we hold the copyright to.
 * Implement dish detail view that gives step by step instructions on how to cook the dish
