@@ -182,9 +182,7 @@ class Database {
     }
     
     // Schedules a dish for a certain date
-    func schedule(entry: ScheduleEntry) {
-        print(entry)
-        
+    func schedule(entry: ScheduleEntry) {        
         // Updates have occured
         updatesOccured = true
         
