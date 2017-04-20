@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		70F06699FD29F7DF31E626D2 /* Pods_CookBuddy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */; };
+		B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40106BF1EA57BA100193882 /* ShoppingListCell.swift */; };
+		B41154A11EA56C5100D21FC1 /* DishDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */; };
 		B4118D561EA38F1100B590D1 /* Dish.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4118D551EA38F1100B590D1 /* Dish.swift */; };
 		B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41236121EA12795003EEEB8 /* ShoppingViewController.swift */; };
 		B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */; };
@@ -16,6 +18,8 @@
 		B445DBFE1E9FB1FC00F5550D /* cookbuddy_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */; };
 		B445DC011E9FC14D00F5550D /* DishImages in Resources */ = {isa = PBXBuildFile; fileRef = B445DC001E9FC14D00F5550D /* DishImages */; };
 		B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45498901EA2331B00B84C50 /* StandardExtensions.swift */; };
+		B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */; };
+		B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */; };
 		B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */; };
 		B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31791E9D34400060471E /* AppDelegate.swift */; };
 		B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */; };
@@ -48,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		5DF60EEEAC0EE09DA41CF62B /* Pods_CookBuddy.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CookBuddy.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B40106BF1EA57BA100193882 /* ShoppingListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListCell.swift; sourceTree = "<group>"; };
+		B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishDetailViewController.swift; sourceTree = "<group>"; };
 		B4118D551EA38F1100B590D1 /* Dish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dish.swift; sourceTree = "<group>"; };
 		B41236121EA12795003EEEB8 /* ShoppingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingViewController.swift; sourceTree = "<group>"; };
 		B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +63,8 @@
 		B445DBFD1E9FB1FC00F5550D /* database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.sql; sourceTree = "<group>"; };
 		B445DC001E9FC14D00F5550D /* DishImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DishImages; sourceTree = "<group>"; };
 		B45498901EA2331B00B84C50 /* StandardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardExtensions.swift; sourceTree = "<group>"; };
+		B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
+		B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerCell.swift; sourceTree = "<group>"; };
 		B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B4CA31761E9D34400060471E /* CookBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31791E9D34400060471E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 				B41236121EA12795003EEEB8 /* ShoppingViewController.swift */,
 				B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */,
 				B4278ABA1EA130A800945FE5 /* PlanViewController.swift */,
+				B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -223,6 +232,9 @@
 			children = (
 				B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */,
 				B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */,
+				B40106BF1EA57BA100193882 /* ShoppingListCell.swift */,
+				B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */,
+				B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -298,7 +310,7 @@
 				TargetAttributes = {
 					B4CA31751E9D343F0060471E = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = ZBWW78A72B;
+						DevelopmentTeam = K66TW7FRN3;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -424,11 +436,15 @@
 				B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
+				B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
+				B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */,
+				B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
 				B4118D561EA38F1100B590D1 /* Dish.swift in Sources */,
 				B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */,
 				B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */,
+				B41154A11EA56C5100D21FC1 /* DishDetailViewController.swift in Sources */,
 				B4278ABB1EA130A800945FE5 /* PlanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,10 +599,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZBWW78A72B;
+				DEVELOPMENT_TEAM = K66TW7FRN3;
 				INFOPLIST_FILE = CookBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhorn.CookBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominik.horn.CookBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -599,10 +615,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = ZBWW78A72B;
+				DEVELOPMENT_TEAM = K66TW7FRN3;
 				INFOPLIST_FILE = CookBuddy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.dhorn.CookBuddy;
+				PRODUCT_BUNDLE_IDENTIFIER = de.dominik.horn.CookBuddy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

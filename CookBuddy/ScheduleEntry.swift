@@ -12,10 +12,18 @@ struct ScheduleEntry {
     let scheduledFor: Date
     let dishId: Int
     let scheduleNumber: Int
+    let numberOfPeople: Int
     
-    init(scheduledFor: Date, dishId: Int, scheduleNumber: Int = 0) {
+    init(scheduledFor: Date, dishId: Int, numberOfPeople: Int = 1, scheduleNumber: Int = -1) {
         self.scheduledFor = scheduledFor
         self.dishId = dishId
-        self.scheduleNumber = scheduleNumber
+        self.numberOfPeople = numberOfPeople
+        
+        if scheduleNumber < 0 {
+            // TODO: Find a better solution than this schedulenumber
+            self.scheduleNumber = Database.shared.getScheduled(forDate: scheduledFor)?.count ?? 0
+        } else {
+            self.scheduleNumber = scheduleNumber
+        }
     }
 }

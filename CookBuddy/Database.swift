@@ -94,7 +94,7 @@ class Database {
         return nil
     }
     
-    func getDishesScheduled(forDate date: Date) -> [ScheduleEntry]? {
+    func getScheduled(forDate date: Date) -> [ScheduleEntry]? {
         var scheduledEntries = [ScheduleEntry]()
         
         // TODO: Unify in one sql statement
@@ -106,9 +106,10 @@ class Database {
                     // Fetch scheduled date
                     let scheduledFor: Date = row.value(named: "scheduledfor")
                     let scheduleNumber: Int = row.value(named: "schedulenumber")
+                    let numberOfPeople: Int = row.value(named: "numberofpeople")
                     let dishId: Int = row.value(named: "dishid")
                     if date.isOnSameDayAs(date: scheduledFor) {
-                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, scheduleNumber: scheduleNumber))
+                        scheduledEntries.append(ScheduleEntry(scheduledFor: scheduledFor, dishId: dishId, numberOfPeople: numberOfPeople, scheduleNumber: scheduleNumber))
                     }
                 }
             }
@@ -135,8 +136,8 @@ class Database {
         do {
             try dbQueue?.inDatabase { db in
                 try db.execute("DELETE FROM schedule " +
-                               "WHERE scheduledfor = ? and schedulenumber = ? and dishid = ?",
-                               arguments: [entry.scheduledFor, entry.scheduleNumber, entry.dishId])
+                               "WHERE scheduledfor = ? and schedulenumber = ?",
+                               arguments: [entry.scheduledFor, entry.scheduleNumber])
             }
         } catch {
             // Ignore apart from printing error
@@ -146,19 +147,21 @@ class Database {
     
     // Schedules a dish for a certain date
     func schedule(entry: ScheduleEntry) {
+        print(entry)
+        
         // Updates have occured
         updatesOccured = true
         
         // Fetch number of dishes for date
-        let count = (getDishesScheduled(forDate: entry.scheduledFor)?.count)!
+        let count = (getScheduled(forDate: entry.scheduledFor)?.count)!
         
         // Insert into schedule
         do {
             try dbQueue?.inDatabase { db in
                 try db.execute(
-                    "INSERT INTO schedule (scheduledfor, schedulenumber, dishid) " +
-                    "VALUES (?, ?, ?)",
-                    arguments: [entry.scheduledFor, count, entry.dishId])
+                    "INSERT INTO schedule (scheduledfor, schedulenumber, numberOfPeople, dishid) " +
+                    "VALUES (?, ?, ?, ?)",
+                    arguments: [entry.scheduledFor, count, entry.numberOfPeople, entry.dishId])
             }
         } catch {
             // Ignore

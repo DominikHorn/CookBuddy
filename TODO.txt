@@ -1,2 +1,3 @@
 # This is a todo list of every task that is unfinished for the next release.
 * Replace splash screen with something we hold the copyright to.
+* Implement dish detail view that gives step by step instructions on how to cook the dish
