@@ -1,5 +1,6 @@
 This is a todo list of every task that is unfinished for the next release.
-* Move unit to ingredients table (since units don't change based on dish but based on ingredient
-* Replace splash screen with something we hold the copyright to.
 * Implement dish detail view that gives step by step instructions on how to cook the dish
+* Rework dish view
+* Move unit to ingredients table (since units don't change based on dish but based on ingredient
 * Rework using Key Value Observing etc
+* Replace splash screen with something we hold the copyright to.
