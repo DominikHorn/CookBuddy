@@ -49,7 +49,9 @@ VALUES
   ('Sahnehünchen',        'sahnehuhn',        'Huhn ist eine universelle Zutat und verleiht mit diesem Gericht sogar der abgeranzten Sahne aus dem Kühlschrank einen neuen Sinn. Beim nächsten mal solltest du dennoch weniger einkaufen ...'),
   ('Döner',               'doener',           'Wundervoll gegrilltest Hühnchenfleisch geparrt mit knackigem Salat und Joghurtdressing kulminiert zu einem Erguss alles Göttlichen bei der oralen Einführung.'),
   ('Grillen',             'grillen',          'Wenn Frau mal nicht kochen will kann sie Mann einfach beauftragen zu Grillen. Kein Aufwand für sie und er kann endlich mal den Kasten Bier leeren. Ein reiner Win - Win.'),
-  ('Salat mit Steak',     'salatsteak',       'So jetzt machen wir mal alle die Augen zu und denken ganz scharf darüber nach, was in diesem Gericht an Zutaten Vorkommen könnten.');
+  ('Salat mit Steak',     'salatsteak',       'So jetzt machen wir mal alle die Augen zu und denken ganz scharf darüber nach, was in diesem Gericht an Zutaten Vorkommen könnten.'),
+  ('Hähnchen in Honig-Sesam Sauce', 'haehnchen-in-honig-sesam-sauce', 'Arbeitszeit: ca. 30 Min. / Koch-/Backzeit: ca. 15 Min. Ruhezeit: ca. 30 Min. / Schwierigkeitsgrad: normal / Kalorien p. P.: keine Angabe
+Sojasauce, Orangensaft, Honig, Chilisauce, Sambal Oelek, Sesam und das Chinagewürz vermischen. Hähnchenfilets in mundgerechte Stücke schneiden und mit Mehl bestäuben, vermengen und wieder mit etwas Mehl bestäuben. Soja-Honig-Marinade in einer Schüssel über das Hähnchenfilet geben und ca. 30 Minuten marinieren lassen. In der Zeit die Zuckerschoten dritteln, Frühlingszwiebeln schneiden und die Paprika, Zwiebel und Möhre würfeln. Eine große Pfanne oder einen Wok mit etwas Öl heiß werden lassen und darin das marinierte Fleisch mit der Marinade gut anbraten. Dann das Gemüse dazugeben und ca. 5 Minuten mitbraten. Dazu passen Reis, Mie- oder Glasnudeln.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -59,37 +61,47 @@ VALUES
 
 INSERT INTO Ingredients(Name)
 VALUES
-  ('Tomate'),     -- 1
-  ('Mozarella'),  -- 2
-  ('Öl'),         -- 3
-  ('Essig'),      -- 4
+  ('Tomate'),         -- 1
+  ('Mozarella'),      -- 2
+  ('Öl'),             -- 3
+  ('Essig'),          -- 4
   ('Blattsalatkopf'), -- 5
-  ('Karotte'),    -- 6
-  ('Gurke'),      -- 7
-  ('Zwiebel'),    -- 8
-  ('Hühnerbrust'),-- 9
-  ('Reis'),       -- 10
-  ('Brot'),       -- 11
-  ('Lachs'),      -- 12
-  ('Gemüsekack'), -- 13
-  ('Eier'),       -- 14
-  ('Mehl'),       -- 15
-  ('Aufschnitt'), -- 16
-  ('Baguette'),   -- 17
-  ('Rindersteak'),-- 18
-  ('Lachs'),      -- 19
-  ('Nudeln'),     -- 20
-  ('Hackfleisch'),-- 21
-  ('Chilli'),     -- 22
-  ('Sahne'),      -- 23
-  ('Joghurt'),    -- 24
-  ('Kräuter'),    -- 25
-  ('Hühnchenschnitzel'), -- 26
-  ('Fetakäse'),   -- 27
-  ('Milch'),      -- 28
-  ('Tiefkühlpizza'), -- 29
-  ('Knoblauch'),  -- 30
-  ('Kauflanddöner'); -- 31
+  ('Karotte'),        -- 6
+  ('Gurke'),          -- 7
+  ('Zwiebel'),        -- 8
+  ('Hühnerbrust'),    -- 9
+  ('Reis'),           -- 10
+  ('Brot'),           -- 11
+  ('Lachs'),          -- 12
+  ('Gemüsekack'),     -- 13
+  ('Eier'),           -- 14
+  ('Mehl'),           -- 15
+  ('Aufschnitt'),     -- 16
+  ('Baguette'),       -- 17
+  ('Rindersteak'),    -- 18
+  ('Lachs'),          -- 19
+  ('Nudeln'),         -- 20
+  ('Hackfleisch'),    -- 21
+  ('Chilli'),         -- 22
+  ('Sahne'),          -- 23
+  ('Joghurt'),        -- 24
+  ('Kräuter'),        -- 25
+  ('Hühnchenschnitzel'),-- 26
+  ('Fetakäse'),       -- 27
+  ('Milch'),          -- 28
+  ('Tiefkühlpizza'),  -- 29
+  ('Knoblauch'),      -- 30
+  ('Kauflanddöner'),  -- 31
+  ('Sojasauce'),      -- 32
+  ('Orangensaft'),    -- 33
+  ('Honig'),          -- 34
+  ('Sambal Oelek'),   -- 35
+  ('Sesam'),          -- 36
+  ('Gewürzmischung'), -- 37
+  ('Zuckerschoten'),  -- 38
+  ('Frühlingszwiebeln'),-- 39
+  ('Paprikaschote'),  -- 40
+  ('Bambussprosse');  -- 41
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -119,31 +131,31 @@ VALUES
   (6,   6,  0.5, NULL),
   (6,   7,  0.5, NULL),
   (6,   8, 0.25, NULL),
-  (6,  27, 0.25, 'Kilo'),
+  (6,  27, 0.25, 'Kg'),
   (7,  14,    2, NULL),
-  (7,  15,  150, 'Gramm'),
-  (7,  28, 0.25, 'Liter'),
+  (7,  15,  150, 'g'),
+  (7,  28, 0.25, 'L'),
   (8,  29,    1, NULL),
   (9,   1, 0.75, 'Dosen'),
   (9,   3,    1, 'EL'),
   (9,   6,    1, NULL),
   (9,   8,    1, NULL),
-  (9,  20,  300, 'Gramm'),
-  (9,  21,  0.5, 'Kilo'),
+  (9,  20,  300, 'g'),
+  (9,  21,  0.5, 'Kg'),
   (9,  30,    1, 'Zehe'),
   (10,  1, 0.75, 'Dose'),
   (10,  3,    1, 'EL'),
   (10,  8,  0.5, NULL),
-  (10, 20,  300, 'Gramm'),
+  (10, 20,  300, 'g'),
   (10, 22,    1, 'Schote'),
   (10, 30,    1, 'Zehe'),
-  (11,  9,  300, 'Gramm'),
+  (11,  9,  300, 'g'),
   (11, 10,  1.5, 'Tassen'),
   (11, 23,  0.5, 'Becher'),
   (11, 30,    1, 'Zehe'),
   (12, 31,    1, NULL),
   (13,  9,    1, NULL),
-  (13, 13,  200, 'Gramm'),
+  (13, 13,  200, 'g'),
   (13, 18,  0.5, NULL),
   (14,  1,    2, NULL),
   (14,  3,  1.5, 'EL'),
@@ -152,52 +164,42 @@ VALUES
   (14,  6,  0.5, NULL),
   (14,  7,  0.5, NULL),
   (14,  8, 0.25, NULL),
-  (14, 18,  500, 'Gramm');
+  (14, 18,  500, 'g'),
+  (15,  9,  300, 'g'),
+  (15, 32,    8, 'EL'),
+  (15, 33,    4, 'EL'),
+  (15, 34,    3, 'TL'),
+  (15, 22,    1, NULL),
+  (15, 35,    1, 'TL'),
+  (15, 36,    1, 'EL'),
+  (15, 37,    1, 'Prise'),
+  (15, 15,   50, 'g'),
+  (15, 38,  100, 'g'),
+  (15, 39,    2, NULL),
+  (15, 40,  0.5, 'rote'),
+  (15,  8,    1, NULL),
+  (15,  6,    1, NULL),
+  (15, 41,    1, 'Glas'),
+  (15,  3,    2, 'EL');
 
-INSERT INTO Likes(DishID, PersID, Score)
-VALUES
-  (1, 1, 100),
-  (1, 2, 100),
-  (1, 3, 100),
-  (2, 1, 50),
-  (2, 2, 40),
-  (2, 3, 80),
-  (3, 1, 30),
-  (3, 2, 30),
-  (3, 3, 90),
-  (4, 1, 70),
-  (4, 2, 70),
-  (4, 3, 40),
-  (5, 1, 80),
-  (5, 2, 80),
-  (5, 3, 10),
-  (6, 1, 80),
-  (6, 2, 60),
-  (6, 3, 10),
-  (7, 1, 50),
-  (7, 2, 50),
-  (7, 3, 70),
-  (8, 1, 50),
-  (8, 2, 50),
-  (8, 3, 100),
-  (9, 1, 50),
-  (9, 2, 50),
-  (9, 3, 50),
-  (10, 1, 50),
-  (10, 2, 50),
-  (10, 3, 60),
-  (11, 1, 50),
-  (11, 2, 50),
-  (11, 3, 60),
-  (12, 1, 50),
-  (12, 2, 50),
-  (12, 3, 100),
-  (13, 1, 80),
-  (13, 2, 90),
-  (13, 3, 50),
-  (14, 1, 60),
-  (14, 2, 100),
-  (14, 3, 50);
+-- TODO: update Likes table!
+--INSERT INTO Likes(DishID, PersID, Score)
+--VALUES
+--  (1, 1, 100),
+--  (1, 2, 100),
+--  (1, 3, 100),
+--  (2, 1, 50),
+--  (2, 2, 40),
+--  (2, 3, 80),
+--  (3, 1, 30),
+--  (3, 2, 30),
+--  (3, 3, 90),
+--  (4, 1, 70),
+--  (4, 2, 70),
+--  (4, 3, 40),
+--  (5, 1, 80),
+--  (5, 2, 80),
+--  (5, 3, 10);
 
 --INSERT INTO Schedule(ScheduleNumber, ScheduledFor, NumberOfPeople, DishID)
 --VALUES
