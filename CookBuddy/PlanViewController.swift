@@ -109,7 +109,7 @@ class PlanViewController: UIViewController {
         calendarView.reloadData()
     }
     func addToSchedule(sender: UIButton?) {
-        // Present slide over menu from bottom
+        // Present slide over menu from bottom  
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
             [unowned self] alertAction in
@@ -117,13 +117,13 @@ class PlanViewController: UIViewController {
             genDishContr.currentDate = self.currentDate
             self.show(genDishContr, sender: self)
         }
-        let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
-            alertAction in
-            print("Choose manual action")
-        }
+        //let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
+        //    alertAction in
+        //    print("Choose manual action")
+        //}
         let cancelDishAction = UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil)
         controller.addAction(generateDishAction)
-        controller.addAction(chooseManualAction)
+        //controller.addAction(chooseManualAction)
         controller.addAction(cancelDishAction)
         controller.preferredAction = generateDishAction
         present(controller, animated: true, completion: nil)

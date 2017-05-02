@@ -22,6 +22,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Noch nichts geplant!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cl-qk-GiT">
+                                <rect key="frame" x="16" y="28" width="343" height="582"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelectionDuringEditing="YES" allowsMultipleSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="a3L-kL-n2M">
                                 <rect key="frame" x="0.0" y="20" width="375" height="598"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,6 +70,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Einkaufen" image="ListIcon" id="J4t-Y4-X55"/>
                     <connections>
+                        <outlet property="label" destination="3Cl-qk-GiT" id="Nob-7N-a6o"/>
                         <outlet property="tableView" destination="a3L-kL-n2M" id="8iF-5q-Nd9"/>
                     </connections>
                 </viewController>
@@ -499,7 +507,6 @@
                     <connections>
                         <segue destination="EAE-id-sKg" kind="relationship" relationship="viewControllers" id="Qte-Xu-bHm"/>
                         <segue destination="K2j-Bl-Nyy" kind="relationship" relationship="viewControllers" id="Yyx-JH-9hg"/>
-                        <segue destination="tbO-iK-Pmp" kind="relationship" relationship="viewControllers" id="j6F-82-jua"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqy-TV-Srt" userLabel="First Responder" sceneMemberID="firstResponder"/>
