@@ -10,6 +10,7 @@ import UIKit
 
 class ShoppingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,8 +80,18 @@ extension ShoppingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
+            let count = Database.shared.getShoppingListItems(forDate: Date()).count
+            
+            if count == 0 {
+                tableView.isHidden = true
+                label.isHidden = false
+            } else {
+                tableView.isHidden = false
+                label.isHidden = true
+            }
+            
             // Get shopping list items for today
-            return Database.shared.getShoppingListItems(forDate: Date()).count // TODO: handle 0 case and display message that nothing exists for that date
+            return count // TODO: handle 0 case and display message that nothing exists for that date
         case 1:
             return 0; // TODO IMPLEMENT
         default:
