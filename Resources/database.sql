@@ -59,7 +59,8 @@ Jetzt Crème fraîche mit Milch in eine Schlüssel geben und alles glatt rühren
 In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überbacken.'),
   ('Bandnudeln mit frischem Spinat und Lachs', 'bandnudeln-lachs', 'Die Nudeln nach Gebrauchsanweisung kochen - Achtung, frische Nudeln brauchen nur 2-3 Minuten (also aufs Timing achten)! Den Spinat von Stängeln (bis zum Blattanfang) befreien und gründlich waschen. Sand bekommt man am besten raus, indem man den Spinat in Wasser legt und nicht nur abbraust. Die Zwiebel in Ringe schneiden, in eine Pfanne mit hohem Rand und Deckel mit dem Öl geben und bei kleiner bis mittlerer Hitze glasig dünsten
   (nicht braten). Gemüsebrühe mit Wasser mischen und dazu gießen (alternativ geht auch Weißwein statt Brühe). Den Knoblauch schälen, in möglichst kleine Stückchen schneiden und in die Pfanne geben. Nun den Spinat dazugeben. Evtl. geht das nur nach und nach, er fällt aber schnell in sich zusammen, so dass nachgelegt werden kann, falls die Pfanne nicht groß genug ist. Den Räucherlachs in Stücke schneiden und dazugeben, sobald der Spinat komplett in sich zusammengefallen ist. Alternativ zum'' Räucherlachs geht auch frischer Lachs, der auf die gleiche Weise einfach gewürfelt und noch roh dazugegeben werden kann. Etwas Flüssigkeit abnehmen und in einer Tasse mit der Stärke mischen, bis sie sich löst. Dieses Gemisch wieder in die Pfanne geben, ebenso den Becher Cremefine oder Schmand. Mit Pfeffer, Salz und (am besten frisch geriebener) Muskatnuss würzen Die Nudeln abgießen, untermischen und servieren.'),
-  ('Kartoffel Möhren Suppe', 'kartmoehrsup', 'Die Kartoffeln und Möhren schälen und in gleich große Scheiben hobeln oder schneiden. Die Zwiebel und den Knoblauch in Würfel schneiden. Die Zwiebel mit dem Knoblauch in der Butter anschwitzen. Danach Kartoffeln und Möhren beigeben und kurz mitschwitzen. Mit Gemüsebrühe, Sahne und Milch ablöschen. Das Ganze nochmal aufkochen lassen und dann 20 min. bei geringer Temperatur köcheln lassen. Jetzt das Ganze pürieren. Zum Schluss die Suppe mit Petersilie, Salz und Pfeffer abschmecken. Tipp: Man kann auch Speck mit anbraten. Um es noch fettärmer zu machen, komplett mit Milch statt Sahne zubereiten.');
+  ('Kartoffel Möhren Suppe', 'kartmoehrsup', 'Die Kartoffeln und Möhren schälen und in gleich große Scheiben hobeln oder schneiden. Die Zwiebel und den Knoblauch in Würfel schneiden. Die Zwiebel mit dem Knoblauch in der Butter anschwitzen. Danach Kartoffeln und Möhren beigeben und kurz mitschwitzen. Mit Gemüsebrühe, Sahne und Milch ablöschen. Das Ganze nochmal aufkochen lassen und dann 20 min. bei geringer Temperatur köcheln lassen. Jetzt das Ganze pürieren. Zum Schluss die Suppe mit Petersilie, Salz und Pfeffer abschmecken. Tipp: Man kann auch Speck mit anbraten. Um es noch fettärmer zu machen, komplett mit Milch statt Sahne zubereiten.'),
+  ('Geschmortes Olivenhähnchen',    'geschmorolivebockbock', 'Das Hähnchen mit einem schweren Messer in 8 Stücke zerteilen, bei Hähnchenschenkeln Ober- und Unterschenkel trennen. Die Hälfte der Thymianblättchen abzupfen. 5 Salbeiblätter, Rosmarinnadeln von 1 Zweig und 2 Knoblauchzehen fein hacken. Zitronenschale abreiben. Die gehackten Kräuter und den Knoblauch mit dem Zitronenabrieb und 3 EL Olivenöl mischen, über die Hähnchenteile geben und 30 Min. einziehen lassen. In der Zwischenzeit Schalotten und den restlichen Knoblauch pellen. Kartoffeln waschen und schälen. Das Kräuteröl von den Hähnchenteilen entfernen und aufheben. In einem Bräter 1 EL Olivenöl erhitzen, die Hähnchenteile darin hell anbraten, salzen und pfeffern, dann aus dem Fett nehmen und beiseitestellen. Jetzt Kartoffeln, Schalotten und Knoblauchzehen 5 Min. in dem Öl braten, salzen und pfeffern. Hähnchen und Kräuteröl in den Bräter geben. Rotwein, Zitronensaft und Tomatenmark verrühren mit dem Geflügelfond (Brühe) in den Bräter gießen. Lorbeerblätter halbieren und mit den restlichen Kräutern und den Oliven dazugeben. Den Bräter mit einem Deckel verschließen und das Hähnchen auf der untersten Schiene bei 200 Grad 35 - 40 Min. schmoren. Wenn die Kartoffeln weich sind, die Hähnchenteile auf einen Grillrost legen und unter dem Grill in ca. 5 - 10 Min. bei 200 Grad kross grillen. Eventuell die Hähnchenteile mit Pfeffer und Salz nachwürzen. Aus der Sauce die Lorbeerblätter und Rosmarinstängel fischen. Die Sauce abschmecken. Mit Baguette oder Ciabatta und gemischtem Salat servieren.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -71,7 +72,7 @@ INSERT INTO Ingredients(Name)
 VALUES
   ('Tomate'),         -- 1
   ('Mozarella'),      -- 2
-  ('Öl'),             -- 3
+  ('Olivenöl'),       -- 3
   ('Essig'),          -- 4
   ('Blattsalatkopf'), -- 5
   ('Karotte'),        -- 6
@@ -127,7 +128,20 @@ VALUES
   ('Speisestärke'),   -- 56
   ('Muskat'),         -- 57
   ('Raffiniertes Öl'),-- 58
-  ('Kartoffel');      -- 60
+  ('Kartoffel'),      -- 60
+  ('Hähnchenschenkel'),-- 61
+  ('Thymian'),        -- 62
+  ('Salbei'),         -- 63
+  ('Rosmarin'),       -- 64
+  ('Lorbeerblätter'), -- 65
+  ('Zitronenschale'), -- 66
+  ('Tomatenmark'),    -- 67
+  ('Schalotten'),     -- 68
+  ('kleine Kartoffeln'),--69
+  ('Rotwein'),        -- 70
+  ('Hühnerbrühe'),    -- 71
+  ('schwarze Oliven'),-- 72
+  ('Zitronensaft');   -- 73
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -237,7 +251,22 @@ VALUES
   (18,  54,  500, 'ml'),
   (18,  23,    1, 'Becher'),
   (18,  47,  300, 'ml'),
-  (18,  50,    1, 'Prise');
+  (18,  50,    1, 'Prise'),
+  (19,  61,    2, NULL),
+  (19,  62,  0.5, 'Bund'),
+  (19,  63,    5, 'Blätter'),
+  (19,  30,  0.5, 'Knoblauch'),
+  (19,  64,  1.5, 'Zweige'),
+  (19,   3,    2, 'EL'),
+  (19,  65,  1.5, NULL),
+  (19,  66,  0.5, 'EL'),
+  (19,  67,  0.5, 'EL'),
+  (19,  68,  125, 'g'),
+  (19,  69,  250, 'g'),
+  (19,  70,  100, 'ml'),
+  (19,  71,  100, 'ml'),
+  (19,  72,   75, 'g'),
+  (19,  73,    1, 'EL');
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
