@@ -55,7 +55,9 @@ VALUES
 Butter in einer Pfanne erhitzen und die Kartoffelscheiben darin goldgelb braten. Zwiebel- sowie Schinkenwürfel zugeben und leicht anbraten. Alles mit Salz, Pfeffer und Paprikapulver würzen. Die Kartoffeln in eine Auflaufform füllen.
 Nun wieder Butter in der Pfanne erhitzen und die Schnitzel bei mittlerer Hitze von beiden Seite in gut 3 Min. gar braten. Mit Salz und Pfeffer bestreuen und auf die Bratkartoffeln legen.
 Jetzt Crème fraîche mit Milch in eine Schlüssel geben und alles glatt rühren. Gouda zugeben und untermischen. Diese Masse ebenfalls mit Salz, Pfeffer und Paprikapulver würzen und dann Petersilie und Schnittlauch unterrühren. Die Creme auf die Schnitzel geben und verstreichen.
-In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überbacken.');
+In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überbacken.'),
+  ('Bandnudeln mit frischem Spinat und Lachs', 'bandnudeln-lachs', 'Die Nudeln nach Gebrauchsanweisung kochen - Achtung, frische Nudeln brauchen nur 2-3 Minuten (also aufs Timing achten)! Den Spinat von Stängeln (bis zum Blattanfang) befreien und gründlich waschen. Sand bekommt man am besten raus, indem man den Spinat in Wasser legt und nicht nur abbraust. Die Zwiebel in Ringe schneiden, in eine Pfanne mit hohem Rand und Deckel mit dem Öl geben und bei kleiner bis mittlerer Hitze glasig dünsten
+  (nicht braten). Gemüsebrühe mit Wasser mischen und dazu gießen (alternativ geht auch Weißwein statt Brühe). Den Knoblauch schälen, in möglichst kleine Stückchen schneiden und in die Pfanne geben. Nun den Spinat dazugeben. Evtl. geht das nur nach und nach, er fällt aber schnell in sich zusammen, so dass nachgelegt werden kann, falls die Pfanne nicht groß genug ist. Den Räucherlachs in Stücke schneiden und dazugeben, sobald der Spinat komplett in sich zusammengefallen ist. Alternativ zum'' Räucherlachs geht auch frischer Lachs, der auf die gleiche Weise einfach gewürfelt und noch roh dazugegeben werden kann. Etwas Flüssigkeit abnehmen und in einer Tasse mit der Stärke mischen, bis sie sich löst. Dieses Gemisch wieder in die Pfanne geben, ebenso den Becher Cremefine oder Schmand. Mit Pfeffer, Salz und (am besten frisch geriebener) Muskatnuss würzen Die Nudeln abgießen, untermischen und servieren.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -76,7 +78,7 @@ VALUES
   ('Hühnerbrust'),    -- 9
   ('Reis'),           -- 10
   ('Brot'),           -- 11
-  ('Lachs'),          -- 12
+  ('Räucherlachs'),   -- 12
   ('Gemüsekack'),     -- 13
   ('Eier'),           -- 14
   ('Mehl'),           -- 15
@@ -115,7 +117,14 @@ VALUES
   ('Gouda'),          -- 48
   ('Schnittlauch'),   -- 49
   ('Petersilie'),     -- 50
-  ('Paprikapulver');  -- 51
+  ('Paprikapulver'),  -- 51
+  ('Bandnudeln'),     -- 52
+  ('Blattspinat'),    -- 53
+  ('Gemüsebrühe'),    -- 54
+  ('Wasser'),         -- 55
+  ('Speisestärke'),   -- 56
+  ('Muskat'),         -- 57
+  ('raffiniertes Öl');-- 58
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -205,7 +214,18 @@ VALUES
   (16,  48,   30, 'g'),
   (16,  49,    1, 'EL'),
   (16,  50,  0.5, 'EL'),
-  (16,  51,    1, 'Prise');
+  (16,  51,    1, 'Prise'),
+  (17,  52,  300, 'g'),
+  (17,  53,  250, 'g'),
+  (17,   8,  0.5, NULL),
+  (17,  30,    1, 'Zehe'),
+  (17,  54,  0.5, 'TL'),
+  (17,  55, 62.5, 'ml'),
+  (17,  12,  0.5, 'Packet'),
+  (17,  46,  0.5, 'Becher'),
+  (17,  56,  0.5, 'TL'),
+  (17,  58,    1, 'EL'),
+  (17,  57,    1, 'Prise');
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
