@@ -91,7 +91,7 @@ class PlanViewController: UIViewController {
         
         var indexPaths = iPaths
         // Get scheduled
-        if let scheduledDishes = Database.shared.getScheduled(forDate: currentDate) {
+        if let scheduledDishes = Database.shared.getScheduled(forDate: Database.shared.currentDate) {
             // Delete from database
             indexPaths.forEach {ipath in Database.shared.deleteSchedule(entry: scheduledDishes[ipath.row]) }
 
@@ -111,19 +111,23 @@ class PlanViewController: UIViewController {
     func addToSchedule(sender: UIButton?) {
         // Present slide over menu from bottom  
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
             [unowned self] alertAction in
-            let genDishContr: GenerateDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "GenerateDish"))! as! GenerateDishViewController
-            genDishContr.currentDate = self.currentDate
-            self.show(genDishContr, sender: self)
+            let chooseDishController: ChooseDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewController
+            chooseDishController.add(dishes: Database.shared.getRandomDishes(amount: 5))
+            self.show(chooseDishController, sender: self)
         }
-        //let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
-        //    alertAction in
-        //    print("Choose manual action")
-        //}
+        
+        let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
+            alertAction in
+            let chooseDishController: ChooseDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewController
+            chooseDishController.add(dishes: Database.shared.getAllDishes())
+            self.show(chooseDishController, sender: self)
+        }
         let cancelDishAction = UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil)
         controller.addAction(generateDishAction)
-        //controller.addAction(chooseManualAction)
+        controller.addAction(chooseManualAction)
         controller.addAction(cancelDishAction)
         controller.preferredAction = generateDishAction
         present(controller, animated: true, completion: nil)
@@ -161,7 +165,6 @@ class PlanViewController: UIViewController {
     
     // Collection of all alerts that could not be presented earlier
     var databaseError: (() -> Void)?
-    var currentDate: Date = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,8 +183,8 @@ class PlanViewController: UIViewController {
         // Select new date
         var components = DateComponents()
         components.day = -1
-        currentDate = Calendar.current.date(byAdding: components, to: currentDate)!
-        calendarView.select(currentDate, scrollToDate: true)
+        Database.shared.currentDate = Calendar.current.date(byAdding: components, to: Database.shared.currentDate)!
+        calendarView.select(Database.shared.currentDate, scrollToDate: true)
         
         // Reload tableview
         tableView.reloadSections(IndexSet(integer: 0), with: .right)
@@ -194,8 +197,8 @@ class PlanViewController: UIViewController {
         // Select new date
         var components = DateComponents()
         components.day = 1
-        currentDate = Calendar.current.date(byAdding: components, to: currentDate)!
-        calendarView.select(currentDate, scrollToDate: true)
+        Database.shared.currentDate = Calendar.current.date(byAdding: components, to: Database.shared.currentDate)!
+        calendarView.select(Database.shared.currentDate, scrollToDate: true)
         
         // Reload tableview
         tableView.reloadSections(IndexSet(integer: 0), with: .left)
@@ -255,7 +258,7 @@ extension PlanViewController: FSCalendarDataSource {
 extension PlanViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // Update current date
-        currentDate = date
+        Database.shared.currentDate = date
         
         // Make sure correct month is scrolled into view for date
         if monthPosition == .next || monthPosition == .previous {
@@ -289,7 +292,7 @@ extension PlanViewController: UITableViewDelegate {
         } else {
             tableView.deselectRow(at: indexPath, animated: true)
             let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail"))! as! DishDetailViewController
-            dishDetailView.dish = Database.shared.getDish(forId: (Database.shared.getScheduled(forDate: self.currentDate)?[indexPath.row].dishId)!)
+            dishDetailView.dish = Database.shared.getDish(forId: (Database.shared.getScheduled(forDate: Database.shared.currentDate)?[indexPath.row].dishId)!)
             self.show(dishDetailView, sender: self)
         }
     }
@@ -308,7 +311,7 @@ extension PlanViewController: UITableViewDelegate {
 extension PlanViewController: UITableViewDataSource {
     // Calculates number of dishes that should currently be displayed
     func numberOfCurrentDishes() -> Int {
-        return Database.shared.getScheduled(forDate: currentDate)?.count ?? 0
+        return Database.shared.getScheduled(forDate: Database.shared.currentDate)?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -368,7 +371,7 @@ extension PlanViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "EventTableCell") as! EventTableViewCell
             
             // Obtain scheduled for index path
-            let scheduled = Database.shared.getScheduled(forDate: currentDate)?[indexPath.row]
+            let scheduled = Database.shared.getScheduled(forDate: Database.shared.currentDate)?[indexPath.row]
             
             // retrieve actual dish
             let dish = Database.shared.getDish(forId: (scheduled?.dishId)!)

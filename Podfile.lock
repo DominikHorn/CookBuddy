@@ -1,14 +1,14 @@
 PODS:
-  - FSCalendar (2.7.4)
-  - GRDB.swift (0.106.1)
+  - FSCalendar (2.7.7)
+  - GRDB.swift (0.108.0)
 
 DEPENDENCIES:
   - FSCalendar
   - GRDB.swift
 
 SPEC CHECKSUMS:
-  FSCalendar: e95995a746acae531c4a7dd636b8393233125ec5
-  GRDB.swift: 55f0c6d9c2cffa2330c7acf6b033732400322c18
+  FSCalendar: 8bda3534e8590b87124af9a236887314e0359a27
+  GRDB.swift: 28676d9fd5bad32e9b1c9cf563906fdefe493004
 
 PODFILE CHECKSUM: 10ef9801ba9827c2299f81903ec4c044ff9c7e1e
 
