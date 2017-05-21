@@ -67,13 +67,11 @@ extension ChooseDishViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        // Load and configure dish detail view
         let dishDetailView = (storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
+        dishDetailView.dish = shouldFilter() ? filteredDishes[indexPath.row] : dishes[indexPath.row]
+        dishDetailView.canAdd = true
         
-        if shouldFilter() {
-            dishDetailView.dish = filteredDishes[indexPath.row]
-        } else {
-            dishDetailView.dish = dishes[indexPath.row]
-        }
         show(dishDetailView, sender: self)
     }
 }

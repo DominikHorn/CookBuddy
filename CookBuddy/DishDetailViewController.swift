@@ -32,7 +32,6 @@ class DishDetailViewController: UIViewController {
             var newFrame = dishDescription.frame
             newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
             dishDescription.frame = newFrame;
-
         }
     }
     @IBOutlet weak var dishImage: UIImageView! {
@@ -43,6 +42,21 @@ class DishDetailViewController: UIViewController {
     
     // dish to be displayed in detail
     var dish: Dish?
+    
+    var canAdd: Bool = false {
+        didSet {
+            if canAdd {
+                navigationItem.setRightBarButton(addButton, animated: true)
+            } else {
+                navigationItem.setRightBarButton(nil, animated: false)
+            }
+        }
+    }
+    
+    lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToSchedule(sender:)))
+    func addToSchedule(sender: UIBarButtonItem) {
+        print("Adding to schedule")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
