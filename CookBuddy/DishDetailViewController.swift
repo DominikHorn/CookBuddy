@@ -43,19 +43,20 @@ class DishDetailViewController: UIViewController {
     // dish to be displayed in detail
     var dish: Dish?
     
-    var canAdd: Bool = false {
-        didSet {
-            if canAdd {
-                navigationItem.setRightBarButton(addButton, animated: true)
-            } else {
-                navigationItem.setRightBarButton(nil, animated: false)
-            }
-        }
-    }
+    // Whether or not this dish detail is used for adding
+    var canAdd: Bool = false
     
-    lazy var addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToSchedule(sender:)))
+    // Triggered by add button
     func addToSchedule(sender: UIBarButtonItem) {
         print("Adding to schedule")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if (canAdd) {
+            navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToSchedule(sender:))), animated: true)
+        }
     }
     
     override func viewDidLoad() {
