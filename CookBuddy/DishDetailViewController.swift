@@ -39,6 +39,8 @@ class DishDetailViewController: UIViewController {
             dishImage.image = dish?.image
         }
     }
+    fileprivate var timeCell: TimePickerCell?
+    fileprivate var numberCell: NumberPickerCell?
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             // Remove trailing empty cells
@@ -55,7 +57,13 @@ class DishDetailViewController: UIViewController {
     
     // Triggered by add button
     func addToSchedule(sender: UIBarButtonItem) {
-        print("Adding to schedule")
+        // Obtain number of people
+        let numberOfPeople = numberCell?.number ?? 3
+        let date = timeCell?.currentDate ?? Date()
+        
+        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date, dishId: (dish?.id)!, numberOfPeople: numberOfPeople))
+        
+        navigationController?.popViewController(animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,7 +117,7 @@ class DishDetailViewController: UIViewController {
 
 // MARK:-- Tableview delegate
 extension DishDetailViewController: UITableViewDelegate {
-    
+    // empty for now
 }
 
 extension DishDetailViewController: UITableViewDataSource {
@@ -123,10 +131,12 @@ extension DishDetailViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell") as! NumberPickerCell
             cell.prefix = "Personenanzahl"
             cell.number = 3
+            numberCell = cell
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell") as! TimePickerCell
             cell.currentDate = Database.shared.currentDate
+            timeCell = cell
             return cell
         default:
             print("Error invalid index for table view")
