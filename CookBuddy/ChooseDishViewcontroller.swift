@@ -45,7 +45,12 @@ class ChooseDishViewcontroller: UIViewController {
 }
 
 extension ChooseDishViewcontroller: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
+        dishDetailView.dish = dishes[indexPath.row]
+        self.show(dishDetailView, sender: self)
+    }
 }
 
 extension ChooseDishViewcontroller: UITableViewDataSource {
