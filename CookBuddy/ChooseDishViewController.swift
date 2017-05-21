@@ -10,6 +10,10 @@ import UIKit
 
 class ChooseDishViewController: UIViewController {
     fileprivate var dishes = [Dish]()
+    fileprivate var filteredDishes = [Dish]()
+    
+    // Search controller
+    let searchController = UISearchController(searchResultsController: nil)
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -30,12 +34,20 @@ class ChooseDishViewController: UIViewController {
             }
         }
         
+        // filter dishes if a filter string is present
+        filterData()
+        
         // Force tableview to reload
         tableView?.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,9 +59,13 @@ class ChooseDishViewController: UIViewController {
 extension ChooseDishViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
+        
+        // TODO: Fix Properly
+        self.searchController.isActive = false
+        
+        let dishDetailView = (storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
         dishDetailView.dish = dishes[indexPath.row]
-        self.show(dishDetailView, sender: self)
+        show(dishDetailView, sender: self)
     }
 }
 
@@ -58,15 +74,40 @@ extension ChooseDishViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DishTableCell") as! DishTableViewCell
         
         // Current dish
-        let d = dishes[indexPath.row]
+        var d: Dish
+        if searchController.isActive && searchController.searchBar.text != "" {
+            d = filteredDishes[indexPath.row]
+        } else {
+            d = dishes[indexPath.row]
+        }
         
         cell.dishImage?.image = d.image
         cell.label.text = d.name
-
+        
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
+            return filteredDishes.count
+        }
+        
         return dishes.count
+    }
+}
+
+// MARK:-- Search bar filtering
+extension ChooseDishViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredDishes = dishes.filter { dish in
+            return dish.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
+        }
+        
+        tableView.reloadData()
+    }
+    
+    func filterData() {
+        // TODO
+        
     }
 }
