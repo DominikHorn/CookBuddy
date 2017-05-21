@@ -119,13 +119,15 @@ class PlanViewController: UIViewController {
             self.show(chooseDishController, sender: self)
         }
         
-        //let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
-        //    alertAction in
-        //    print("Choose manual action")
-        //}
+        let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
+            alertAction in
+            let chooseDishController: ChooseDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewController
+            chooseDishController.add(dishes: Database.shared.getAllDishes())
+            self.show(chooseDishController, sender: self)
+        }
         let cancelDishAction = UIAlertAction(title: "Abbrechen", style: .cancel, handler: nil)
         controller.addAction(generateDishAction)
-        //controller.addAction(chooseManualAction)
+        controller.addAction(chooseManualAction)
         controller.addAction(cancelDishAction)
         controller.preferredAction = generateDishAction
         present(controller, animated: true, completion: nil)
