@@ -18,6 +18,9 @@ class Database {
         
         return instance
     }()
+    
+    // Globally shared current date (TODO: come up with better data flow)
+    var currentDate: Date
 
     // Whether or not updates have occured on the database since last queried
     private var _updatesOccured: Bool = false
@@ -36,6 +39,8 @@ class Database {
     }
     
     init() {
+        currentDate = Date()
+        
         // Copy database to documents if necessary
         let fileManager = FileManager.default
         let bundlePath = Bundle.main.path(forResource: "cookbuddy_test", ofType: "sqlite")!

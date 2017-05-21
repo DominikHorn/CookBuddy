@@ -273,10 +273,10 @@
             </objects>
             <point key="canvasLocation" x="2550" y="-699"/>
         </scene>
-        <!--Zubereitung-->
+        <!--Detail-->
         <scene sceneID="25a-rC-GfV">
             <objects>
-                <viewController storyboardIdentifier="DishDetail" title="Zubereitung" id="enx-hW-Ruk" customClass="DishDetailViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DishDetail" title="Detail" id="enx-hW-Ruk" customClass="DishDetailViewController" customModule="CookBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BPF-J0-IQv"/>
                         <viewControllerLayoutGuide type="bottom" id="EtK-3A-WNQ"/>
@@ -289,7 +289,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="unP-fM-fWZ">
-                                        <rect key="frame" x="0.0" y="-64" width="375" height="545"/>
+                                        <rect key="frame" x="0.0" y="-64" width="375" height="755"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9aY-cv-Nwj">
                                                 <rect key="frame" x="10" y="54" width="355" height="271"/>
@@ -313,17 +313,83 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-DM-xnX">
+                                                <rect key="frame" x="10" y="545" width="355" height="200"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="200" id="uSy-Xb-cGW"/>
+                                                </constraints>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NumberCell" id="9JU-t1-bbU" customClass="NumberPickerCell" customModule="CookBuddy" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="28" width="355" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9JU-t1-bbU" id="Uhf-jz-uZf">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-KH-Bw6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="xVM-KH-Bw6" firstAttribute="leading" secondItem="Uhf-jz-uZf" secondAttribute="leading" id="5wm-Zp-pMf"/>
+                                                                <constraint firstAttribute="bottom" secondItem="xVM-KH-Bw6" secondAttribute="bottom" id="SGx-cv-Akw"/>
+                                                                <constraint firstAttribute="trailing" secondItem="xVM-KH-Bw6" secondAttribute="trailing" id="Wq6-fD-ff8"/>
+                                                                <constraint firstItem="xVM-KH-Bw6" firstAttribute="top" secondItem="Uhf-jz-uZf" secondAttribute="top" id="urZ-NF-QIA"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="numberPickerField" destination="xVM-KH-Bw6" id="VHl-pi-fz0"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TimeCell" id="XJX-aW-FKU" customClass="TimePickerCell" customModule="CookBuddy" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="72" width="355" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XJX-aW-FKU" id="v7U-kR-Rlb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW4-yG-MF9">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="qW4-yG-MF9" firstAttribute="leading" secondItem="v7U-kR-Rlb" secondAttribute="leading" id="Kd9-kY-mxf"/>
+                                                                <constraint firstItem="qW4-yG-MF9" firstAttribute="top" secondItem="v7U-kR-Rlb" secondAttribute="top" id="Zpe-l1-zdg"/>
+                                                                <constraint firstAttribute="bottom" secondItem="qW4-yG-MF9" secondAttribute="bottom" id="e73-PV-s1Q"/>
+                                                                <constraint firstAttribute="trailing" secondItem="qW4-yG-MF9" secondAttribute="trailing" id="nzm-jP-guG"/>
+                                                            </constraints>
+                                                        </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="timePickerField" destination="qW4-yG-MF9" id="Gvy-Ls-xGp"/>
+                                                        </connections>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="enx-hW-Ruk" id="JKy-hs-gce"/>
+                                                    <outlet property="delegate" destination="enx-hW-Ruk" id="ZnZ-Li-nWl"/>
+                                                </connections>
+                                            </tableView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="kaD-8z-kD3" secondAttribute="trailing" constant="10" id="5UU-XY-ih1"/>
+                                            <constraint firstAttribute="bottom" secondItem="9fo-DM-xnX" secondAttribute="bottom" constant="10" id="E0C-l7-Gdn"/>
                                             <constraint firstAttribute="trailing" secondItem="OUF-KV-9kj" secondAttribute="trailing" constant="10" id="Ene-w8-kxz"/>
+                                            <constraint firstItem="9fo-DM-xnX" firstAttribute="leading" secondItem="unP-fM-fWZ" secondAttribute="leading" constant="10" id="EtC-ad-RaR"/>
                                             <constraint firstItem="OUF-KV-9kj" firstAttribute="top" secondItem="9aY-cv-Nwj" secondAttribute="bottom" constant="10" id="H8U-kT-hPW"/>
                                             <constraint firstItem="9aY-cv-Nwj" firstAttribute="leading" secondItem="unP-fM-fWZ" secondAttribute="leading" constant="10" id="Mdd-KB-1S8"/>
-                                            <constraint firstAttribute="bottom" secondItem="OUF-KV-9kj" secondAttribute="bottom" constant="10" id="PK4-ez-LWd"/>
                                             <constraint firstItem="9aY-cv-Nwj" firstAttribute="top" secondItem="kaD-8z-kD3" secondAttribute="bottom" constant="10" id="Sui-mp-wY2"/>
                                             <constraint firstItem="kaD-8z-kD3" firstAttribute="leading" secondItem="unP-fM-fWZ" secondAttribute="leading" constant="10" id="XiO-KY-EdG"/>
                                             <constraint firstItem="OUF-KV-9kj" firstAttribute="leading" secondItem="unP-fM-fWZ" secondAttribute="leading" constant="10" id="YcG-5m-JSN"/>
+                                            <constraint firstItem="9fo-DM-xnX" firstAttribute="top" secondItem="OUF-KV-9kj" secondAttribute="bottom" constant="10" id="bsT-Ke-njU"/>
+                                            <constraint firstAttribute="trailing" secondItem="9fo-DM-xnX" secondAttribute="trailing" constant="10" id="dcF-YM-15M"/>
                                             <constraint firstAttribute="trailing" secondItem="9aY-cv-Nwj" secondAttribute="trailing" constant="10" id="pHj-ds-gcd"/>
                                             <constraint firstItem="kaD-8z-kD3" firstAttribute="top" secondItem="unP-fM-fWZ" secondAttribute="top" constant="10" id="uDx-65-pAG"/>
                                         </constraints>
@@ -353,6 +419,8 @@
                         <outlet property="dishDescription" destination="OUF-KV-9kj" id="wwm-6g-im0"/>
                         <outlet property="dishImage" destination="9aY-cv-Nwj" id="UHO-SL-RWP"/>
                         <outlet property="dishTitel" destination="kaD-8z-kD3" id="I68-9O-y8P"/>
+                        <outlet property="scrollView" destination="VLc-1o-jPk" id="Gr6-KA-YPM"/>
+                        <outlet property="tableView" destination="9fo-DM-xnX" id="VlJ-G3-neF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uiA-U1-KO2" userLabel="First Responder" sceneMemberID="firstResponder"/>

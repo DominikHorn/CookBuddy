@@ -39,6 +39,13 @@ class DishDetailViewController: UIViewController {
             dishImage.image = dish?.image
         }
     }
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            // Remove trailing empty cells
+            tableView.tableFooterView = UIView()
+        }
+    }
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // dish to be displayed in detail
     var dish: Dish?
@@ -56,15 +63,75 @@ class DishDetailViewController: UIViewController {
         
         if (canAdd) {
             navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToSchedule(sender:))), animated: true)
+            tableView.frame = CGRect(origin: tableView.frame.origin, size: CGSize(width: tableView.frame.width, height: 200))
+            tableView.isHidden = false;
+        } else {
+            tableView.frame = CGRect(origin: tableView.frame.origin, size: CGSize(width: tableView.frame.width, height: 0))
+            tableView.isHidden = true;
         }
+        scrollView.layoutIfNeeded()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Add observer for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboards(recognizer:)))
+        view.addGestureRecognizer(tapRecognizer)
+    }
+    
+    // MARK:- Keyboard/Input handeling
+    func dismissKeyboards(recognizer: UIGestureRecognizer) {
+        self.view.endEditing(true)
+    }
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y == 0 {
+                view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if view.frame.origin.y != 0 {
+                view.frame.origin.y += keyboardSize.height
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+}
+
+// MARK:-- Tableview delegate
+extension DishDetailViewController: UITableViewDelegate {
+    
+}
+
+extension DishDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NumberCell") as! NumberPickerCell
+            cell.prefix = "Personenanzahl"
+            cell.number = 3
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TimeCell") as! TimePickerCell
+            cell.currentDate = Database.shared.currentDate
+            return cell
+        default:
+            print("Error invalid index for table view")
+        }
+        
+        return UITableViewCell()
     }
 }
