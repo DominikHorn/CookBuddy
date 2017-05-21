@@ -313,7 +313,7 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-DM-xnX">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9fo-DM-xnX">
                                                 <rect key="frame" x="10" y="545" width="355" height="200"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -327,15 +327,15 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-KH-Bw6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
-                                                                    <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xVM-KH-Bw6">
+                                                                    <rect key="frame" x="10" y="0.0" width="345" height="43.5"/>
+                                                                    <color key="textColor" red="0.0" green="0.39670656319999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="xVM-KH-Bw6" firstAttribute="leading" secondItem="Uhf-jz-uZf" secondAttribute="leading" id="5wm-Zp-pMf"/>
+                                                                <constraint firstItem="xVM-KH-Bw6" firstAttribute="leading" secondItem="Uhf-jz-uZf" secondAttribute="leading" constant="10" id="5wm-Zp-pMf"/>
                                                                 <constraint firstAttribute="bottom" secondItem="xVM-KH-Bw6" secondAttribute="bottom" id="SGx-cv-Akw"/>
                                                                 <constraint firstAttribute="trailing" secondItem="xVM-KH-Bw6" secondAttribute="trailing" id="Wq6-fD-ff8"/>
                                                                 <constraint firstItem="xVM-KH-Bw6" firstAttribute="top" secondItem="Uhf-jz-uZf" secondAttribute="top" id="urZ-NF-QIA"/>
@@ -352,15 +352,15 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW4-yG-MF9">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="355" height="43.5"/>
-                                                                    <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qW4-yG-MF9">
+                                                                    <rect key="frame" x="10" y="0.0" width="345" height="43.5"/>
+                                                                    <color key="textColor" red="0.0" green="0.39670656319999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="qW4-yG-MF9" firstAttribute="leading" secondItem="v7U-kR-Rlb" secondAttribute="leading" id="Kd9-kY-mxf"/>
+                                                                <constraint firstItem="qW4-yG-MF9" firstAttribute="leading" secondItem="v7U-kR-Rlb" secondAttribute="leading" constant="10" id="Kd9-kY-mxf"/>
                                                                 <constraint firstItem="qW4-yG-MF9" firstAttribute="top" secondItem="v7U-kR-Rlb" secondAttribute="top" id="Zpe-l1-zdg"/>
                                                                 <constraint firstAttribute="bottom" secondItem="qW4-yG-MF9" secondAttribute="bottom" id="e73-PV-s1Q"/>
                                                                 <constraint firstAttribute="trailing" secondItem="qW4-yG-MF9" secondAttribute="trailing" id="nzm-jP-guG"/>
