@@ -96,21 +96,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="300" id="aBn-Vs-2yj"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="todayColor">
-                                        <color key="value" red="1" green="0.26032320231184636" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="firstWeekday">
-                                        <integer key="value" value="2"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="allowsMultipleSelection" value="NO"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="headerMinimumDissolvedAlpha">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineHeightMultiplier">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="Sf1-aq-5Hi" id="Pgh-00-Pr1"/>
                                     <outlet property="delegate" destination="Sf1-aq-5Hi" id="JrJ-Qd-NyL"/>
@@ -377,7 +362,7 @@
         <!--SettingsViewController-->
         <scene sceneID="jnx-jw-239">
             <objects>
-                <viewController id="tbO-iK-Pmp" userLabel="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="tbO-iK-Pmp" userLabel="SettingsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BfK-SS-hCn"/>
                         <viewControllerLayoutGuide type="bottom" id="36P-2g-jV6"/>
