@@ -62,7 +62,12 @@ extension ChooseDishViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         let dishDetailView = (storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
-        dishDetailView.dish = dishes[indexPath.row]
+        
+        if searchController.isActive && searchController.searchBar.text != "" {
+            dishDetailView.dish = filteredDishes[indexPath.row]
+        } else {
+            dishDetailView.dish = dishes[indexPath.row]
+        }
         show(dishDetailView, sender: self)
     }
 }
