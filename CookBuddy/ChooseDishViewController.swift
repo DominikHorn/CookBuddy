@@ -44,6 +44,7 @@ class ChooseDishViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.definesPresentationContext = true
         searchController.searchResultsUpdater = self
         searchController.dimsBackgroundDuringPresentation = false
         searchController.definesPresentationContext = true
@@ -59,9 +60,6 @@ class ChooseDishViewController: UIViewController {
 extension ChooseDishViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        // TODO: Fix Properly
-        self.searchController.isActive = false
         
         let dishDetailView = (storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
         dishDetailView.dish = dishes[indexPath.row]
@@ -99,15 +97,13 @@ extension ChooseDishViewController: UITableViewDataSource {
 // MARK:-- Search bar filtering
 extension ChooseDishViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filteredDishes = dishes.filter { dish in
-            return dish.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
-        }
-        
+        filterData()
         tableView.reloadData()
     }
     
     func filterData() {
-        // TODO
-        
+        filteredDishes = dishes.filter { dish in
+            return dish.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
+        }
     }
 }
