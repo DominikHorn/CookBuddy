@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseDishViewcontroller: UIViewController {
+class ChooseDishViewController: UIViewController {
     fileprivate var dishes = [Dish]()
     
     @IBOutlet weak var tableView: UITableView! {
@@ -44,7 +44,7 @@ class ChooseDishViewcontroller: UIViewController {
     }
 }
 
-extension ChooseDishViewcontroller: UITableViewDelegate {
+extension ChooseDishViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let dishDetailView = (self.storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
@@ -53,7 +53,7 @@ extension ChooseDishViewcontroller: UITableViewDelegate {
     }
 }
 
-extension ChooseDishViewcontroller: UITableViewDataSource {
+extension ChooseDishViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DishTableCell") as! DishTableViewCell
         

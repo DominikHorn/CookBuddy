@@ -114,7 +114,7 @@ class PlanViewController: UIViewController {
         
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
             [unowned self] alertAction in
-            let chooseDishController: ChooseDishViewcontroller = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewcontroller
+            let chooseDishController: ChooseDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewController
             chooseDishController.add(dishes: Database.shared.getRandomDishes(amount: 5))
             self.show(chooseDishController, sender: self)
         }
