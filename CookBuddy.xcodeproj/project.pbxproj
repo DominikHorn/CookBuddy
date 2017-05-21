@@ -21,9 +21,9 @@
 		B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */; };
 		B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */; };
 		B4583D601EA907AD00F1EC6B /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5F1EA907AD00F1EC6B /* ShoppingListItem.swift */; };
+		B48CBCD91ECE33BB00C58E68 /* ChooseDishViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48CBCD81ECE33BB00C58E68 /* ChooseDishViewcontroller.swift */; };
 		B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */; };
 		B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA31791E9D34400060471E /* AppDelegate.swift */; };
-		B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */; };
 		B4CA317F1E9D34400060471E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA317D1E9D34400060471E /* Main.storyboard */; };
 		B4CA31811E9D34400060471E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31801E9D34400060471E /* Assets.xcassets */; };
 		B4CA31841E9D34400060471E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B4CA31821E9D34400060471E /* LaunchScreen.storyboard */; };
@@ -32,6 +32,7 @@
 		B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DC46341EA3B0BD00339CBF /* Ingredient.swift */; };
 		B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */; };
 		B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */; };
+		B4F9F9931ED1CB4C00F6F7B8 /* DishTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F9F9921ED1CB4C00F6F7B8 /* DishTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,10 +68,10 @@
 		B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
 		B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerCell.swift; sourceTree = "<group>"; };
 		B4583D5F1EA907AD00F1EC6B /* ShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
+		B48CBCD81ECE33BB00C58E68 /* ChooseDishViewcontroller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDishViewcontroller.swift; sourceTree = "<group>"; };
 		B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyMessageTableViewCell.swift; sourceTree = "<group>"; };
 		B4CA31761E9D34400060471E /* CookBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CookBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4CA31791E9D34400060471E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateDishViewController.swift; sourceTree = "<group>"; };
 		B4CA317E1E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B4CA31801E9D34400060471E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B4CA31831E9D34400060471E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +85,7 @@
 		B4DC46341EA3B0BD00339CBF /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleEntry.swift; sourceTree = "<group>"; };
 		B4DCBFEC1EA2999800BCA909 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
+		B4F9F9921ED1CB4C00F6F7B8 /* DishTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DishTableViewCell.swift; sourceTree = "<group>"; };
 		D02BCB656C88C079596EBB3C /* Pods-CookBuddy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.release.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.release.xcconfig"; sourceTree = "<group>"; };
 		E9B93787B92560EAE94E60D1 /* Pods-CookBuddy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CookBuddy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CookBuddy/Pods-CookBuddy.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,11 +145,11 @@
 		B41236171EA12BCA003EEEB8 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B4CA317B1E9D34400060471E /* GenerateDishViewController.swift */,
 				B41236121EA12795003EEEB8 /* ShoppingViewController.swift */,
 				B41236141EA12AC3003EEEB8 /* SettingsViewController.swift */,
 				B4278ABA1EA130A800945FE5 /* PlanViewController.swift */,
 				B41154A01EA56C5100D21FC1 /* DishDetailViewController.swift */,
+				B48CBCD81ECE33BB00C58E68 /* ChooseDishViewcontroller.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -238,6 +240,7 @@
 				B40106BF1EA57BA100193882 /* ShoppingListCell.swift */,
 				B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */,
 				B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */,
+				B4F9F9921ED1CB4C00F6F7B8 /* DishTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -436,12 +439,13 @@
 				B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */,
 				B445DBF81E9FB0D000F5550D /* Database.swift in Sources */,
 				B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */,
-				B4CA317C1E9D34400060471E /* GenerateDishViewController.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
 				B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
 				B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */,
+				B48CBCD91ECE33BB00C58E68 /* ChooseDishViewcontroller.swift in Sources */,
+				B4F9F9931ED1CB4C00F6F7B8 /* DishTableViewCell.swift in Sources */,
 				B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
 				B4583D601EA907AD00F1EC6B /* ShoppingListItem.swift in Sources */,

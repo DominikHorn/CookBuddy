@@ -111,12 +111,14 @@ class PlanViewController: UIViewController {
     func addToSchedule(sender: UIButton?) {
         // Present slide over menu from bottom  
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
         let generateDishAction = UIAlertAction(title: "Automatisch generieren", style: .default) {
             [unowned self] alertAction in
-            let genDishContr: GenerateDishViewController = (self.storyboard?.instantiateViewController(withIdentifier: "GenerateDish"))! as! GenerateDishViewController
-            genDishContr.currentDate = self.currentDate
-            self.show(genDishContr, sender: self)
+            let chooseDishController: ChooseDishViewcontroller = (self.storyboard?.instantiateViewController(withIdentifier: "ChooseDish"))! as! ChooseDishViewcontroller
+            chooseDishController.add(dishes: Database.shared.getRandomDishes(amount: 5))
+            self.show(chooseDishController, sender: self)
         }
+        
         //let chooseManualAction = UIAlertAction(title: "Manuel wählen", style: .default) {
         //    alertAction in
         //    print("Choose manual action")

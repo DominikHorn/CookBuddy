@@ -202,7 +202,7 @@ class Database {
         }
     }
     
-    // Retrieve dish for id
+    // Retrieve dish for id SQL-INJECTION VULNERABLE
     func getDish(forId id: Int) -> Dish! {
         var dish: Dish?
         do {
@@ -234,5 +234,36 @@ class Database {
         }
         
         return dish
+    }
+    
+    // TODO: this is rather temporary
+    func getRandomDishes(amount: Int) -> [Dish] {
+        // Obtain id range
+        var maxID: Int = 1
+        do {
+            try dbQueue?.inDatabase {
+                db in
+                let rows = try Row.fetchCursor(db, "SELECT max(DishID) as max FROM dishes")
+                maxID = (try rows.next()?.value(named: "max"))!
+            }
+        } catch {
+            print("ERROR: Database broken in \(#function)")
+        }
+
+        // Generate [amount] random indices witin [1, maxId]. Make sure they are actually random
+        var tmp = [Int]()
+        for i in 1...maxID {
+            tmp.append(i)
+        }
+        
+        // Obtain amount many random dishes
+        var dishes = [Dish]()
+        for _ in 0..<amount {
+            let index: Int = Int(arc4random_uniform(UInt32(tmp.count)))
+            dishes.append(getDish(forId: tmp[index]))
+            tmp.remove(at: index)
+        }
+        
+        return dishes
     }
 }
