@@ -14,6 +14,7 @@ class ChooseDishViewController: UIViewController {
     
     // Search controller
     let searchController = UISearchController(searchResultsController: nil)
+
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -55,6 +56,11 @@ class ChooseDishViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // Fix annoying console warning
+    deinit {
+        self.searchController.view.removeFromSuperview()
+    }
 }
 
 extension ChooseDishViewController: UITableViewDelegate {
@@ -63,7 +69,7 @@ extension ChooseDishViewController: UITableViewDelegate {
         
         let dishDetailView = (storyboard?.instantiateViewController(withIdentifier: "DishDetail")) as! DishDetailViewController
         
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if shouldFilter() {
             dishDetailView.dish = filteredDishes[indexPath.row]
         } else {
             dishDetailView.dish = dishes[indexPath.row]
@@ -78,7 +84,7 @@ extension ChooseDishViewController: UITableViewDataSource {
         
         // Current dish
         var d: Dish
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if shouldFilter() {
             d = filteredDishes[indexPath.row]
         } else {
             d = dishes[indexPath.row]
@@ -91,7 +97,7 @@ extension ChooseDishViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != "" {
+        if shouldFilter() {
             return filteredDishes.count
         }
         
@@ -106,9 +112,15 @@ extension ChooseDishViewController: UISearchResultsUpdating {
         tableView.reloadData()
     }
     
+    func shouldFilter() -> Bool {
+        return searchController.isActive && searchController.searchBar.text != ""
+    }
+    
     func filterData() {
-        filteredDishes = dishes.filter { dish in
-            return dish.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
+        if shouldFilter() {
+            filteredDishes = dishes.filter { dish in
+                return dish.name.lowercased().contains((searchController.searchBar.text?.lowercased())!)
+            }
         }
     }
 }
