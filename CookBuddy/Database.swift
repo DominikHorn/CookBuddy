@@ -103,7 +103,7 @@ class Database {
         do {
             var tmpList = [ShoppingListItem]()
             try dbQueue?.inDatabase { db in
-                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date('?') and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name ASC", arguments: [formatter.string(from: date)])
+                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date(?) and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name ASC", arguments: [formatter.string(from: date)])
                 while let row = try rows.next() {
                     let belongsTo: Int = row.value(named: "dishid")
                     let ingname: String = row.value(named: "name")
