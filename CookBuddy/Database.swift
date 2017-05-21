@@ -64,7 +64,7 @@ class Database {
         var dishes = [Dish]()
         do {
             try dbQueue?.inDatabase { db in
-                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes")
+                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes ORDER BY name ASC")
                 while let row = try rows.next() {
                     // Fetch scheduled date
                     let dishId: Int = row.value(named: "dishid")
@@ -73,7 +73,7 @@ class Database {
                     let description: String = row.value(named: "description")
                     
                     // Query for ingredients
-                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM dishes d, contains c, ingredients i WHERE i.ingid =c.ingid and d.dishid = c.dishid and d.dishid = ?", arguments: [dishId])
+                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM dishes d, contains c, ingredients i WHERE i.ingid = c.ingid and d.dishid = c.dishid and d.dishid = ? ORDER BY i.name ASC", arguments: [dishId])
                     var ingredients = [Ingredient]()
                     while let ingredient = try ingredientsRaw.next() {
                         let ingid: Int = ingredient.value(named: "ingid")
@@ -103,7 +103,7 @@ class Database {
         do {
             var tmpList = [ShoppingListItem]()
             try dbQueue?.inDatabase { db in
-                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date('\(formatter.string(from: date))') and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name asc")
+                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date('?') and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name ASC", arguments: [formatter.string(from: date)])
                 while let row = try rows.next() {
                     let belongsTo: Int = row.value(named: "dishid")
                     let ingname: String = row.value(named: "name")
@@ -208,14 +208,14 @@ class Database {
         do {
             try dbQueue?.inDatabase {
                 db in
-                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes WHERE dishid = '\(id)';")
+                let rows = try Row.fetchCursor(db, "SELECT * FROM dishes WHERE dishid = ?", arguments: [id])
                 while let row = try rows.next() {
                     // Fetch name of dish
                     let name: String = row.value(named: "name")
                     
                     // Fetch and craft description (description text + ingredients list)
                     let description: String = row.value(named: "description")
-                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = \(id) and c.ingid = i.ingid;")
+                    let ingredientsRaw = try Row.fetchCursor(db, "SELECT i.* FROM ingredients i, contains c WHERE c.dishid = ? and c.ingid = i.ingid ORDER BY i.name ASC", arguments: [id])
                     var ingredients = [Ingredient]()
                     while let ingredient = try ingredientsRaw.next() {
                         let ingid: Int = ingredient.value(named: "ingid")
@@ -262,6 +262,11 @@ class Database {
             let index: Int = Int(arc4random_uniform(UInt32(tmp.count)))
             dishes.append(getDish(forId: tmp[index]))
             tmp.remove(at: index)
+        }
+        
+        // Sort dishes manually
+        dishes.sort() { lDish, rDish in
+            return lDish.name < rDish.name
         }
         
         return dishes
