@@ -399,7 +399,7 @@
                                     <constraint firstItem="unP-fM-fWZ" firstAttribute="leading" secondItem="VLc-1o-jPk" secondAttribute="leading" id="LHO-61-AT3"/>
                                     <constraint firstAttribute="trailing" secondItem="unP-fM-fWZ" secondAttribute="trailing" id="Zp6-YW-20T"/>
                                     <constraint firstItem="unP-fM-fWZ" firstAttribute="top" secondItem="VLc-1o-jPk" secondAttribute="top" constant="-64" id="qe4-uC-Ez3"/>
-                                    <constraint firstAttribute="bottom" secondItem="unP-fM-fWZ" secondAttribute="bottom" id="wvq-G7-r7P"/>
+                                    <constraint firstAttribute="bottom" secondItem="unP-fM-fWZ" secondAttribute="bottom" constant="-150" id="wvq-G7-r7P"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
