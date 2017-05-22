@@ -258,7 +258,10 @@ extension PlanViewController: FSCalendarDataSource {
 extension PlanViewController: FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         // Update current date
-        Database.shared.currentDate = date
+        // TODO: Temporary fix until FSCalendar fixes this
+        var components = DateComponents()
+        components.hour = 18
+        Database.shared.currentDate = Calendar.current.date(byAdding: components, to: date)!
         
         // Make sure correct month is scrolled into view for date
         if monthPosition == .next || monthPosition == .previous {
