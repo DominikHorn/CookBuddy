@@ -87,7 +87,6 @@ extension ShoppingViewController: UITableViewDataSource {
             cell.ingredientTextField.text = item.description
         case 1:
             break
-            //
         default:
             return cell // TODO: RETURN ERROR CELL
         }

@@ -1,9 +1,8 @@
+DROP TABLE IF EXISTS CustomSchedule;
 DROP TABLE IF EXISTS Schedule;
-DROP TABLE IF EXISTS Likes;
 DROP TABLE IF EXISTS Contains;
 DROP TABLE IF EXISTS Ingredients;
 DROP TABLE IF EXISTS Units;
-DROP TABLE IF EXISTS Persons;
 DROP TABLE IF EXISTS Dishes;
 
 CREATE TABLE Dishes
@@ -11,9 +10,6 @@ CREATE TABLE Dishes
    Name         VARCHAR(100) NOT NULL,
    ImageFile    VARCHAR(30) NOT NULL,
    Description  VARCHAR(1000) NOT NULL);
-CREATE TABLE Persons
-  (PersID       INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(30) NOT NULL);
 CREATE TABLE Ingredients
   (IngID        INTEGER PRIMARY KEY AUTOINCREMENT,
    Name         VARCHAR(30) NOT NULL,
@@ -22,16 +18,11 @@ CREATE TABLE Units
   (UnitID       INTEGER PRIMARY KEY AUTOINCREMENT,
    Name         VARCHAR(30) NOT NULL,
    Plural       VARCHAR(30));
-CREATE TABLE Likes -- TODO: rethink how this works
-  (DishID       INTEGER REFERENCES Dishes,
-   PersID       INTEGER REFERENCES Persons,
-   Score        INTEGER NOT NULL, -- how much a person usually likes a certain dish
-   PRIMARY KEY (DishID, PersID));
 CREATE TABLE Contains
   (DishID       INTEGER REFERENCES Dishes,
    IngID        INTEGER REFERENCES Ingredients,
    Quantity     DECIMAL(4,3) NOT NULL,
-   Unit         INTEGER REFERENCES Units, -- Items like Baguette have a clear Quantity just from their name
+   Unit         INTEGER REFERENCES Units, -- May be null since Items like Baguette have a clear Quantity just from their name
    PRIMARY KEY (IngID, DishID));
 CREATE TABLE Schedule
   (ScheduledFor    DATETIME NOT NULL,
@@ -39,6 +30,10 @@ CREATE TABLE Schedule
    NumberOfPeople  INTEGER NOT NULL,
    DishID          INTEGER REFERENCES Dishes,
    PRIMARY KEY (ScheduleNumber, ScheduledFor));
+CREATE TABLE CustomSchedule
+  (id         INTEGER PRIMARY KEY AUTOINCREMENT,
+   String     VARCHAR(50) NOT NULL,
+   Bought     BOOLEAN DEFAULT FALSE);
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES
@@ -76,12 +71,6 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Garnelen-Zitronenrisotto', 'garnelenzitronenrisotto', 'Garnelen aus der Packung nehmen, auftauen lassen. Zwiebeln (Lauch/Frühlingszwiebeln) klein schneiden, in Olivenöl auf kleiner Flamme dünsten. Risottoreis dazu geben, rühren, bis er glasig ist. Mit Weißwein ablöschen, einkochen lassen. Thymian dazugeben, frischen erst zum Schluss! Brühe portionsweise dazugeben, dabei köcheln lassen und immer wieder umrühren. Zitronenschale der beiden Zitronen abreiben. Wenn Reis gar ist (je nach Sorte zwischen 15 und 45 Minuten) Zitronenschale dazugeben, abschmecken mit Cayennepfeffer. Parmesan und Frischkäse oder Crème fraîche unterziehen. Garnelen kurz kalt abwaschen, trocken tupfen und unter den Risotto mischen. Deckel auflegen, nach ca. 3- 5min. sind die Garnelen durch. Sie sind dann rosa. Tipp: Wer will, kann den Weißwein teilweise oder ganz durch Zitronensaft ersetzen. Crème fraîche und Frischkäse können auch weggelassen werden. Man kann die Garnelen in etwas Knoblauch und getrocknetem Chili anbraten und dann zum Risotto reichen.'),
   ('Tomate-Basilikum-Risotto', 'tomatebasilikumrisotto', 'Die Brühe in einem Topf zum Kochen bringen und warm halten. Das Olivenöl in einem Topf erhitzen und die Zwiebel darin glasig anschwitzen. Den Reis und die gehackte Knoblauchzehe dazu geben und so lang mit anschwitzen, bis auch der Reis glasig wird. Dabei darauf achten, dass die Temperatur nicht zu hoch ist und nichts anbrennt. Nun die kleine Dose Tomatenmark dazu geben und gut vermengen. Das Ganze nach und nach kellenweise mit der heißen Brühe ablöschen. Der Reis sollte dabei jedes Mal Zeit haben, die Flüssigkeit aufzusaugen. Der Reis ist gar, sobald er noch ganz minimal bissfest ist - dann keine Brühe mehr zugeben. Das Ganze nach Bedarf mit Parmesan und Basilikum abschmecken. Zum Schluss die Mozzarellawürfel unterheben und sofort auf Teller verteilen.'),
   ('Hühnchenrisotto', 'huenchenrisotto', 'Zwiebeln und Knoblauch schälen und klein schneiden. Hähnchenbrustfilet waschen, trocken tupfen und in Streifen schneiden. Mit Salz und Pfeffer würzen. Öl in einer beschichteten Pfanne erhitzen, Zwiebeln und Knoblauch darin anbraten, bis die Zwiebeln glasig sind. Die Hähnchenbruststreifen zugeben und anbraten. Wenn das Fleisch leicht gebräunt ist, den Risottoreis zugeben und unterrühren. Bei reduzierter Hitze einige Minuten braten. Thymian zugeben. Nach und nach heiße Brühe dazugeben. Bevor Sie erneut Brühe dazugeben, warten Sie, bis die Brühe in der Pfanne vollständig aufgenommen wurde. Dieses wird etwa 15 Minuten in Anspruch nehmen. Geben Sie die Erbsen dazu und lassen Sie alles noch 2 bis 3 Minuten köcheln. Mit Salz und Pfeffer abschmecken. Mit Parmesan bestreuen und sofort servieren.');
-
-INSERT INTO Persons(Name)
-VALUES
-  ('Mama'),
-  ('Papa'),
-  ('Sohn');
 
 INSERT INTO Ingredients(Name, Plural)
 VALUES
@@ -421,40 +410,3 @@ VALUES
   (28,  71,  170,   18),
   (28,  59,   70,    6),
   (28, 102,   10,    6);
-
-
--- TODO: update Likes table!
---INSERT INTO Likes(DishID, PersID, Score)
---VALUES
---  (1, 1, 100),
---  (1, 2, 100),
---  (1, 3, 100),
---  (2, 1, 50),
---  (2, 2, 40),
---  (2, 3, 80),
---  (3, 1, 30),
---  (3, 2, 30),
---  (3, 3, 90),
---  (4, 1, 70),
---  (4, 2, 70),
---  (4, 3, 40),
---  (5, 1, 80),
---  (5, 2, 80),
---  (5, 3, 10);
-
---INSERT INTO Schedule(ScheduleNumber, ScheduledFor, NumberOfPeople, DishID)
---VALUES
---  (0, '2017-04-20 18:00:00.000', 3, 1),
---  (1, '2017-04-20 17:00:00.000', 4, 2),
---  (2, '2017-04-20 17:30:00.000', 2, 3),
---  (3, '2017-04-20 18:00:00.001', 1, 4),
---  (0, '2017-05-01 18:00:00.000', 3, 1),
---  (0, '2017-05-02 18:00:00.000', 3, 2),
---  (0, '2017-05-03 18:00:00.000', 3, 3),
---  (1, '2017-05-03 12:00:00.000', 2, 11),
---  (0, '2017-05-04 18:00:00.000', 1, 4),
---  (0, '2017-05-05 18:00:00.000', 3, 5),
---  (0, '2017-05-06 18:00:00.000', 3, 6),
---  (0, '2017-05-07 18:00:00.000', 3, 7),
---  (0, '2017-05-08 18:00:00.000', 3, 8),
---  (0, '2017-05-09 18:00:00.000', 3, 9);
