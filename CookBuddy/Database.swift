@@ -83,7 +83,8 @@ class Database {
                     while let ingredient = try ingredientsRaw.next() {
                         let ingid: Int = ingredient.value(named: "ingid")
                         let ingName: String = ingredient.value(named: "name")
-                        ingredients.append(Ingredient(id: ingid, name: ingName))
+                        let ingPlural: String? = ingredient.value(named: "plural")
+                        ingredients.append(Ingredient(id: ingid, name: ingName, plural: ingPlural))
                     }
                     
                     dishes.append(Dish(id: dishId, name: name, ingredients: ingredients, description: description, imageName: imageFileName))
@@ -108,15 +109,23 @@ class Database {
         do {
             var tmpList = [ShoppingListItem]()
             try dbQueue?.inDatabase { db in
-                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date(?) and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name ASC", arguments: [formatter.string(from: date)])
+                let rows = try Row.fetchCursor(db, "SELECT c.dishid, i.name, i.plural, c.ingid, c.quantity * s.numberOfPeople as quantity, c.unit FROM schedule s, ingredients i, contains c WHERE date(s.scheduledfor) = date(?) and c.dishid = s.dishid and c.ingid = i.ingid ORDER BY name ASC", arguments: [formatter.string(from: date)])
                 while let row = try rows.next() {
                     let belongsTo: Int = row.value(named: "dishid")
                     let ingname: String = row.value(named: "name")
+                    let ingplural: String? = row.value(named: "plural")
                     let ingid: Int = row.value(named: "ingid")
                     let quantity: Float = row.value(named: "quantity")
-                    let unit: String? = row.value(named: "unit")
+                    var unit: Unit?
                     
-                    tmpList.append(ShoppingListItem(ingredient: Ingredient(id: ingid, name: ingname), quantity: quantity, belongsTo: belongsTo, unit: unit))
+                    if let unitID: Int = row.value(named: "unit") {
+                        let unitRow = (try Row.fetchCursor(db, "SELECT * FROM units WHERE unitid = ?", arguments: [unitID]).next())!
+                        let unitName: String = unitRow.value(named: "name")
+                        let unitPlural: String? = unitRow.value(named: "plural")
+                        unit = Unit(id: unitID, name: unitName, plural: unitPlural)
+                    }
+                    
+                    tmpList.append(ShoppingListItem(ingredient: Ingredient(id: ingid, name: ingname, plural: ingplural), quantity: quantity, belongsTo: belongsTo, unit: unit))
                 }
             }
             
