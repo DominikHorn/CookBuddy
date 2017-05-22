@@ -11,9 +11,11 @@ import Foundation
 class Ingredient {
     let id: Int
     let name: String
+    let plural: String?
     
-    init(id: Int, name: String) {
+    init(id: Int, name: String, plural: String? = nil) {
         self.id = id
         self.name = name
+        self.plural = plural
     }
 }

@@ -15,7 +15,8 @@ CREATE TABLE Persons
    Name         VARCHAR(30) NOT NULL);
 CREATE TABLE Ingredients
   (IngID        INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(30) NOT NULL);
+   Name         VARCHAR(30) NOT NULL,
+   Plural       VARCHAR(30));
 CREATE TABLE Likes -- TODO: rethink how this works
   (DishID       INTEGER REFERENCES Dishes,
    PersID       INTEGER REFERENCES Persons,
@@ -71,91 +72,90 @@ VALUES
   ('Papa'),
   ('Sohn');
 
-INSERT INTO Ingredients(Name)
+INSERT INTO Ingredients(Name, Plural)
 VALUES
-  ('Tomate'),         -- 1
-  ('Mozarella'),      -- 2
-  ('Olivenöl'),       -- 3
-  ('Essig'),          -- 4
-  ('Blattsalatkopf'), -- 5
-  ('Karotte'),        -- 6
-  ('Gurke'),          -- 7
-  ('Zwiebel'),        -- 8
-  ('Hühnerbrust'),    -- 9
-  ('Reis'),           -- 10
-  ('Brot'),           -- 11
-  ('Räucherlachs'),   -- 12
-  ('Gemüsekack'),     -- 13
-  ('Ei'),             -- 14
-  ('Mehl'),           -- 15
-  ('Aufschnitt'),     -- 16
-  ('Baguette'),       -- 17
-  ('Rindersteak'),    -- 18
-  ('Lachs'),          -- 19
-  ('Nudeln'),         -- 20
-  ('Hackfleisch'),    -- 21
-  ('Chilli'),         -- 22
-  ('Sahne'),          -- 23
-  ('Joghurt'),        -- 24
-  ('Kräuter'),        -- 25
-  ('Hühnchenschnitzel'),-- 26
-  ('Fetakäse'),       -- 27
-  ('Milch'),          -- 28
-  ('Tiefkühlpizza'),  -- 29
-  ('Knoblauch'),      -- 30
-  ('Kauflanddöner'),  -- 31
-  ('Sojasauce'),      -- 32
-  ('Orangensaft'),    -- 33
-  ('Honig'),          -- 34
-  ('Sambal Oelek'),   -- 35
-  ('Sesam'),          -- 36
-  ('Gewürzmischung'), -- 37
-  ('Zuckerschoten'),  -- 38
-  ('Frühlingszwiebeln'),-- 39
-  ('Paprikaschote'),  -- 40
-  ('Bambussprosse'),  -- 41
-  ('Pellkartoffel'),  -- 42
-  ('Butter'),         -- 43
-  ('Schinken'),       -- 44
-  ('Schweineschnitzel'),-- 45
-  ('Crème fraîche'),  -- 46
-  ('Milch'),          -- 47
-  ('Gouda'),          -- 48
-  ('Schnittlauch'),   -- 49
-  ('Petersilie'),     -- 50
-  ('Paprikapulver'),  -- 51
-  ('Bandnudeln'),     -- 52
-  ('Blattspinat'),    -- 53
-  ('Gemüsebrühe'),    -- 54
-  ('Wasser'),         -- 55
-  ('Speisestärke'),   -- 56
-  ('Muskat'),         -- 57
-  ('Raffiniertes Öl'),-- 58
-  ('Kartoffel'),      -- 60
-  ('Hähnchenschenkel'),-- 61
-  ('Thymian'),        -- 62
-  ('Salbei'),         -- 63
-  ('Rosmarin'),       -- 64
-  ('Lorbeerblätter'), -- 65
-  ('Zitronenschale'), -- 66
-  ('Tomatenmark'),    -- 67
-  ('Schalotten'),     -- 68
-  ('kleine Kartoffeln'),--69
-  ('Rotwein'),        -- 70
-  ('Hühnerbrühe'),    -- 71
-  ('schwarze Oliven'),-- 72
-  ('Zitronensaft'),   -- 73
-  ('Kochschinken'),   -- 74
-  ('Schmelzkäse'),    -- 75
-  ('geriebener Emmentaler'),--76
-  ('Curry Pulver'),   -- 77
-  ('Rinderfond'),     -- 78
-  ('Spinat-Ricotta Tortelloni'),-- 79
-  ('Kräuterfrischkäse'),-- 80
-  ('Apfel'),          -- 81
-  ('Zucker'),         -- 82
-  ('Apfellikör'),     -- 83
-  ('Backpulver');     -- 84
+  ('Tomate', 'Tomaten'),     -- 1
+  ('Mozarella', NULL),      -- 2
+  ('Olivenöl', NULL),       -- 3
+  ('Essig', NULL),          -- 4
+  ('Blattsalatkopf', 'Blattsalatköpfe'), -- 5
+  ('Karotte', 'Karotten'),  -- 6
+  ('Gurke', 'Gurken'),      -- 7
+  ('Zwiebel', 'Zwiebeln'),  -- 8
+  ('Hühnerbrust', 'Hühnerbrüste'),    -- 9
+  ('Reis', NULL),           -- 10
+  ('Brot', 'Brote'),        -- 11
+  ('Räucherlachs', NULL),   -- 12
+  ('Gemüsekack', NULL),     -- 13
+  ('Ei', 'Eier'),           -- 14
+  ('Mehl', NULL),           -- 15
+  ('Aufschnitt', NULL),     -- 16
+  ('Baguette', 'Baguettes'),-- 17
+  ('Rindersteak', 'Rindersteaks'),    -- 18
+  ('Lachs', NULL),          -- 19
+  ('Nudeln', NULL),         -- 20
+  ('Hackfleisch', NULL),    -- 21
+  ('Chilli', NULL),         -- 22
+  ('Sahne', NULL),          -- 23
+  ('Joghurt', 'Joghurts'),  -- 24
+  ('Kraut', 'Kräuter'),     -- 25
+  ('Hühnchenschnitzel', NULL),-- 26
+  ('Fetakäse', NULL),       -- 27
+  ('Milch', NULL),          -- 28
+  ('Pizza', 'Pizzen'),      -- 29
+  ('Knoblauch', NULL),      -- 30
+  ('Kauflanddöner', NULL),  -- 31
+  ('Sojasauce', 'Sojasaucen'),-- 32
+  ('Orangensaft', 'Orangensäfte'),-- 33
+  ('Honig', NULL),          -- 34
+  ('Sambal Oelek', NULL),   -- 35
+  ('Sesam', NULL),          -- 36
+  ('Gewürzmischung', 'Gewürzmischungen'),-- 37
+  ('Zuckerschote', 'Zuckerschoten'),-- 38
+  ('Frühlingszwiebel', 'Frühlingszwiebeln'),-- 39
+  ('Paprikaschote', 'Paprikaschoten'),-- 40
+  ('Bambussprosse', 'Bambussprossen'),-- 41
+  ('Pellkartoffel', 'Pellkartoffeln'),-- 42
+  ('Butter', NULL),         -- 43
+  ('Schinken', NULL),       -- 44
+  ('Schweineschnitzel', NULL),-- 45
+  ('Crème fraîche', NULL),  -- 46
+  ('Backpulver', NULL),     -- 47
+  ('Gouda', NULL),          -- 48
+  ('Schnittlauch', NULL),   -- 49
+  ('Petersilie', NULL),     -- 50
+  ('Paprikapulver', NULL),  -- 51
+  ('Bandnudeln', NULL),     -- 52
+  ('Blattspinat', NULL),    -- 53
+  ('Gemüsebrühe', NULL),    -- 54
+  ('Wasser', NULL),         -- 55
+  ('Speisestärke', NULL),   -- 56
+  ('Muskat', NULL),         -- 57
+  ('Raffiniertes Öl', NULL),-- 58
+  ('Kartoffel', 'Kartoffeln'),-- 60
+  ('Hähnchenschenkel', NULL),-- 61
+  ('Thymian', NULL),        -- 62
+  ('Salbei', NULL),         -- 63
+  ('Rosmarin', NULL),       -- 64
+  ('Lorbeerblatt', 'Lorbeerblätter'),-- 65
+  ('Zitronenschale', 'Zitronenschalen'),-- 66
+  ('Tomatenmark', NULL),    -- 67
+  ('Schalotte', 'Schalotten'),-- 68
+  ('kleine Kartoffel', 'kleine Kartoffeln'),--69
+  ('Rotwein', NULL),        -- 70
+  ('Hühnerbrühe', NULL),    -- 71
+  ('schwarze Olive', 'schwarze Oliven'),-- 72
+  ('Zitronensaft', NULL),   -- 73
+  ('Kochschinken', NULL),   -- 74
+  ('Schmelzkäse', NULL),    -- 75
+  ('geriebener Emmentaler', NULL),--76
+  ('Curry Pulver', NULL),   -- 77
+  ('Rinderfond', NULL),     -- 78
+  ('Spinat-Ricotta Tortelloni', NULL),-- 79
+  ('Kräuterfrischkäse', NULL),-- 80
+  ('Apfel', 'Äpfel'),       -- 81
+  ('Zucker', NULL),         -- 82
+  ('Apfellikör', NULL);     -- 83
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -241,7 +241,7 @@ VALUES
   (16,  44,   10, 'g'),
   (16,  45,  150, 'g'),
   (16,  46,   60, 'g'),
-  (16,  47,    1, 'EL'),
+  (16,  28,    1, 'EL'),
   (16,  48,   30, 'g'),
   (16,  49,    1, 'EL'),
   (16,  50,  0.5, 'EL'),
@@ -264,12 +264,12 @@ VALUES
   (18,   6,  400, 'g'),
   (18,  54,  500, 'ml'),
   (18,  23,    1, 'Becher'),
-  (18,  47,  300, 'ml'),
+  (18,  28,  300, 'ml'),
   (18,  50,    1, 'Prise'),
   (19,  61,    2, NULL),
   (19,  62,  0.5, 'Bund'),
   (19,  63,    5, 'Blätter'),
-  (19,  30,  0.5, 'Knoblauch'),
+  (19,  30,  0.5, 'Zehe'),
   (19,  64,  1.5, 'Zweige'),
   (19,   3,    2, 'EL'),
   (19,  65,  1.5, NULL),
@@ -303,7 +303,7 @@ VALUES
   (22,  14,    2, NULL),
   (22,  28,  200, 'ml'),
   (22,  15,  120, 'g'),
-  (22,  84,    1, 'Msp.');
+  (22,  47,    1, 'Msp.');
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
