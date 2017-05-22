@@ -71,7 +71,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Tortelloni-Steak-Pfanne', 'tortellonisteak', 'Das Öl in einer großen Pfanne erhitzen und die Steakstreifen 4 - 5 Minuten kräftig anbraten. Mit Salz und Pfeffer würzen. Das Fleisch herausnehmen und zur Seite stellen. Den Fond in die gleiche Pfanne geben und aufkochen. Die Tortelloni und Zuckerschoten zugeben und 2 - 3 Minuten köcheln lassen. Petersilie, Frischkäse und Fleisch dazugeben und nochmal mit Salz und Pfeffer abschmecken.'),
   ('Apfel-Pfannkuchen', 'apfelpfannkuchen', 'Eier trennen. Eiweiß steif schlagen. Eigelb mit 2 EL Zucker cremig schlagen und die Milch zufügen. Jetzt das Mehl sowie das Backpulver und einer Prise Salz dazu geben, mixen und zum Schluss den Eischnee unterheben. Äpfel schälen, vierteln, entkernen und in Scheiben oder Stücke schneiden. Zusammen mit Butter und 1 EL Zucker in einer Pfanne etwas karamellisieren lassen. Mit Calvados ablöschen und mit dem Teig auffüllen. Den Teig stocken lassen und im vorgeheizten Ofen bei 160°C ca. 10 Minuten goldgelb fertig backen. Probieren Sie auch die beiden anderen Rezepte aus unserem Video: "Pancake mit Blaubeeren" und "Crêpe"'),
   ('Hähnchencurry mit Süßkartoffeln', 'huhncurrysuesskart', 'Das Hähnchenbrustfilet in Streifen schneiden, die Paprikaschote entkernen und ebenfalls in Streifen oder Stücke schneiden. Die Süßkartoffel schälen und würfeln (ca. 1 cm). Die Zwiebel schälen und in feine Würfel schneiden. In einer Pfanne etwas Öl erhitzen und die Zwiebelwürfel darin glasig anschwitzen. Tomatenmark und Currypaste zugeben und kurz mitbraten. Dann das Hähnchenbrustfilet zugeben, gut durchschwenken und dann Kokosmilch sowie nach Bedarf etwas Wasser zugeben. Jetzt die Süßkartoffelwürfel zugeben. Ca. 20 Minuten bei mittlerer Hitze köcheln lassen, damit die Süßkartoffel weich wird. Dann die Paprikastreifen sowie den Smoothie bzw. den Fruchtsaft oder die frischen Früchte zugeben und ca. 10 Minuten ziehen lassen. Die Paprikaschote sollte noch bissfest sein. Am Schluss mit Sojasauce und bei Bedarf mit Salz abschmecken. Dazu passt Reis. Variieren kann man natürlich mit der Menge an Currypaste - wer es scharf mag, nimmt mehr Currypaste. Auch das Gemüse kann man je nach Kühlschrankinhalt verändern. Gut passen z. B. auch Zucchini oder grüne Bohnen. Ich persönlich finde die Verwendung eines Smoothies praktisch - man bekommt ein tolles Fruchtaroma, auch wenn man vielleicht gerade keine frischen Früchte verfügbar hat. Mit frischem Obst, z.B. Mangos oder Pfirsichen, geht es aber natürlich auch.'),
-  ('Thunfischlasagne', 'thunfischlasagne', 'Als erstes die passierten Tomaten mit dem Thunfisch in einer Pfanne erhitzen, danach den Mais zugeben und aufkochen. In der Zwischenzeit die Paprikaschoten schneiden und ebenfalls in die Pfanne geben. Zum Schluss die Kräuter zugeben und nach Bedarf salzen. Zuerst die Auflaufform mit etwas Soße bestreichen, dann die Lasagneplatten darauflegen, Soße, Lasagneplatten und so weiter. Den Backofen auf 180 Grad vorheizen und 30 Minuten bei Umluft backen, die letzten 5 Minuten den Käse drüber streuen. Anstatt des Käses kann man veganen Käse nehmen (ich nehme immer den von Simply V).');
+  ('Thunfischlasagne', 'thunfischlasagne', 'Als erstes die passierten Tomaten mit dem Thunfisch in einer Pfanne erhitzen, danach den Mais zugeben und aufkochen. In der Zwischenzeit die Paprikaschoten schneiden und ebenfalls in die Pfanne geben. Zum Schluss die Kräuter zugeben und nach Bedarf salzen. Zuerst die Auflaufform mit etwas Soße bestreichen, dann die Lasagneplatten darauflegen, Soße, Lasagneplatten und so weiter. Den Backofen auf 180 Grad vorheizen und 30 Minuten bei Umluft backen, die letzten 5 Minuten den Käse drüber streuen. Anstatt des Käses kann man veganen Käse nehmen (ich nehme immer den von Simply V).'),
+  ('Ofenkartoffeln mit Lachs', 'ofenkartlachs', 'Die Kartoffeln unter fließendem Wasser gründlich abbürsten. Mit Kümmel in Salzwasser zugedeckt 20-25 Min. vorgaren, danach abgießen, kreuzweise einschneiden und in Alufolie wickeln. Im Ofen bei 240°C weitere 15-20 Minuten backen. Inzwischen die Avocado halbieren, den Stein auslösen, das Fruchtfleisch aus der Schale lösen, in kleine Würfel schneiden und sofort mit Zitronensaft beträufeln. Sauerrahm mit Crème fraîche verrühren. Den Dill fein hacken und mit den Avocados untermischen. Den Lachs fein würfeln und ebenfalls unterheben. Mit Salz und Pfeffer abschmecken. Die Creme mit Dill und Zitronenscheiben garnieren. Die Kartoffeln auspacken und etwas auseinander drücken und die Lachs-Avocado-Creme dazu reichen.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -172,7 +173,11 @@ VALUES
   ('passierte Tomate', 'passieret Tomaten'), -- 90
   ('Mais', NULL),           -- 91
   ('Paprika', NULL),        -- 92
-  ('Käse', NULL);           -- 93
+  ('Käse', NULL),           -- 93
+  ('Kümmel', NULL),         -- 94
+  ('Avocado', 'Avocados'),  -- 95
+  ('Sauerrahm', NULL),      -- 96
+  ('Dill', NULL);           -- 97
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -368,7 +373,15 @@ VALUES
   (24,  91,  0.5,    8),
   (24,  92,  1.5, NULL),
   (24,  25,    1,   14),
-  (24,  93,    1,   28);
+  (24,  93,    1,   28),
+  (25,  60,    4, NULL),
+  (25,  94,    1,   13),
+  (25,  95,    1, NULL),
+  (25,  73,  2.5,    1),
+  (25,  96,  125,    6),
+  (25,  46,  125,    6),
+  (25,  97,  0.5,   25),
+  (25,  12,  100,    6);
 
 
 -- TODO: update Likes table!
