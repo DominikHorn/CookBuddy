@@ -28,41 +28,6 @@ class ShoppingViewController: UIViewController {
     }
 }
 
-// MARK:- Helper
-extension ShoppingViewController {
-    func prettify(float: Float) -> String {
-        if float == float.rounded(.toNearestOrAwayFromZero) {
-            // If number is .0, return just integer part
-            return String(format: "%d", Int(float))
-        } else {
-            // Else return pretty fraction
-            let num = Int(float)
-            let rational = rationalApproximation(of: Double(float - Float(num)))
-            
-            if num == 0 {
-                return String(format: "%d/%d", rational.num, rational.den)
-            } else {
-                return String(format: "%d %d/%d", num, rational.num, rational.den)
-            }
-        }
-    }
-    
-    typealias Rational = (num : Int, den : Int)
-    
-    func rationalApproximation(of x0 : Double, withPrecision eps : Double = 1.0E-6) -> Rational {
-        var x = x0
-        var a = x.rounded(.down)
-        var (h1, k1, h, k) = (1, 0, Int(a), 1)
-        
-        while x - a > eps * Double(k) * Double(k) {
-            x = 1.0/(x - a)
-            a = x.rounded(.down)
-            (h1, k1, h, k) = (h, k, h1 + Int(a) * h, k1 + Int(a) * k)
-        }
-        return (h, k)
-    }
-}
-
 // MARK:- UITableViewDelegate
 extension ShoppingViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -119,7 +84,7 @@ extension ShoppingViewController: UITableViewDataSource {
         switch indexPath.section {
         case 0:
             let item = Database.shared.getShoppingListItems(forDate: Date())[indexPath.row]
-            cell.ingredientTextField.text = String(format: "\(prettify(float: item.quantity)) " + (item.unit == nil ? "" : "\(item.unit!) ") + "\(item.ingredient.name)")
+            cell.ingredientTextField.text = item.description
         case 1:
             break
             //
