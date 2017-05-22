@@ -74,7 +74,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Thunfischlasagne', 'thunfischlasagne', 'Als erstes die passierten Tomaten mit dem Thunfisch in einer Pfanne erhitzen, danach den Mais zugeben und aufkochen. In der Zwischenzeit die Paprikaschoten schneiden und ebenfalls in die Pfanne geben. Zum Schluss die Kräuter zugeben und nach Bedarf salzen. Zuerst die Auflaufform mit etwas Soße bestreichen, dann die Lasagneplatten darauflegen, Soße, Lasagneplatten und so weiter. Den Backofen auf 180 Grad vorheizen und 30 Minuten bei Umluft backen, die letzten 5 Minuten den Käse drüber streuen. Anstatt des Käses kann man veganen Käse nehmen (ich nehme immer den von Simply V).'),
   ('Ofenkartoffeln mit Lachs', 'ofenkartlachs', 'Die Kartoffeln unter fließendem Wasser gründlich abbürsten. Mit Kümmel in Salzwasser zugedeckt 20-25 Min. vorgaren, danach abgießen, kreuzweise einschneiden und in Alufolie wickeln. Im Ofen bei 240°C weitere 15-20 Minuten backen. Inzwischen die Avocado halbieren, den Stein auslösen, das Fruchtfleisch aus der Schale lösen, in kleine Würfel schneiden und sofort mit Zitronensaft beträufeln. Sauerrahm mit Crème fraîche verrühren. Den Dill fein hacken und mit den Avocados untermischen. Den Lachs fein würfeln und ebenfalls unterheben. Mit Salz und Pfeffer abschmecken. Die Creme mit Dill und Zitronenscheiben garnieren. Die Kartoffeln auspacken und etwas auseinander drücken und die Lachs-Avocado-Creme dazu reichen.'),
   ('Garnelen-Zitronenrisotto', 'garnelenzitronenrisotto', 'Garnelen aus der Packung nehmen, auftauen lassen. Zwiebeln (Lauch/Frühlingszwiebeln) klein schneiden, in Olivenöl auf kleiner Flamme dünsten. Risottoreis dazu geben, rühren, bis er glasig ist. Mit Weißwein ablöschen, einkochen lassen. Thymian dazugeben, frischen erst zum Schluss! Brühe portionsweise dazugeben, dabei köcheln lassen und immer wieder umrühren. Zitronenschale der beiden Zitronen abreiben. Wenn Reis gar ist (je nach Sorte zwischen 15 und 45 Minuten) Zitronenschale dazugeben, abschmecken mit Cayennepfeffer. Parmesan und Frischkäse oder Crème fraîche unterziehen. Garnelen kurz kalt abwaschen, trocken tupfen und unter den Risotto mischen. Deckel auflegen, nach ca. 3- 5min. sind die Garnelen durch. Sie sind dann rosa. Tipp: Wer will, kann den Weißwein teilweise oder ganz durch Zitronensaft ersetzen. Crème fraîche und Frischkäse können auch weggelassen werden. Man kann die Garnelen in etwas Knoblauch und getrocknetem Chili anbraten und dann zum Risotto reichen.'),
-  ('Tomate-Basilikum-Risotto', 'tomatebasilikumrisotto', 'Die Brühe in einem Topf zum Kochen bringen und warm halten. Das Olivenöl in einem Topf erhitzen und die Zwiebel darin glasig anschwitzen. Den Reis und die gehackte Knoblauchzehe dazu geben und so lang mit anschwitzen, bis auch der Reis glasig wird. Dabei darauf achten, dass die Temperatur nicht zu hoch ist und nichts anbrennt. Nun die kleine Dose Tomatenmark dazu geben und gut vermengen. Das Ganze nach und nach kellenweise mit der heißen Brühe ablöschen. Der Reis sollte dabei jedes Mal Zeit haben, die Flüssigkeit aufzusaugen. Der Reis ist gar, sobald er noch ganz minimal bissfest ist - dann keine Brühe mehr zugeben. Das Ganze nach Bedarf mit Parmesan und Basilikum abschmecken. Zum Schluss die Mozzarellawürfel unterheben und sofort auf Teller verteilen.');
+  ('Tomate-Basilikum-Risotto', 'tomatebasilikumrisotto', 'Die Brühe in einem Topf zum Kochen bringen und warm halten. Das Olivenöl in einem Topf erhitzen und die Zwiebel darin glasig anschwitzen. Den Reis und die gehackte Knoblauchzehe dazu geben und so lang mit anschwitzen, bis auch der Reis glasig wird. Dabei darauf achten, dass die Temperatur nicht zu hoch ist und nichts anbrennt. Nun die kleine Dose Tomatenmark dazu geben und gut vermengen. Das Ganze nach und nach kellenweise mit der heißen Brühe ablöschen. Der Reis sollte dabei jedes Mal Zeit haben, die Flüssigkeit aufzusaugen. Der Reis ist gar, sobald er noch ganz minimal bissfest ist - dann keine Brühe mehr zugeben. Das Ganze nach Bedarf mit Parmesan und Basilikum abschmecken. Zum Schluss die Mozzarellawürfel unterheben und sofort auf Teller verteilen.'),
+  ('Hühnchenrisotto', 'huenchenrisotto', 'Zwiebeln und Knoblauch schälen und klein schneiden. Hähnchenbrustfilet waschen, trocken tupfen und in Streifen schneiden. Mit Salz und Pfeffer würzen. Öl in einer beschichteten Pfanne erhitzen, Zwiebeln und Knoblauch darin anbraten, bis die Zwiebeln glasig sind. Die Hähnchenbruststreifen zugeben und anbraten. Wenn das Fleisch leicht gebräunt ist, den Risottoreis zugeben und unterrühren. Bei reduzierter Hitze einige Minuten braten. Thymian zugeben. Nach und nach heiße Brühe dazugeben. Bevor Sie erneut Brühe dazugeben, warten Sie, bis die Brühe in der Pfanne vollständig aufgenommen wurde. Dieses wird etwa 15 Minuten in Anspruch nehmen. Geben Sie die Erbsen dazu und lassen Sie alles noch 2 bis 3 Minuten köcheln. Mit Salz und Pfeffer abschmecken. Mit Parmesan bestreuen und sofort servieren.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -185,7 +186,8 @@ VALUES
   ('Zitrone', 'Zitronen'),  -- 100
   ('Garnele', 'Garnelen'),  -- 101
   ('Parmesan', NULL),       -- 102
-  ('Basilikum', NULL);      -- 103
+  ('Basilikum', NULL),      -- 103
+  ('Erbsen', NULL);         -- 104
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -409,7 +411,16 @@ VALUES
   (27,  67,  0.5,    8),
   (27, 103,    1,   28),
   (27, 102,    1,   28),
-  (27,   3,    1,    1);
+  (27,   3,    1,    1),
+  (28,   8,   50,    6),
+  (28,  30,    1,    9),
+  (28,   9,  125,    6),
+  (28,   3,    1,   13),
+  (28,  98,   35,    6),
+  (28,  62,    2,   14),
+  (28,  71,  170,   18),
+  (28, 104,   70,    6),
+  (28, 102,   10,    6);
 
 
 -- TODO: update Likes table!
