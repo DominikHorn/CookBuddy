@@ -143,6 +143,7 @@ VALUES
   ('Speisestärke', NULL),   -- 56
   ('Muskat', NULL),         -- 57
   ('Raffiniertes Öl', NULL),-- 58
+  ('Erbsen', NULL),         -- 59
   ('Kartoffel', 'Kartoffeln'),-- 60
   ('Hähnchenschenkel', NULL),-- 61
   ('Thymian', NULL),        -- 62
@@ -186,8 +187,7 @@ VALUES
   ('Zitrone', 'Zitronen'),  -- 100
   ('Garnele', 'Garnelen'),  -- 101
   ('Parmesan', NULL),       -- 102
-  ('Basilikum', NULL),      -- 103
-  ('Erbsen', NULL);         -- 104
+  ('Basilikum', NULL);      -- 103
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -419,7 +419,7 @@ VALUES
   (28,  98,   35,    6),
   (28,  62,    2,   14),
   (28,  71,  170,   18),
-  (28, 104,   70,    6),
+  (28,  59,   70,    6),
   (28, 102,   10,    6);
 
 
