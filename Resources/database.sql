@@ -70,7 +70,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Kartoffel-Lauch-Auflauf',       'kartlauchschinken', 'Den Backofen auf 180 °C vorheizen. Lauch und Kartoffeln in grobe Stücke schneiden, in Brühe nicht ganz fertig kochen und in eine Auflaufform legen. Schinken in kleine Würfel schneiden und ebenfalls in die Form geben. Eier, Sahne, Schmelzkäse und Gewürze mit dem Schneebesen verquirlen und über Lauch-Kartoffeln-Schinken geben. Mit Emmentaler bestreuen und ca. 30 - 40 Min. gratinieren. Kann als Beilage zu Steaks gereicht werden oder auch als Hauptgericht. Tipp: Aus der Kochbrühe von Lauch und Kartoffeln kann man noch eine leckere Lauchcremesuppe zaubern. Dazu ein paar Stücke Lauch und Kartoffeln im Topf belassen und gar kochen, Sahne dazu, pürieren, abschmecken.'),
   ('Tortelloni-Steak-Pfanne', 'tortellonisteak', 'Das Öl in einer großen Pfanne erhitzen und die Steakstreifen 4 - 5 Minuten kräftig anbraten. Mit Salz und Pfeffer würzen. Das Fleisch herausnehmen und zur Seite stellen. Den Fond in die gleiche Pfanne geben und aufkochen. Die Tortelloni und Zuckerschoten zugeben und 2 - 3 Minuten köcheln lassen. Petersilie, Frischkäse und Fleisch dazugeben und nochmal mit Salz und Pfeffer abschmecken.'),
   ('Apfel-Pfannkuchen', 'apfelpfannkuchen', 'Eier trennen. Eiweiß steif schlagen. Eigelb mit 2 EL Zucker cremig schlagen und die Milch zufügen. Jetzt das Mehl sowie das Backpulver und einer Prise Salz dazu geben, mixen und zum Schluss den Eischnee unterheben. Äpfel schälen, vierteln, entkernen und in Scheiben oder Stücke schneiden. Zusammen mit Butter und 1 EL Zucker in einer Pfanne etwas karamellisieren lassen. Mit Calvados ablöschen und mit dem Teig auffüllen. Den Teig stocken lassen und im vorgeheizten Ofen bei 160°C ca. 10 Minuten goldgelb fertig backen. Probieren Sie auch die beiden anderen Rezepte aus unserem Video: "Pancake mit Blaubeeren" und "Crêpe"'),
-  ('Hähnchencurry mit Süßkartoffeln', 'huhncurrysuesskart', 'Das Hähnchenbrustfilet in Streifen schneiden, die Paprikaschote entkernen und ebenfalls in Streifen oder Stücke schneiden. Die Süßkartoffel schälen und würfeln (ca. 1 cm). Die Zwiebel schälen und in feine Würfel schneiden. In einer Pfanne etwas Öl erhitzen und die Zwiebelwürfel darin glasig anschwitzen. Tomatenmark und Currypaste zugeben und kurz mitbraten. Dann das Hähnchenbrustfilet zugeben, gut durchschwenken und dann Kokosmilch sowie nach Bedarf etwas Wasser zugeben. Jetzt die Süßkartoffelwürfel zugeben. Ca. 20 Minuten bei mittlerer Hitze köcheln lassen, damit die Süßkartoffel weich wird. Dann die Paprikastreifen sowie den Smoothie bzw. den Fruchtsaft oder die frischen Früchte zugeben und ca. 10 Minuten ziehen lassen. Die Paprikaschote sollte noch bissfest sein. Am Schluss mit Sojasauce und bei Bedarf mit Salz abschmecken. Dazu passt Reis. Variieren kann man natürlich mit der Menge an Currypaste - wer es scharf mag, nimmt mehr Currypaste. Auch das Gemüse kann man je nach Kühlschrankinhalt verändern. Gut passen z. B. auch Zucchini oder grüne Bohnen. Ich persönlich finde die Verwendung eines Smoothies praktisch - man bekommt ein tolles Fruchtaroma, auch wenn man vielleicht gerade keine frischen Früchte verfügbar hat. Mit frischem Obst, z.B. Mangos oder Pfirsichen, geht es aber natürlich auch.');
+  ('Hähnchencurry mit Süßkartoffeln', 'huhncurrysuesskart', 'Das Hähnchenbrustfilet in Streifen schneiden, die Paprikaschote entkernen und ebenfalls in Streifen oder Stücke schneiden. Die Süßkartoffel schälen und würfeln (ca. 1 cm). Die Zwiebel schälen und in feine Würfel schneiden. In einer Pfanne etwas Öl erhitzen und die Zwiebelwürfel darin glasig anschwitzen. Tomatenmark und Currypaste zugeben und kurz mitbraten. Dann das Hähnchenbrustfilet zugeben, gut durchschwenken und dann Kokosmilch sowie nach Bedarf etwas Wasser zugeben. Jetzt die Süßkartoffelwürfel zugeben. Ca. 20 Minuten bei mittlerer Hitze köcheln lassen, damit die Süßkartoffel weich wird. Dann die Paprikastreifen sowie den Smoothie bzw. den Fruchtsaft oder die frischen Früchte zugeben und ca. 10 Minuten ziehen lassen. Die Paprikaschote sollte noch bissfest sein. Am Schluss mit Sojasauce und bei Bedarf mit Salz abschmecken. Dazu passt Reis. Variieren kann man natürlich mit der Menge an Currypaste - wer es scharf mag, nimmt mehr Currypaste. Auch das Gemüse kann man je nach Kühlschrankinhalt verändern. Gut passen z. B. auch Zucchini oder grüne Bohnen. Ich persönlich finde die Verwendung eines Smoothies praktisch - man bekommt ein tolles Fruchtaroma, auch wenn man vielleicht gerade keine frischen Früchte verfügbar hat. Mit frischem Obst, z.B. Mangos oder Pfirsichen, geht es aber natürlich auch.'),
+  ('Thunfischlasagne', 'thunfischlasagne', 'Als erstes die passierten Tomaten mit dem Thunfisch in einer Pfanne erhitzen, danach den Mais zugeben und aufkochen. In der Zwischenzeit die Paprikaschoten schneiden und ebenfalls in die Pfanne geben. Zum Schluss die Kräuter zugeben und nach Bedarf salzen. Zuerst die Auflaufform mit etwas Soße bestreichen, dann die Lasagneplatten darauflegen, Soße, Lasagneplatten und so weiter. Den Backofen auf 180 Grad vorheizen und 30 Minuten bei Umluft backen, die letzten 5 Minuten den Käse drüber streuen. Anstatt des Käses kann man veganen Käse nehmen (ich nehme immer den von Simply V).');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -165,7 +166,13 @@ VALUES
   ('Süßkartoffel', 'Süßkartoffeln'),-- 84
   ('Kokosmilch', NULL),     -- 85
   ('rote Currypaste', NULL),-- 86
-  ('Fruchtsaft', NULL);     -- 87
+  ('Fruchtsaft', NULL),     -- 87
+  ('Lasagneplatte', 'Lasagneplatten'),-- 88
+  ('Thunfisch', NULL),      -- 89
+  ('passierte Tomate', 'passieret Tomaten'), -- 90
+  ('Mais', NULL),           -- 91
+  ('Paprika', NULL),        -- 92
+  ('Käse', NULL);           -- 93
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -194,7 +201,9 @@ VALUES
   ('cl', NULL),             -- 23
   ('Msp.', NULL),           -- 24
   ('Bund', NULL),           -- 25
-  ('Flasche', 'Flaschen');  -- 26
+  ('Flasche', 'Flaschen'),  -- 26
+  ('Kolben', NULL),         -- 27
+  ('Etwas', NULL);          -- 28
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -250,6 +259,7 @@ VALUES
   (13,   9,    1, NULL),
   (13,  13,  200,    6),
   (13,  18,  0.5, NULL),
+  (13,  91,    3,   27),
   (14,   1,    2, NULL),
   (14,   3,  1.5,    1),
   (14,   4,    1,    1),
@@ -351,7 +361,15 @@ VALUES
   (23,   8,  0.5, NULL),
   (23,  67,  0.5,    1),
   (23,  32,  0.5,    1),
-  (23,  87,  0.5,   26);
+  (23,  87,  0.5,   26),
+  (24,  88,  125,    6),
+  (24,  89,    2,   10),
+  (24,  90,  0.5,    7),
+  (24,  91,  0.5,    8),
+  (24,  92,  1.5, NULL),
+  (24,  25,    1,   14),
+  (24,  93,    1,   28);
+
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
