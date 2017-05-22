@@ -73,7 +73,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Hähnchencurry mit Süßkartoffeln', 'huhncurrysuesskart', 'Das Hähnchenbrustfilet in Streifen schneiden, die Paprikaschote entkernen und ebenfalls in Streifen oder Stücke schneiden. Die Süßkartoffel schälen und würfeln (ca. 1 cm). Die Zwiebel schälen und in feine Würfel schneiden. In einer Pfanne etwas Öl erhitzen und die Zwiebelwürfel darin glasig anschwitzen. Tomatenmark und Currypaste zugeben und kurz mitbraten. Dann das Hähnchenbrustfilet zugeben, gut durchschwenken und dann Kokosmilch sowie nach Bedarf etwas Wasser zugeben. Jetzt die Süßkartoffelwürfel zugeben. Ca. 20 Minuten bei mittlerer Hitze köcheln lassen, damit die Süßkartoffel weich wird. Dann die Paprikastreifen sowie den Smoothie bzw. den Fruchtsaft oder die frischen Früchte zugeben und ca. 10 Minuten ziehen lassen. Die Paprikaschote sollte noch bissfest sein. Am Schluss mit Sojasauce und bei Bedarf mit Salz abschmecken. Dazu passt Reis. Variieren kann man natürlich mit der Menge an Currypaste - wer es scharf mag, nimmt mehr Currypaste. Auch das Gemüse kann man je nach Kühlschrankinhalt verändern. Gut passen z. B. auch Zucchini oder grüne Bohnen. Ich persönlich finde die Verwendung eines Smoothies praktisch - man bekommt ein tolles Fruchtaroma, auch wenn man vielleicht gerade keine frischen Früchte verfügbar hat. Mit frischem Obst, z.B. Mangos oder Pfirsichen, geht es aber natürlich auch.'),
   ('Thunfischlasagne', 'thunfischlasagne', 'Als erstes die passierten Tomaten mit dem Thunfisch in einer Pfanne erhitzen, danach den Mais zugeben und aufkochen. In der Zwischenzeit die Paprikaschoten schneiden und ebenfalls in die Pfanne geben. Zum Schluss die Kräuter zugeben und nach Bedarf salzen. Zuerst die Auflaufform mit etwas Soße bestreichen, dann die Lasagneplatten darauflegen, Soße, Lasagneplatten und so weiter. Den Backofen auf 180 Grad vorheizen und 30 Minuten bei Umluft backen, die letzten 5 Minuten den Käse drüber streuen. Anstatt des Käses kann man veganen Käse nehmen (ich nehme immer den von Simply V).'),
   ('Ofenkartoffeln mit Lachs', 'ofenkartlachs', 'Die Kartoffeln unter fließendem Wasser gründlich abbürsten. Mit Kümmel in Salzwasser zugedeckt 20-25 Min. vorgaren, danach abgießen, kreuzweise einschneiden und in Alufolie wickeln. Im Ofen bei 240°C weitere 15-20 Minuten backen. Inzwischen die Avocado halbieren, den Stein auslösen, das Fruchtfleisch aus der Schale lösen, in kleine Würfel schneiden und sofort mit Zitronensaft beträufeln. Sauerrahm mit Crème fraîche verrühren. Den Dill fein hacken und mit den Avocados untermischen. Den Lachs fein würfeln und ebenfalls unterheben. Mit Salz und Pfeffer abschmecken. Die Creme mit Dill und Zitronenscheiben garnieren. Die Kartoffeln auspacken und etwas auseinander drücken und die Lachs-Avocado-Creme dazu reichen.'),
-  ('Garnelen-Zitronenrisotto', 'garnelenzitronenrisotto', 'Garnelen aus der Packung nehmen, auftauen lassen. Zwiebeln (Lauch/Frühlingszwiebeln) klein schneiden, in Olivenöl auf kleiner Flamme dünsten. Risottoreis dazu geben, rühren, bis er glasig ist. Mit Weißwein ablöschen, einkochen lassen. Thymian dazugeben, frischen erst zum Schluss! Brühe portionsweise dazugeben, dabei köcheln lassen und immer wieder umrühren. Zitronenschale der beiden Zitronen abreiben. Wenn Reis gar ist (je nach Sorte zwischen 15 und 45 Minuten) Zitronenschale dazugeben, abschmecken mit Cayennepfeffer. Parmesan und Frischkäse oder Crème fraîche unterziehen. Garnelen kurz kalt abwaschen, trocken tupfen und unter den Risotto mischen. Deckel auflegen, nach ca. 3- 5min. sind die Garnelen durch. Sie sind dann rosa. Tipp: Wer will, kann den Weißwein teilweise oder ganz durch Zitronensaft ersetzen. Crème fraîche und Frischkäse können auch weggelassen werden. Man kann die Garnelen in etwas Knoblauch und getrocknetem Chili anbraten und dann zum Risotto reichen.');
+  ('Garnelen-Zitronenrisotto', 'garnelenzitronenrisotto', 'Garnelen aus der Packung nehmen, auftauen lassen. Zwiebeln (Lauch/Frühlingszwiebeln) klein schneiden, in Olivenöl auf kleiner Flamme dünsten. Risottoreis dazu geben, rühren, bis er glasig ist. Mit Weißwein ablöschen, einkochen lassen. Thymian dazugeben, frischen erst zum Schluss! Brühe portionsweise dazugeben, dabei köcheln lassen und immer wieder umrühren. Zitronenschale der beiden Zitronen abreiben. Wenn Reis gar ist (je nach Sorte zwischen 15 und 45 Minuten) Zitronenschale dazugeben, abschmecken mit Cayennepfeffer. Parmesan und Frischkäse oder Crème fraîche unterziehen. Garnelen kurz kalt abwaschen, trocken tupfen und unter den Risotto mischen. Deckel auflegen, nach ca. 3- 5min. sind die Garnelen durch. Sie sind dann rosa. Tipp: Wer will, kann den Weißwein teilweise oder ganz durch Zitronensaft ersetzen. Crème fraîche und Frischkäse können auch weggelassen werden. Man kann die Garnelen in etwas Knoblauch und getrocknetem Chili anbraten und dann zum Risotto reichen.'),
+  ('Tomate-Basilikum-Risotto', 'tomatebasilikumrisotto', 'Die Brühe in einem Topf zum Kochen bringen und warm halten. Das Olivenöl in einem Topf erhitzen und die Zwiebel darin glasig anschwitzen. Den Reis und die gehackte Knoblauchzehe dazu geben und so lang mit anschwitzen, bis auch der Reis glasig wird. Dabei darauf achten, dass die Temperatur nicht zu hoch ist und nichts anbrennt. Nun die kleine Dose Tomatenmark dazu geben und gut vermengen. Das Ganze nach und nach kellenweise mit der heißen Brühe ablöschen. Der Reis sollte dabei jedes Mal Zeit haben, die Flüssigkeit aufzusaugen. Der Reis ist gar, sobald er noch ganz minimal bissfest ist - dann keine Brühe mehr zugeben. Das Ganze nach Bedarf mit Parmesan und Basilikum abschmecken. Zum Schluss die Mozzarellawürfel unterheben und sofort auf Teller verteilen.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -84,7 +85,7 @@ VALUES
 INSERT INTO Ingredients(Name, Plural)
 VALUES
   ('Tomate', 'Tomaten'),     -- 1
-  ('Mozarella', NULL),      -- 2
+  ('Mozzarella', NULL),      -- 2
   ('Olivenöl', NULL),       -- 3
   ('Essig', NULL),          -- 4
   ('Blattsalatkopf', 'Blattsalatköpfe'), -- 5
@@ -183,7 +184,8 @@ VALUES
   ('Weißwein', NULL),       -- 99
   ('Zitrone', 'Zitronen'),  -- 100
   ('Garnele', 'Garnelen'),  -- 101
-  ('Parmesan', NULL);       -- 102
+  ('Parmesan', NULL),       -- 102
+  ('Basilikum', NULL);      -- 103
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -196,7 +198,7 @@ VALUES
   ('L', NULL),              -- 7
   ('Dose', 'Dosen'),        -- 8
   ('Zehe', 'Zehen'),        -- 9
-  ('Dose', 'Dosen'),        -- 10
+  ('Kugel', 'Kugeln'),      -- 10
   ('Schote', 'Schoten'),    -- 11
   ('Becher', NULL),         -- 12
   ('TL', NULL),             -- 13
@@ -223,6 +225,7 @@ VALUES
   (1,    3,  1.5,    1),
   (1,    4,    1,    1),
   (1,   17,  0.5, NULL),
+  (1,  103,    1,   28),
   (2,    1,    2, NULL),
   (2,    3,  1.5,    1),
   (2,    4,    1,    1),
@@ -256,7 +259,7 @@ VALUES
   (9,   20,  300,    6),
   (9,   21,  0.5,    5),
   (9,   30,    1,    9),
-  (10,   1, 0.75,   10),
+  (10,   1, 0.75,    8),
   (10,   3,    1,    1),
   (10,   8,  0.5, NULL),
   (10,  20,  300,    6),
@@ -367,14 +370,14 @@ VALUES
   (23,   9,  250,    6),
   (23,  84,  0.5, NULL),
   (23,  40,  0.5,   15),
-  (23,  85,  0.5,   10),
+  (23,  85,  0.5,    8),
   (23,  86,    1,    1),
   (23,   8,  0.5, NULL),
   (23,  67,  0.5,    1),
   (23,  32,  0.5,    1),
   (23,  87,  0.5,   26),
   (24,  88,  125,    6),
-  (24,  89,    2,   10),
+  (24,  89,    2,    8),
   (24,  90,  0.5,    7),
   (24,  91,  0.5,    8),
   (24,  92,  1.5, NULL),
@@ -397,7 +400,16 @@ VALUES
   (26,  62,    1,   13),
   (26, 101,  125,    6),
   (26, 102,   50,    6),
-  (26,  80,   50,    6);
+  (26,  80,   50,    6),
+  (27,  98,  250,    6),
+  (27,  54,    1,    7),
+  (27,   2,    1,   10),
+  (27,  30,    1,    9),
+  (27,   8,  0.5, NULL),
+  (27,  67,  0.5,    8),
+  (27, 103,    1,   28),
+  (27, 102,    1,   28),
+  (27,   3,    1,    1);
 
 
 -- TODO: update Likes table!
