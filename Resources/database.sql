@@ -69,7 +69,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Geschmortes Olivenhähnchen',    'geschmorolivebockbock', 'Das Hähnchen mit einem schweren Messer in 8 Stücke zerteilen, bei Hähnchenschenkeln Ober- und Unterschenkel trennen. Die Hälfte der Thymianblättchen abzupfen. 5 Salbeiblätter, Rosmarinnadeln von 1 Zweig und 2 Knoblauchzehen fein hacken. Zitronenschale abreiben. Die gehackten Kräuter und den Knoblauch mit dem Zitronenabrieb und 3 EL Olivenöl mischen, über die Hähnchenteile geben und 30 Min. einziehen lassen. In der Zwischenzeit Schalotten und den restlichen Knoblauch pellen. Kartoffeln waschen und schälen. Das Kräuteröl von den Hähnchenteilen entfernen und aufheben. In einem Bräter 1 EL Olivenöl erhitzen, die Hähnchenteile darin hell anbraten, salzen und pfeffern, dann aus dem Fett nehmen und beiseitestellen. Jetzt Kartoffeln, Schalotten und Knoblauchzehen 5 Min. in dem Öl braten, salzen und pfeffern. Hähnchen und Kräuteröl in den Bräter geben. Rotwein, Zitronensaft und Tomatenmark verrühren mit dem Geflügelfond (Brühe) in den Bräter gießen. Lorbeerblätter halbieren und mit den restlichen Kräutern und den Oliven dazugeben. Den Bräter mit einem Deckel verschließen und das Hähnchen auf der untersten Schiene bei 200 Grad 35 - 40 Min. schmoren. Wenn die Kartoffeln weich sind, die Hähnchenteile auf einen Grillrost legen und unter dem Grill in ca. 5 - 10 Min. bei 200 Grad kross grillen. Eventuell die Hähnchenteile mit Pfeffer und Salz nachwürzen. Aus der Sauce die Lorbeerblätter und Rosmarinstängel fischen. Die Sauce abschmecken. Mit Baguette oder Ciabatta und gemischtem Salat servieren.'),
   ('Kartoffel-Lauch-Auflauf',       'kartlauchschinken', 'Den Backofen auf 180 °C vorheizen. Lauch und Kartoffeln in grobe Stücke schneiden, in Brühe nicht ganz fertig kochen und in eine Auflaufform legen. Schinken in kleine Würfel schneiden und ebenfalls in die Form geben. Eier, Sahne, Schmelzkäse und Gewürze mit dem Schneebesen verquirlen und über Lauch-Kartoffeln-Schinken geben. Mit Emmentaler bestreuen und ca. 30 - 40 Min. gratinieren. Kann als Beilage zu Steaks gereicht werden oder auch als Hauptgericht. Tipp: Aus der Kochbrühe von Lauch und Kartoffeln kann man noch eine leckere Lauchcremesuppe zaubern. Dazu ein paar Stücke Lauch und Kartoffeln im Topf belassen und gar kochen, Sahne dazu, pürieren, abschmecken.'),
   ('Tortelloni-Steak-Pfanne', 'tortellonisteak', 'Das Öl in einer großen Pfanne erhitzen und die Steakstreifen 4 - 5 Minuten kräftig anbraten. Mit Salz und Pfeffer würzen. Das Fleisch herausnehmen und zur Seite stellen. Den Fond in die gleiche Pfanne geben und aufkochen. Die Tortelloni und Zuckerschoten zugeben und 2 - 3 Minuten köcheln lassen. Petersilie, Frischkäse und Fleisch dazugeben und nochmal mit Salz und Pfeffer abschmecken.'),
-  ('Apfel-Pfannkuchen', 'apfelpfannkuchen', 'Eier trennen. Eiweiß steif schlagen. Eigelb mit 2 EL Zucker cremig schlagen und die Milch zufügen. Jetzt das Mehl sowie das Backpulver und einer Prise Salz dazu geben, mixen und zum Schluss den Eischnee unterheben. Äpfel schälen, vierteln, entkernen und in Scheiben oder Stücke schneiden. Zusammen mit Butter und 1 EL Zucker in einer Pfanne etwas karamellisieren lassen. Mit Calvados ablöschen und mit dem Teig auffüllen. Den Teig stocken lassen und im vorgeheizten Ofen bei 160°C ca. 10 Minuten goldgelb fertig backen. Probieren Sie auch die beiden anderen Rezepte aus unserem Video: "Pancake mit Blaubeeren" und "Crêpe"');
+  ('Apfel-Pfannkuchen', 'apfelpfannkuchen', 'Eier trennen. Eiweiß steif schlagen. Eigelb mit 2 EL Zucker cremig schlagen und die Milch zufügen. Jetzt das Mehl sowie das Backpulver und einer Prise Salz dazu geben, mixen und zum Schluss den Eischnee unterheben. Äpfel schälen, vierteln, entkernen und in Scheiben oder Stücke schneiden. Zusammen mit Butter und 1 EL Zucker in einer Pfanne etwas karamellisieren lassen. Mit Calvados ablöschen und mit dem Teig auffüllen. Den Teig stocken lassen und im vorgeheizten Ofen bei 160°C ca. 10 Minuten goldgelb fertig backen. Probieren Sie auch die beiden anderen Rezepte aus unserem Video: "Pancake mit Blaubeeren" und "Crêpe"'),
+  ('Hähnchencurry mit Süßkartoffeln', 'huhncurrysuesskart', 'Das Hähnchenbrustfilet in Streifen schneiden, die Paprikaschote entkernen und ebenfalls in Streifen oder Stücke schneiden. Die Süßkartoffel schälen und würfeln (ca. 1 cm). Die Zwiebel schälen und in feine Würfel schneiden. In einer Pfanne etwas Öl erhitzen und die Zwiebelwürfel darin glasig anschwitzen. Tomatenmark und Currypaste zugeben und kurz mitbraten. Dann das Hähnchenbrustfilet zugeben, gut durchschwenken und dann Kokosmilch sowie nach Bedarf etwas Wasser zugeben. Jetzt die Süßkartoffelwürfel zugeben. Ca. 20 Minuten bei mittlerer Hitze köcheln lassen, damit die Süßkartoffel weich wird. Dann die Paprikastreifen sowie den Smoothie bzw. den Fruchtsaft oder die frischen Früchte zugeben und ca. 10 Minuten ziehen lassen. Die Paprikaschote sollte noch bissfest sein. Am Schluss mit Sojasauce und bei Bedarf mit Salz abschmecken. Dazu passt Reis. Variieren kann man natürlich mit der Menge an Currypaste - wer es scharf mag, nimmt mehr Currypaste. Auch das Gemüse kann man je nach Kühlschrankinhalt verändern. Gut passen z. B. auch Zucchini oder grüne Bohnen. Ich persönlich finde die Verwendung eines Smoothies praktisch - man bekommt ein tolles Fruchtaroma, auch wenn man vielleicht gerade keine frischen Früchte verfügbar hat. Mit frischem Obst, z.B. Mangos oder Pfirsichen, geht es aber natürlich auch.');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -87,7 +88,7 @@ VALUES
   ('Karotte', 'Karotten'),  -- 6
   ('Gurke', 'Gurken'),      -- 7
   ('Zwiebel', 'Zwiebeln'),  -- 8
-  ('Hühnerbrust', 'Hühnerbrüste'),    -- 9
+  ('Hühnerbrust', 'Hühnerbrüste'),-- 9
   ('Reis', NULL),           -- 10
   ('Brot', 'Brote'),        -- 11
   ('Räucherlachs', NULL),   -- 12
@@ -110,7 +111,7 @@ VALUES
   ('Pizza', 'Pizzen'),      -- 29
   ('Knoblauch', NULL),      -- 30
   ('Kauflanddöner', NULL),  -- 31
-  ('Sojasauce', 'Sojasaucen'),-- 32
+  ('Sojasauce', NULL),      -- 32
   ('Orangensaft', 'Orangensäfte'),-- 33
   ('Honig', NULL),          -- 34
   ('Sambal Oelek', NULL),   -- 35
@@ -160,7 +161,11 @@ VALUES
   ('Kräuterfrischkäse', NULL),-- 80
   ('Apfel', 'Äpfel'),       -- 81
   ('Zucker', NULL),         -- 82
-  ('Apfellikör', NULL);     -- 83
+  ('Apfellikör', NULL),     -- 83
+  ('Süßkartoffel', 'Süßkartoffeln'),-- 84
+  ('Kokosmilch', NULL),     -- 85
+  ('rote Currypaste', NULL),-- 86
+  ('Fruchtsaft', NULL);     -- 87
 
 INSERT INTO Units(Name, Plural)
 VALUES
@@ -188,7 +193,8 @@ VALUES
   ('Stiel', 'Stiele'),      -- 22
   ('cl', NULL),             -- 23
   ('Msp.', NULL),           -- 24
-  ('Bund', NULL);           -- 25
+  ('Bund', NULL),           -- 25
+  ('Flasche', 'Flaschen');  -- 26
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -336,7 +342,16 @@ VALUES
   (22,  14,    2, NULL),
   (22,  28,  200,   18),
   (22,  15,  120,    6),
-  (22,  47,    1,   24);
+  (22,  47,    1,   24),
+  (23,   9,  250,    6),
+  (23,  84,  0.5, NULL),
+  (23,  40,  0.5,   15),
+  (23,  85,  0.5,   10),
+  (23,  86,    1,    1),
+  (23,   8,  0.5, NULL),
+  (23,  67,  0.5,    1),
+  (23,  32,  0.5,    1),
+  (23,  87,  0.5,   26);
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
