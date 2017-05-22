@@ -12,9 +12,9 @@ struct ShoppingListItem {
     let ingredient: Ingredient
     var quantity: Float
     let belongsTo: Int
-    let unit: String?
+    let unit: Unit?
     
-    init(ingredient: Ingredient, quantity: Float, belongsTo: Int, unit: String? = nil) {
+    init(ingredient: Ingredient, quantity: Float, belongsTo: Int, unit: Unit? = nil) {
         self.ingredient = ingredient
         self.quantity = quantity
         self.belongsTo = belongsTo
@@ -27,7 +27,11 @@ struct ShoppingListItem {
     
     public var description: String {
         let nameString: String = (quantity > 1 && unit == nil ? ("\(ingredient.plural ?? ingredient.name)") : "\(ingredient.name)")
-        return String(format: "\(prettify(quantity)) " + (unit == nil ? "" : "\(unit!) ") + nameString)
+        var unitString = ""
+        if let u = unit {
+            unitString = quantity > 1 ? "\(u.plural ?? u.name) " : "\(u.name) "
+        }
+        return String(format: "\(prettify(quantity)) " + unitString + nameString)
     }
     
     func prettify(_ float: Float) -> String {

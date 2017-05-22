@@ -116,7 +116,14 @@ class Database {
                     let ingplural: String? = row.value(named: "plural")
                     let ingid: Int = row.value(named: "ingid")
                     let quantity: Float = row.value(named: "quantity")
-                    let unit: String? = row.value(named: "unit")
+                    var unit: Unit?
+                    
+                    if let unitID: Int = row.value(named: "unit") {
+                        let unitRow = (try Row.fetchCursor(db, "SELECT * FROM units WHERE unitid = ?", arguments: [unitID]).next())!
+                        let unitName: String = unitRow.value(named: "name")
+                        let unitPlural: String? = unitRow.value(named: "plural")
+                        unit = Unit(id: unitID, name: unitName, plural: unitPlural)
+                    }
                     
                     tmpList.append(ShoppingListItem(ingredient: Ingredient(id: ingid, name: ingname, plural: ingplural), quantity: quantity, belongsTo: belongsTo, unit: unit))
                 }
