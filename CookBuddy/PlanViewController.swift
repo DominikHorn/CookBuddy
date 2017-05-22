@@ -213,9 +213,6 @@ class PlanViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        // Set navigation bar title
-        navigationItem.title = "Planen"
-        
         if Database.shared.updatesOccured {
             // Reload data (necessary, otherwise updates are not always shown)
             tableView.reloadData()

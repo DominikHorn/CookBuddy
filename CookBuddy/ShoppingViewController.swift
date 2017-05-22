@@ -19,6 +19,7 @@ class ShoppingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        tableView.setEditing(true, animated: true)
         tableView.reloadData()
     }
     
@@ -33,12 +34,16 @@ extension ShoppingViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.view.endEditing(true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
 }
 
 // MARK:- UITableViewDataSource
 extension ShoppingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        // Always two sections
+        // Always two sections TODO
         return 1
     }
     
@@ -62,11 +67,6 @@ extension ShoppingViewController: UITableViewDataSource {
         default:
             return 0
         }
-    }
-    
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        // Don't highlight any table view cells
-        return false
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
