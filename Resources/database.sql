@@ -62,7 +62,8 @@ In den heißen Backofen schieben und auf der mittleren Schiene 10-15 Min. überb
   ('Kartoffel Möhren Suppe', 'kartmoehrsup', 'Die Kartoffeln und Möhren schälen und in gleich große Scheiben hobeln oder schneiden. Die Zwiebel und den Knoblauch in Würfel schneiden. Die Zwiebel mit dem Knoblauch in der Butter anschwitzen. Danach Kartoffeln und Möhren beigeben und kurz mitschwitzen. Mit Gemüsebrühe, Sahne und Milch ablöschen. Das Ganze nochmal aufkochen lassen und dann 20 min. bei geringer Temperatur köcheln lassen. Jetzt das Ganze pürieren. Zum Schluss die Suppe mit Petersilie, Salz und Pfeffer abschmecken. Tipp: Man kann auch Speck mit anbraten. Um es noch fettärmer zu machen, komplett mit Milch statt Sahne zubereiten.'),
   ('Geschmortes Olivenhähnchen',    'geschmorolivebockbock', 'Das Hähnchen mit einem schweren Messer in 8 Stücke zerteilen, bei Hähnchenschenkeln Ober- und Unterschenkel trennen. Die Hälfte der Thymianblättchen abzupfen. 5 Salbeiblätter, Rosmarinnadeln von 1 Zweig und 2 Knoblauchzehen fein hacken. Zitronenschale abreiben. Die gehackten Kräuter und den Knoblauch mit dem Zitronenabrieb und 3 EL Olivenöl mischen, über die Hähnchenteile geben und 30 Min. einziehen lassen. In der Zwischenzeit Schalotten und den restlichen Knoblauch pellen. Kartoffeln waschen und schälen. Das Kräuteröl von den Hähnchenteilen entfernen und aufheben. In einem Bräter 1 EL Olivenöl erhitzen, die Hähnchenteile darin hell anbraten, salzen und pfeffern, dann aus dem Fett nehmen und beiseitestellen. Jetzt Kartoffeln, Schalotten und Knoblauchzehen 5 Min. in dem Öl braten, salzen und pfeffern. Hähnchen und Kräuteröl in den Bräter geben. Rotwein, Zitronensaft und Tomatenmark verrühren mit dem Geflügelfond (Brühe) in den Bräter gießen. Lorbeerblätter halbieren und mit den restlichen Kräutern und den Oliven dazugeben. Den Bräter mit einem Deckel verschließen und das Hähnchen auf der untersten Schiene bei 200 Grad 35 - 40 Min. schmoren. Wenn die Kartoffeln weich sind, die Hähnchenteile auf einen Grillrost legen und unter dem Grill in ca. 5 - 10 Min. bei 200 Grad kross grillen. Eventuell die Hähnchenteile mit Pfeffer und Salz nachwürzen. Aus der Sauce die Lorbeerblätter und Rosmarinstängel fischen. Die Sauce abschmecken. Mit Baguette oder Ciabatta und gemischtem Salat servieren.'),
   ('Kartoffel-Lauch-Auflauf',       'kartlauchschinken', 'Den Backofen auf 180 °C vorheizen. Lauch und Kartoffeln in grobe Stücke schneiden, in Brühe nicht ganz fertig kochen und in eine Auflaufform legen. Schinken in kleine Würfel schneiden und ebenfalls in die Form geben. Eier, Sahne, Schmelzkäse und Gewürze mit dem Schneebesen verquirlen und über Lauch-Kartoffeln-Schinken geben. Mit Emmentaler bestreuen und ca. 30 - 40 Min. gratinieren. Kann als Beilage zu Steaks gereicht werden oder auch als Hauptgericht. Tipp: Aus der Kochbrühe von Lauch und Kartoffeln kann man noch eine leckere Lauchcremesuppe zaubern. Dazu ein paar Stücke Lauch und Kartoffeln im Topf belassen und gar kochen, Sahne dazu, pürieren, abschmecken.'),
-  ('Tortelloni-Steak-Pfanne', 'tortellonisteak', 'Das Öl in einer großen Pfanne erhitzen und die Steakstreifen 4 - 5 Minuten kräftig anbraten. Mit Salz und Pfeffer würzen. Das Fleisch herausnehmen und zur Seite stellen. Den Fond in die gleiche Pfanne geben und aufkochen. Die Tortelloni und Zuckerschoten zugeben und 2 - 3 Minuten köcheln lassen. Petersilie, Frischkäse und Fleisch dazugeben und nochmal mit Salz und Pfeffer abschmecken.');
+  ('Tortelloni-Steak-Pfanne', 'tortellonisteak', 'Das Öl in einer großen Pfanne erhitzen und die Steakstreifen 4 - 5 Minuten kräftig anbraten. Mit Salz und Pfeffer würzen. Das Fleisch herausnehmen und zur Seite stellen. Den Fond in die gleiche Pfanne geben und aufkochen. Die Tortelloni und Zuckerschoten zugeben und 2 - 3 Minuten köcheln lassen. Petersilie, Frischkäse und Fleisch dazugeben und nochmal mit Salz und Pfeffer abschmecken.'),
+  ('Apfel-Pfannkuchen', 'apfelpfannkuchen', 'Eier trennen. Eiweiß steif schlagen. Eigelb mit 2 EL Zucker cremig schlagen und die Milch zufügen. Jetzt das Mehl sowie das Backpulver und einer Prise Salz dazu geben, mixen und zum Schluss den Eischnee unterheben. Äpfel schälen, vierteln, entkernen und in Scheiben oder Stücke schneiden. Zusammen mit Butter und 1 EL Zucker in einer Pfanne etwas karamellisieren lassen. Mit Calvados ablöschen und mit dem Teig auffüllen. Den Teig stocken lassen und im vorgeheizten Ofen bei 160°C ca. 10 Minuten goldgelb fertig backen. Probieren Sie auch die beiden anderen Rezepte aus unserem Video: "Pancake mit Blaubeeren" und "Crêpe"');
 
 INSERT INTO Persons(Name)
 VALUES
@@ -85,7 +86,7 @@ VALUES
   ('Brot'),           -- 11
   ('Räucherlachs'),   -- 12
   ('Gemüsekack'),     -- 13
-  ('Eier'),           -- 14
+  ('Ei'),             -- 14
   ('Mehl'),           -- 15
   ('Aufschnitt'),     -- 16
   ('Baguette'),       -- 17
@@ -150,7 +151,11 @@ VALUES
   ('Curry Pulver'),   -- 77
   ('Rinderfond'),     -- 78
   ('Spinat-Ricotta Tortelloni'),-- 79
-  ('Kräuterfrischkäse');-- 80
+  ('Kräuterfrischkäse'),-- 80
+  ('Apfel'),          -- 81
+  ('Zucker'),         -- 82
+  ('Apfellikör'),     -- 83
+  ('Backpulver');     -- 84
 
 INSERT INTO Contains(DishID, IngID, Quantity, Unit)
 VALUES
@@ -290,7 +295,15 @@ VALUES
   (21,  79,  125, 'g'),
   (21,  80, 37.5, 'g'),
   (21,   3,  0.5, 'EL'),
-  (21,  50, 0.75, 'Stiele');
+  (21,  50, 0.75, 'Stiele'),
+  (22,  81,    2, NULL),
+  (22,  43,    1, 'EL'),
+  (22,  82,    3, 'EL'),
+  (22,  83,    2, 'cl'),
+  (22,  14,    2, NULL),
+  (22,  28,  200, 'ml'),
+  (22,  15,  120, 'g'),
+  (22,  84,    1, 'Msp.');
 
 -- TODO: update Likes table!
 --INSERT INTO Likes(DishID, PersID, Score)
