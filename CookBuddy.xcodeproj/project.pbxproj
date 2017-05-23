@@ -258,6 +258,7 @@
 				8A6310C3748213919127BB53 /* [CP] Check Pods Manifest.lock */,
 				B4CA31721E9D343F0060471E /* Sources */,
 				B4CA31731E9D343F0060471E /* Frameworks */,
+				B4A82DC81ED4A4A300BDA81A /* ShellScript */,
 				B4CA31741E9D343F0060471E /* Resources */,
 				E98A7F00526A081E94F7140F /* [CP] Embed Pods Frameworks */,
 				18FD0B90DE2161CDACC98409 /* [CP] Copy Pods Resources */,
@@ -417,6 +418,19 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		B4A82DC81ED4A4A300BDA81A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sqlite3 Resources/cookbuddy_test.sqlite < Resources/database.sql";
+		};
 		E98A7F00526A081E94F7140F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,13 +462,16 @@
 				B475243F1ED2FE6100E6C00F /* Unit.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
 				B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */,
+				B4A82DC51ED49B6D00BDA81A /* ForcedShoppingListItem.swift in Sources */,
 				B48CBCD91ECE33BB00C58E68 /* ChooseDishViewController.swift in Sources */,
 				B4F9F9931ED1CB4C00F6F7B8 /* DishTableViewCell.swift in Sources */,
 				B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */,
+				B4A82DC71ED49E2600BDA81A /* CustomShoppingListItem.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
 				B4583D601EA907AD00F1EC6B /* ShoppingListItem.swift in Sources */,
 				B4118D561EA38F1100B590D1 /* Dish.swift in Sources */,
 				B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */,
+				B4A82DC31ED49A6200BDA81A /* ShoppingListItem.swift in Sources */,
 				B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */,
 				B41154A11EA56C5100D21FC1 /* DishDetailViewController.swift in Sources */,
 				B4278ABB1EA130A800945FE5 /* PlanViewController.swift in Sources */,
