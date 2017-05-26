@@ -219,6 +219,9 @@ class PlanViewController: UIViewController {
             calendarView.reloadData()
         }
         endEdit()
+        
+        // Show title
+        navigationController?.title = "Planen"
     }
     
     override func viewWillDisappear(_ animated: Bool) {

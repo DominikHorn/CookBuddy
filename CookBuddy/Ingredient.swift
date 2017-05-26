@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Ingredient {
+struct Ingredient {
     let id: Int
     let name: String
     let plural: String?

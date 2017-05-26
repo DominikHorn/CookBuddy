@@ -1,4 +1,6 @@
-DROP TABLE IF EXISTS CustomSchedule;
+DROP TABLE IF EXISTS ForcedShoppingItems;
+DROP TABLE IF EXISTS CustomShoppingItems;
+DROP TABLE IF EXISTS ShoppingItems;
 DROP TABLE IF EXISTS Schedule;
 DROP TABLE IF EXISTS Contains;
 DROP TABLE IF EXISTS Ingredients;
@@ -19,21 +21,28 @@ CREATE TABLE Units
    Name         VARCHAR(30) NOT NULL,
    Plural       VARCHAR(30));
 CREATE TABLE Contains
-  (DishID       INTEGER REFERENCES Dishes,
-   IngID        INTEGER REFERENCES Ingredients,
+  (DishID       INTEGER REFERENCES Dishes(dishid),
+   IngID        INTEGER REFERENCES Ingredients(ingid),
+   Unit         INTEGER REFERENCES Units(unitid), -- May be null since Items like Baguette have a clear Quantity just from their name
    Quantity     DECIMAL(4,3) NOT NULL,
-   Unit         INTEGER REFERENCES Units, -- May be null since Items like Baguette have a clear Quantity just from their name
    PRIMARY KEY (IngID, DishID));
 CREATE TABLE Schedule
-  (ScheduledFor    DATETIME NOT NULL,
-   ScheduleNumber  INTEGER NOT NULL,
-   NumberOfPeople  INTEGER NOT NULL,
-   DishID          INTEGER REFERENCES Dishes,
-   PRIMARY KEY (ScheduleNumber, ScheduledFor));
-CREATE TABLE CustomSchedule
-  (id         INTEGER PRIMARY KEY AUTOINCREMENT,
+  (id               INTEGER PRIMARY KEY AUTOINCREMENT,
+   DishID           INTEGER REFERENCES Dishes(dishid),
+   ScheduledFor     DATETIME NOT NULL,
+   NumberOfPeople   INTEGER NOT NULL);
+CREATE TABLE ShoppingItems
+  (id               INTEGER PRIMARY KEY AUTOINCREMENT,
+   bought           BOOLEAN DEFAULT FALSE);
+CREATE TABLE ForcedShoppingItems
+  (id         INTEGER REFERENCES ShoppingItems(id) ON DELETE CASCADE,
+   ingid      INTEGER REFERENCES Ingredients(ingid),
+   scheduleid INTEGER REFERENCES Schedule(id) ON DELETE CASCADE,
+   PRIMARY KEY(id));
+CREATE TABLE CustomShoppingItems
+  (id         INTEGER REFERENCES ShoppingItems(id) ON DELETE CASCADE,
    String     VARCHAR(50) NOT NULL,
-   Bought     BOOLEAN DEFAULT FALSE);
+   PRIMARY KEY(id));
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES

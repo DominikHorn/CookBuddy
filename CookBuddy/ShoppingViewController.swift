@@ -11,7 +11,7 @@ import UIKit
 class ShoppingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label: UILabel!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,8 +19,31 @@ class ShoppingViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Reload our table view
         tableView.setEditing(true, animated: true)
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Mark all items as bought that we selected
+        tableView.indexPathsForSelectedRows?.forEach { [unowned self] ip in
+            switch ip.section {
+            case 0:
+                // TODO
+                print()
+            case 1:
+                // TODO
+                print()
+                // self.customItems[ip.row].bought = true
+            case 2:
+                // TODO
+                print()
+            default:
+                print("Unknown section \(ip.section)")
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -44,13 +67,13 @@ extension ShoppingViewController: UITableViewDelegate {
 extension ShoppingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         // Always two sections TODO
-        return 1
+        return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            let count = Database.shared.getShoppingListItems(forDate: Date()).count
+            let count = Database.shared.getForcedShoppingListItems().count
             
             if count == 0 {
                 tableView.isHidden = true
@@ -60,9 +83,10 @@ extension ShoppingViewController: UITableViewDataSource {
                 label.isHidden = true
             }
             
-            // Get shopping list items for today
-            return count // TODO: handle 0 case and display message that nothing exists for that date
+            return count
         case 1:
+            return 0; // TODO IMPLEMENT
+        case 2:
             return 0; // TODO IMPLEMENT
         default:
             return 0
@@ -83,8 +107,9 @@ extension ShoppingViewController: UITableViewDataSource {
         // Retrieve dish name for cell
         switch indexPath.section {
         case 0:
-            let item = Database.shared.getShoppingListItems(forDate: Date())[indexPath.row]
-            cell.ingredientTextField.text = item.description
+            let item = Database.shared.getForcedShoppingListItems()[indexPath.row]
+            cell.ingredientTextField.text = item.contents
+            break
         case 1:
             break
         default:
@@ -96,6 +121,6 @@ extension ShoppingViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return ["Benötigt für heute", "Benötigt diese Woche"][section]
+        return ["Benötigt für heute", "Eigene Einträge", "Benötigt diese Woche"][section]
     }
 }

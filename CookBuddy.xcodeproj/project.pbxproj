@@ -18,9 +18,11 @@
 		B445DBFE1E9FB1FC00F5550D /* cookbuddy_test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = B445DBFC1E9FB1FC00F5550D /* cookbuddy_test.sqlite */; };
 		B445DC011E9FC14D00F5550D /* DishImages in Resources */ = {isa = PBXBuildFile; fileRef = B445DC001E9FC14D00F5550D /* DishImages */; };
 		B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45498901EA2331B00B84C50 /* StandardExtensions.swift */; };
+		B457B2A81ED4A5BF00B29A37 /* ForcedShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */; };
+		B457B2AB1ED4A5DC00B29A37 /* CustomShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */; };
+		B457B2AC1ED4A5DC00B29A37 /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */; };
 		B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */; };
 		B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */; };
-		B4583D601EA907AD00F1EC6B /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5F1EA907AD00F1EC6B /* ShoppingListItem.swift */; };
 		B475243F1ED2FE6100E6C00F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475243E1ED2FE6100E6C00F /* Unit.swift */; };
 		B48CBCD91ECE33BB00C58E68 /* ChooseDishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48CBCD81ECE33BB00C58E68 /* ChooseDishViewController.swift */; };
 		B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */; };
@@ -66,9 +68,11 @@
 		B445DBFD1E9FB1FC00F5550D /* database.sql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = database.sql; sourceTree = "<group>"; };
 		B445DC001E9FC14D00F5550D /* DishImages */ = {isa = PBXFileReference; lastKnownFileType = folder; path = DishImages; sourceTree = "<group>"; };
 		B45498901EA2331B00B84C50 /* StandardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardExtensions.swift; sourceTree = "<group>"; };
+		B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForcedShoppingListItem.swift; sourceTree = "<group>"; };
+		B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShoppingListItem.swift; sourceTree = "<group>"; };
+		B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
 		B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerCell.swift; sourceTree = "<group>"; };
-		B4583D5F1EA907AD00F1EC6B /* ShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		B475243E1ED2FE6100E6C00F /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		B48CBCD81ECE33BB00C58E68 /* ChooseDishViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseDishViewController.swift; sourceTree = "<group>"; };
 		B4AC376D1EA4EB950095960B /* EmptyMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyMessageTableViewCell.swift; sourceTree = "<group>"; };
@@ -163,8 +167,10 @@
 				B4118D551EA38F1100B590D1 /* Dish.swift */,
 				B4DC46341EA3B0BD00339CBF /* Ingredient.swift */,
 				B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */,
-				B4583D5F1EA907AD00F1EC6B /* ShoppingListItem.swift */,
 				B475243E1ED2FE6100E6C00F /* Unit.swift */,
+				B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */,
+				B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */,
+				B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -453,25 +459,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B457B2A81ED4A5BF00B29A37 /* ForcedShoppingListItem.swift in Sources */,
 				B4DCBFED1EA2999800BCA909 /* EventTableViewCell.swift in Sources */,
 				B445DBF81E9FB0D000F5550D /* Database.swift in Sources */,
 				B4DC46351EA3B0BD00339CBF /* Ingredient.swift in Sources */,
 				B41236131EA12795003EEEB8 /* ShoppingViewController.swift in Sources */,
+				B457B2AB1ED4A5DC00B29A37 /* CustomShoppingListItem.swift in Sources */,
 				B41236151EA12AC3003EEEB8 /* SettingsViewController.swift in Sources */,
 				B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */,
 				B475243F1ED2FE6100E6C00F /* Unit.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
+				B457B2AC1ED4A5DC00B29A37 /* ShoppingListItem.swift in Sources */,
 				B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */,
-				B4A82DC51ED49B6D00BDA81A /* ForcedShoppingListItem.swift in Sources */,
 				B48CBCD91ECE33BB00C58E68 /* ChooseDishViewController.swift in Sources */,
 				B4F9F9931ED1CB4C00F6F7B8 /* DishTableViewCell.swift in Sources */,
 				B40106C01EA57BA100193882 /* ShoppingListCell.swift in Sources */,
-				B4A82DC71ED49E2600BDA81A /* CustomShoppingListItem.swift in Sources */,
 				B4CA317A1E9D34400060471E /* AppDelegate.swift in Sources */,
-				B4583D601EA907AD00F1EC6B /* ShoppingListItem.swift in Sources */,
 				B4118D561EA38F1100B590D1 /* Dish.swift in Sources */,
 				B4AC376E1EA4EB950095960B /* EmptyMessageTableViewCell.swift in Sources */,
-				B4A82DC31ED49A6200BDA81A /* ShoppingListItem.swift in Sources */,
 				B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */,
 				B41154A11EA56C5100D21FC1 /* DishDetailViewController.swift in Sources */,
 				B4278ABB1EA130A800945FE5 /* PlanViewController.swift in Sources */,

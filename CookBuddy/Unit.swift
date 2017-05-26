@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Unit {
+struct Unit {
     let id: Int
     let name: String
     let plural: String?

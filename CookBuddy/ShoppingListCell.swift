@@ -9,9 +9,12 @@
 import UIKit
 
 class ShoppingListCell: UITableViewCell {
+    var canEdit: Bool = false
+    
     @IBOutlet weak var ingredientTextField: UITextField! {
         didSet {
             ingredientTextField.text = "Leere Zutat"
+            ingredientTextField.isUserInteractionEnabled = false
         }
     }
 }

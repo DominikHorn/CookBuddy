@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Ha-Oj-YdR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="0Ha-Oj-YdR">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -41,7 +41,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-cr-Wtm">
-                                                    <rect key="frame" x="20" y="15" width="350" height="29"/>
+                                                    <rect key="frame" x="20" y="0.0" width="350" height="44"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -49,7 +49,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="JWa-cr-Wtm" secondAttribute="bottom" id="98R-AM-ACC"/>
-                                                <constraint firstItem="JWa-cr-Wtm" firstAttribute="top" secondItem="JhL-gf-GZN" secondAttribute="top" constant="15" id="Exk-NR-qRj"/>
+                                                <constraint firstItem="JWa-cr-Wtm" firstAttribute="top" secondItem="JhL-gf-GZN" secondAttribute="top" id="Exk-NR-qRj"/>
                                                 <constraint firstItem="JWa-cr-Wtm" firstAttribute="leading" secondItem="JhL-gf-GZN" secondAttribute="leading" constant="20" id="aWM-uN-COn"/>
                                                 <constraint firstAttribute="trailing" secondItem="JWa-cr-Wtm" secondAttribute="trailing" constant="5" id="khv-WZ-w3j"/>
                                             </constraints>

@@ -9,21 +9,15 @@
 import Foundation
 
 struct ScheduleEntry {
-    let scheduledFor: Date
+    let id: Int
     let dishId: Int
-    let scheduleNumber: Int
+    let scheduledFor: Date
     let numberOfPeople: Int
     
-    init(scheduledFor: Date, dishId: Int, numberOfPeople: Int = 1, scheduleNumber: Int = -1) {
-        self.scheduledFor = scheduledFor
+    init(id: Int, dishId: Int, scheduledFor: Date, numberOfPeople: Int = 1) {
+        self.id = id
         self.dishId = dishId
+        self.scheduledFor = scheduledFor
         self.numberOfPeople = numberOfPeople
-        
-        if scheduleNumber < 0 {
-            // TODO: Find a better solution than this schedulenumber
-            self.scheduleNumber = Database.shared.getScheduled(forDate: scheduledFor)?.count ?? 0
-        } else {
-            self.scheduleNumber = scheduleNumber
-        }
     }
 }

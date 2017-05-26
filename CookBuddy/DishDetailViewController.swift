@@ -61,7 +61,7 @@ class DishDetailViewController: UIViewController {
         let numberOfPeople = numberCell?.number ?? 3
         let date = timeCell?.currentDate ?? Date()
         
-        Database.shared.schedule(entry: ScheduleEntry(scheduledFor: date, dishId: (dish?.id)!, numberOfPeople: numberOfPeople))
+        Database.shared.schedule(dishId: (dish?.id)!, for: date, withNumberOfPeople: numberOfPeople)
         
         navigationController?.popViewController(animated: true)
     }
