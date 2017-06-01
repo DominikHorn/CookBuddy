@@ -8,26 +8,18 @@
 
 import Foundation
 
-struct CustomShoppingListItem: ShoppingListItem {
+struct CustomShoppingListItem {
     let canEdit: Bool = true
     let id: Int
     var bought: Bool {
         didSet {
             // Update database
-            Database.shared.update(shoppingListItem: self)
+            Database.shared.update(customShoppingListItem: self)
         }
     }
     
-    private var _contents: String
     var contents: String {
-        get {
-            return _contents
-        }
-        
-        set {
-            // Set new value
-            _contents = newValue
-            
+        didSet {
             // Automagically update backend db
             Database.shared.update(customShoppingListItem: self)
         }
@@ -36,6 +28,6 @@ struct CustomShoppingListItem: ShoppingListItem {
     init(id: Int, bought: Bool, initialContents: String = "") {
         self.id = id
         self.bought = bought
-        _contents = initialContents
+        self.contents = initialContents
     }
 }

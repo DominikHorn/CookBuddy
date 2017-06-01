@@ -20,7 +20,6 @@
 		B45498911EA2331B00B84C50 /* StandardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45498901EA2331B00B84C50 /* StandardExtensions.swift */; };
 		B457B2A81ED4A5BF00B29A37 /* ForcedShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */; };
 		B457B2AB1ED4A5DC00B29A37 /* CustomShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */; };
-		B457B2AC1ED4A5DC00B29A37 /* ShoppingListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */; };
 		B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */; };
 		B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */; };
 		B475243F1ED2FE6100E6C00F /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B475243E1ED2FE6100E6C00F /* Unit.swift */; };
@@ -70,7 +69,6 @@
 		B45498901EA2331B00B84C50 /* StandardExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StandardExtensions.swift; sourceTree = "<group>"; };
 		B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForcedShoppingListItem.swift; sourceTree = "<group>"; };
 		B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomShoppingListItem.swift; sourceTree = "<group>"; };
-		B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShoppingListItem.swift; sourceTree = "<group>"; };
 		B4583D5B1EA606B600F1EC6B /* TimePickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerCell.swift; sourceTree = "<group>"; };
 		B4583D5D1EA606D300F1EC6B /* NumberPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberPickerCell.swift; sourceTree = "<group>"; };
 		B475243E1ED2FE6100E6C00F /* Unit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 				B4DC46341EA3B0BD00339CBF /* Ingredient.swift */,
 				B4DC46361EA41F4A00339CBF /* ScheduleEntry.swift */,
 				B475243E1ED2FE6100E6C00F /* Unit.swift */,
-				B457B2AA1ED4A5DC00B29A37 /* ShoppingListItem.swift */,
 				B457B2A71ED4A5BF00B29A37 /* ForcedShoppingListItem.swift */,
 				B457B2A91ED4A5DC00B29A37 /* CustomShoppingListItem.swift */,
 			);
@@ -469,7 +466,6 @@
 				B4583D5C1EA606B600F1EC6B /* TimePickerCell.swift in Sources */,
 				B475243F1ED2FE6100E6C00F /* Unit.swift in Sources */,
 				B4DC46371EA41F4A00339CBF /* ScheduleEntry.swift in Sources */,
-				B457B2AC1ED4A5DC00B29A37 /* ShoppingListItem.swift in Sources */,
 				B4583D5E1EA606D300F1EC6B /* NumberPickerCell.swift in Sources */,
 				B48CBCD91ECE33BB00C58E68 /* ChooseDishViewController.swift in Sources */,
 				B4F9F9931ED1CB4C00F6F7B8 /* DishTableViewCell.swift in Sources */,

@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS ForcedShoppingItems;
+DROP TABLE IF EXISTS Available;
 DROP TABLE IF EXISTS CustomShoppingItems;
-DROP TABLE IF EXISTS ShoppingItems;
 DROP TABLE IF EXISTS Schedule;
 DROP TABLE IF EXISTS Contains;
 DROP TABLE IF EXISTS Ingredients;
@@ -8,41 +7,38 @@ DROP TABLE IF EXISTS Units;
 DROP TABLE IF EXISTS Dishes;
 
 CREATE TABLE Dishes
-  (DishID       INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(100) NOT NULL,
-   ImageFile    VARCHAR(30) NOT NULL,
-   Description  VARCHAR(1000) NOT NULL);
+  (id           INTEGER PRIMARY KEY AUTOINCREMENT,
+   name         VARCHAR(100) NOT NULL,
+   imagefile    VARCHAR(30) NOT NULL,
+   description  VARCHAR(1000) NOT NULL);
 CREATE TABLE Ingredients
-  (IngID        INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(30) NOT NULL,
-   Plural       VARCHAR(30));
+  (id           INTEGER PRIMARY KEY AUTOINCREMENT,
+   name         VARCHAR(30) NOT NULL,
+   plural       VARCHAR(30));
 CREATE TABLE Units
-  (UnitID       INTEGER PRIMARY KEY AUTOINCREMENT,
-   Name         VARCHAR(30) NOT NULL,
-   Plural       VARCHAR(30));
+  (id       INTEGER PRIMARY KEY AUTOINCREMENT,
+   name     VARCHAR(30) NOT NULL,
+   plural   VARCHAR(30));
 CREATE TABLE Contains
-  (DishID       INTEGER REFERENCES Dishes(dishid),
-   IngID        INTEGER REFERENCES Ingredients(ingid),
-   Unit         INTEGER REFERENCES Units(unitid), -- May be null since Items like Baguette have a clear Quantity just from their name
-   Quantity     DECIMAL(4,3) NOT NULL,
+  (dishid       INTEGER REFERENCES Dishes(dishid),
+   ingid        INTEGER REFERENCES Ingredients(id),
+   unitid       INTEGER REFERENCES Units(unitid),
+   quantity     DECIMAL(4,3) NOT NULL,
    PRIMARY KEY (IngID, DishID));
 CREATE TABLE Schedule
   (id               INTEGER PRIMARY KEY AUTOINCREMENT,
-   DishID           INTEGER REFERENCES Dishes(dishid),
-   ScheduledFor     DATETIME NOT NULL,
-   NumberOfPeople   INTEGER NOT NULL);
-CREATE TABLE ShoppingItems
-  (id               INTEGER PRIMARY KEY AUTOINCREMENT,
-   bought           BOOLEAN DEFAULT FALSE);
-CREATE TABLE ForcedShoppingItems
-  (id         INTEGER REFERENCES ShoppingItems(id) ON DELETE CASCADE,
-   ingid      INTEGER REFERENCES Ingredients(ingid),
-   scheduleid INTEGER REFERENCES Schedule(id) ON DELETE CASCADE,
-   PRIMARY KEY(id));
+   dishid           INTEGER REFERENCES Dishes(id),
+   scheduledfor     DATETIME NOT NULL,
+   numberofpeople   INTEGER NOT NULL);
 CREATE TABLE CustomShoppingItems
-  (id         INTEGER REFERENCES ShoppingItems(id) ON DELETE CASCADE,
-   String     VARCHAR(50) NOT NULL,
-   PRIMARY KEY(id));
+  (id         INTEGER PRIMARY KEY AUTOINCREMENT,
+   bought     BOOLEAN DEFAULT FALSE,
+   string     VARCHAR(50) NOT NULL);
+CREATE TABLE Available
+  (ingid      INTEGER REFERENCES Ingredients(id),
+   unitid     INTEGER REFERENCES Units(id),
+   amount     INTEGER NOT NULL DEFAULT 0,
+   PRIMARY KEY (ingid, unitid));
 
 INSERT INTO Dishes(Name, ImageFile, Description)
 VALUES
@@ -218,7 +214,7 @@ VALUES
   ('Kolben', NULL),         -- 27
   ('Etwas', NULL);          -- 28
 
-INSERT INTO Contains(DishID, IngID, Quantity, Unit)
+INSERT INTO Contains(dishid, ingid, quantity, unitid)
 VALUES
   (1,    1,    2, NULL),
   (1,    2,    1, NULL),

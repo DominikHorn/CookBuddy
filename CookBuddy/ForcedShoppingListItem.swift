@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ForcedShoppingListItem: ShoppingListItem {
+struct ForcedShoppingListItem {
     let canEdit: Bool = false
     let id: Int
     let ingId: Int
@@ -16,9 +16,10 @@ struct ForcedShoppingListItem: ShoppingListItem {
     var bought: Bool {
         didSet {
             // Update database
-            Database.shared.update(shoppingListItem: self)
+            Database.shared.update(forcedShoppingListItem: self)
         }
     }
+    
     var contents: String {
         if let tuple = Database.shared.getContents(forForcedShoppingListItem: self) {
             let nameString: String = (tuple.quantity > 1 && tuple.unit == nil ? ("\(tuple.ingredient.plural ?? tuple.ingredient.name)") : "\(tuple.ingredient.name)")

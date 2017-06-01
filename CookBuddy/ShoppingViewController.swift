@@ -12,6 +12,11 @@ class ShoppingViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var label: UILabel!
     
+    // All custom shopping list items
+    lazy var customShoppingListItems: [CustomShoppingListItem] = {
+        return Database.shared.getCustomShoppingListItems() ?? [CustomShoppingListItem]()
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -22,28 +27,6 @@ class ShoppingViewController: UIViewController {
         // Reload our table view
         tableView.setEditing(true, animated: true)
         tableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        // Mark all items as bought that we selected
-        tableView.indexPathsForSelectedRows?.forEach { [unowned self] ip in
-            switch ip.section {
-            case 0:
-                // TODO
-                print()
-            case 1:
-                // TODO
-                print()
-                // self.customItems[ip.row].bought = true
-            case 2:
-                // TODO
-                print()
-            default:
-                print("Unknown section \(ip.section)")
-            }
-        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -61,18 +44,39 @@ extension ShoppingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            print("row: \(indexPath.row)")
+            var item = Database.shared.getForcedShoppingListItems()[indexPath.row]
+            item.bought = true
+        case 1:
+            if indexPath.row == customShoppingListItems.count {
+                customShoppingListItems[indexPath.row].bought = true
+            }
+            break
+        case 2:
+            // TODO
+            break
+        default:
+            // Do nothing
+            break
+        }
+    }
 }
 
 // MARK:- UITableViewDataSource
 extension ShoppingViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        // Always two sections TODO
+        // Always three sections
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
+            // TODO properly implement
             let count = Database.shared.getForcedShoppingListItems().count
             
             if count == 0 {
@@ -85,7 +89,7 @@ extension ShoppingViewController: UITableViewDataSource {
             
             return count
         case 1:
-            return 0; // TODO IMPLEMENT
+            return customShoppingListItems.count + 1;
         case 2:
             return 0; // TODO IMPLEMENT
         default:
@@ -111,8 +115,16 @@ extension ShoppingViewController: UITableViewDataSource {
             cell.ingredientTextField.text = item.contents
             break
         case 1:
+            if indexPath.row == customShoppingListItems.count {
+                // Craft new empty cell TODO
+            } else {
+                let item = customShoppingListItems[indexPath.row]
+                cell.ingredientTextField.text = item.contents
+                break
+            }
             break
         default:
+            cell.ingredientTextField.text = "Something went wrong. Uups"
             return cell // TODO: RETURN ERROR CELL
         }
         
