@@ -63,6 +63,7 @@ class Database {
         
         // Locates database file and opens it
         dbQueue = try? DatabaseQueue(path: fullDestPath, configuration: config)
+        print("DB Path: \(fullDestPath)")
         
         // Execute this statement to allow foreign key constraints/triggers
         // Otherwise foreign key constraints will be ignored.. ty sqlite3
@@ -262,7 +263,6 @@ class Database {
     }
     
     // MARK:-- Shopping list handeling
-    // TODO implement
     func update(customShoppingListItem item: CustomShoppingListItem) {
         // Update in customShoppingListItem table
         do {
@@ -327,6 +327,37 @@ class Database {
         
         return list
     }
+    
+    func getContents(forForcedShoppingListItem item: ForcedShoppingListItem) -> (quantity: Float, ingredient: Ingredient, unit: Unit?)? {
+        var tuple: (Float, Ingredient, Unit?)? = nil
+        do {
+            try dbQueue?.inDatabase { db in
+                if let row = try Row.fetchOne(db, "SELECT c.quantity as quantity, i.ingid as ingid, i.name as name, i.plural as plural "
+                    + "FROM contains c, schedule s, forcedshoppingitems f, ingredients i "
+                    + "WHERE c.ingid = f.ingid AND c.dishid = s.dishid AND f.scheduleid = s.id AND f.ingid = i.ingid AND f.id = ?",
+                                              arguments: [item.id]) {
+                    
+                    // Fetch all values
+                    let quantity: Float = row.value(named: "quantity")
+                    let ingredient = Ingredient(id: row.value(named: "ingid"), name: row.value(named: "name"), plural: row.value(named: "plural"))
+                    var unit: Unit? = nil
+                    
+                    if let row = try Row.fetchOne(db, "SELECT u.unitid as id, u.name as name, u.plural as plural FROM units u, contains c, schedule s, forcedshoppingitems f WHERE u.unitid = c.unit AND c.ingid = f.ingid AND c.dishid = s.dishid AND s.id = f.scheduleid AND f.id = ?",
+                                                  arguments: [item.id]) {
+                        unit = Unit(id: row.value(named: "id"), name: row.value(named: "name"), plural: row.value(named: "plural"))
+                    }
+                                        
+                    // Return that tuple
+                    tuple = (quantity, ingredient, unit)
+                }
+            }
+        } catch {
+            _handleDBError(error: error)
+        }
+        
+        return tuple
+    }
+    
 
     // MARK:-- handlers
     func _handleDBError(error: Error) {
